@@ -7,6 +7,7 @@ import {
   asset,
   AmbientLight,
   PointLight,
+  VrButton
 } from 'react-360';
 import Entity from 'Entity';
 
@@ -30,6 +31,21 @@ export default class Exit extends React.Component {
           style={{
             transform: [
               { translate: [0, 0, -4] },
+              { scaleX: 0.02 },
+              { scaleY: 0.02 },
+              { scaleZ: 0.02 },
+            ],
+          }}
+        />
+        <Entity
+          source={{
+            obj: asset('3d_mario/mario-sculpture.obj'),
+            mtl: asset('3d_mario/mario-sculpture.mtl'),
+          }}
+          lit={true}
+          style={{
+            transform: [
+              { translate: [4, -2, 5] },
               { scaleX: 0.02 },
               { scaleY: 0.02 },
               { scaleZ: 0.02 },
