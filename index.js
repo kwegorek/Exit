@@ -1,21 +1,40 @@
 import React from 'react';
-import { AppRegistry, StyleSheet, Text, View } from 'react-360';
-import Entity from 'Entity'
+import {
+  AppRegistry,
+  StyleSheet,
+  Text,
+  View,
+  asset,
+  AmbientLight,
+  PointLight,
+} from 'react-360';
+import Entity from 'Entity';
 
 export default class Exit extends React.Component {
   render() {
     return (
-      <View style={{ transform: [{ translate: [0, 0, -2] }] }}>
+      <View>
+        {/* <AmbientLight intensity={1} /> */}
+        <PointLight
+          style={{
+            color: 'white',
+            transform: [{ translate: [0, 0, 0] }],
+          }}
+        />
         <Entity
           source={{
-            obj: { uri: './static_assets/mario.obj' },
-            mtl: { uri: './static_assets/mario.mtl'},
+            obj: asset('3d_mario/mario-sculpture.obj'),
+            mtl: asset('3d_mario/mario-sculpture.mtl'),
           }}
-          style={{transform:[
-            {scaleX: 0.002 },
-            { scaleY: 0.002 },
-            { scaleZ: 0.002 },
-          ]}}
+          lit={true}
+          style={{
+            transform: [
+              { translate: [0, 0, -4] },
+              { scaleX: 0.02 },
+              { scaleY: 0.02 },
+              { scaleZ: 0.02 },
+            ],
+          }}
         />
       </View>
     );
