@@ -1,15 +1,14 @@
 import React from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  asset,
-  AmbientLight,
-  PointLight,
-  VrButton
-} from 'react-360';
+import { AppRegistry, View, asset, VrButton, PointLight } from 'react-360';
+import styles from './components/styles';
 import Entity from 'Entity';
+import store from './store';
+import { Provider } from 'react-redux'
+
+function handleClick() {
+  console.log('hello');
+  return 'hello';
+}
 
 export default class Exit extends React.Component {
   render() {
@@ -18,7 +17,7 @@ export default class Exit extends React.Component {
         {/* <AmbientLight intensity={1} /> */}
         <PointLight
           style={{
-            color: 'white',
+            color: 'light',
             transform: [{ translate: [0, 0, 0] }],
           }}
         />
@@ -36,6 +35,7 @@ export default class Exit extends React.Component {
               { scaleZ: 0.02 },
             ],
           }}
+          onInput={() => handleClick()}
         />
         <Entity
           source={{
@@ -57,24 +57,14 @@ export default class Exit extends React.Component {
   }
 }
 
-const styles = StyleSheet.create({
-  panel: {
-    // Fill the entire surface
-    width: 1000,
-    height: 600,
-    backgroundColor: 'rgba(255, 255, 255, 0.4)',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  greetingBox: {
-    padding: 20,
-    backgroundColor: '#000000',
-    borderColor: '#639dda',
-    borderWidth: 2,
-  },
-  greeting: {
-    fontSize: 30,
-  },
-});
+class ConnectedExit extends React.Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <Exit />
+      </Provider>
+    );
+  }
+}
 
-AppRegistry.registerComponent('Exit', () => Exit);
+AppRegistry.registerComponent('Exit', () => ConnectedExit);
