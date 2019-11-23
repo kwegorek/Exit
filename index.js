@@ -3,7 +3,7 @@ import { AppRegistry, View, asset, VrButton, PointLight } from 'react-360';
 import styles from './components/styles';
 import Entity from 'Entity';
 import store from './store';
-import { Provider } from 'react-redux'
+import { Provider } from 'react-redux';
 
 function handleClick() {
   console.log('hello');

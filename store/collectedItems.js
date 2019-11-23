@@ -13,10 +13,10 @@ const INITIAL_STATE = [];
  * ACTION CREATORS
  */
 export const getCollectedItems = () => {
-    return {
-      type: GET_COLLECTED_ITEMS,
-    };
+  return {
+    type: GET_COLLECTED_ITEMS,
   };
+};
 
 export const addCollectedItem = collectedItem => {
   return {
@@ -33,7 +33,7 @@ export default function(collectedItems = INITIAL_STATE, action) {
     case ADD_COLLECTED_ITEM:
       return [...collectedItems, action.collectedItem];
     case GET_COLLECTED_ITEMS:
-        return collectItems;
+      return collectItems;
     default:
       return collectedItems;
   }
