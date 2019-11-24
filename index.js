@@ -39,13 +39,13 @@ export default class Exit extends React.Component {
         />
         <Entity
           source={{
-            obj: asset('3d_mario/mario-sculpture.obj'),
-            mtl: asset('3d_mario/mario-sculpture.mtl'),
+            obj: asset('3d_globe/magic_sphere.obj'),
+            mtl: asset('3d_globe/magic_sphere.mtl'),
           }}
           lit={true}
           style={{
             transform: [
-              { translate: [4, -2, 5] },
+              { translate: [0, -5, 5] },
               { scaleX: 0.02 },
               { scaleY: 0.02 },
               { scaleZ: 0.02 },
