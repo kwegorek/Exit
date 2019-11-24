@@ -13,18 +13,18 @@ class MagicSphere extends React.Component {
     };
     
     componentDidMount(){
-        // setInterval(() => {
-        //     this.setState((prev) => {
-        //         const isMaxOrMinValue = (prev.fade >= 1.0 || prev.fade <= 0.0)
-        //         const newIsFading = (isMaxOrMinValue ? !prev.isFading : prev.isFading)
-        //         const newFade = prev.fade + (newIsFading ? -0.04 : 0.04)
-        //        // console.log(newFade)
-        //         return {
-        //             fade: newFade, 
-        //             isFading: newIsFading
-        //         }
-        //     });
-        // }, 400);
+        setInterval(() => {
+            this.setState((prev) => {
+                const isMaxOrMinValue = (prev.fade >= 1.0 || prev.fade <= 0.0)
+                const newIsFading = (isMaxOrMinValue ? !prev.isFading : prev.isFading)
+                const newFade = prev.fade + (newIsFading ? -0.04 : 0.04)
+               // console.log(newFade)
+                return {
+                    fade: newFade, 
+                    isFading: newIsFading
+                }
+            });
+        }, 400);
     }
 
     // componentDidUpdate() {
@@ -64,17 +64,18 @@ class MagicSphere extends React.Component {
                
                 source={{
                 obj: asset('3d_globe/magic_sphere.obj'),
-                //mtl: asset('3d_globe/magic_sphere.mtl'),
+                mtl: asset('3d_globe/magic_sphere.mtl'),
                 }}
                 lit={true}
                 style={{
                 transform: [
-                    { translate: [-1, -5, -5] },
-                    { scaleX: 0.08 },
-                    { scaleY: 0.08 },
-                    { scaleZ: 0.08 },
+                    { translate: [0, -5, -3] },
+                    { scaleX: 0.04 },
+                    { scaleY: 0.04 },
+                    { scaleZ: 0.04 },
                 ],
-                color: 'red',
+               
+                
                 opacity: opacityValue
                 
                 }}
