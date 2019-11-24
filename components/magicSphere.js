@@ -1,5 +1,5 @@
 import React from 'react';
-import {  asset, Animated } from 'react-360';
+import {  asset, Animated, View,  VrButton, PointLight } from 'react-360';
 import Entity from 'Entity';
 
 const AnimatedEntity = Animated.createAnimatedComponent(Entity);
@@ -40,24 +40,46 @@ class MagicSphere extends React.Component {
     render() {
         const opacityValue = this.state.fade
         return (
-            <AnimatedEntity
-            source={{
-              obj: asset('3d_globe/magic_sphere.obj'),
-              //mtl: asset('3d_globe/magic_sphere.mtl'),
-            }}
-            lit={true}
-            style={{
-              transform: [
-                { translate: [-1, -5, -5] },
-                { scaleX: 0.08 },
-                { scaleY: 0.08 },
-                { scaleZ: 0.08 },
-              ],
-              color: 'red',
-              opacity: opacityValue
-              
-            }}
-          />
+
+            <View>
+    
+                <Entity source={{
+                obj: asset('3d_bookshelf/Old_Dusty_Bookshelf.obj'),
+                mtl: asset('3d_bookshelf/Old_Dusty_Bookshelf.mtl'),
+                }} style={{
+                transform: [
+                    { translate: [-1, -5, -5] },
+                    { scaleX: 0.023 },
+                    { scaleY: 0.023 },
+                    { scaleZ: 0.023},
+                ],
+                color: 'white',
+                opacity: opacityValue
+                
+                }}      lit={true}>
+
+                </Entity>
+
+                <AnimatedEntity
+               
+                source={{
+                obj: asset('3d_globe/magic_sphere.obj'),
+                //mtl: asset('3d_globe/magic_sphere.mtl'),
+                }}
+                lit={true}
+                style={{
+                transform: [
+                    { translate: [-1, -5, -5] },
+                    { scaleX: 0.08 },
+                    { scaleY: 0.08 },
+                    { scaleZ: 0.08 },
+                ],
+                color: 'red',
+                opacity: opacityValue
+                
+                }}
+                    />
+            </View>
         )
     }
 }
