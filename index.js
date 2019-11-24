@@ -4,6 +4,7 @@ import styles from './components/styles';
 import Entity from 'Entity';
 import store from './store';
 import { Provider } from 'react-redux';
+import MagicSphere from './components/magicSphere';
 
 function handleClick() {
   console.log('hello');
@@ -17,7 +18,7 @@ export default class Exit extends React.Component {
         {/* <AmbientLight intensity={1} /> */}
         <PointLight
           style={{
-            color: 'light',
+            color: 'white',
             transform: [{ translate: [0, 0, 0] }],
           }}
         />
@@ -37,21 +38,7 @@ export default class Exit extends React.Component {
           }}
           onInput={() => handleClick()}
         />
-        <Entity
-          source={{
-            obj: asset('3d_globe/magic_sphere.obj'),
-            mtl: asset('3d_globe/magic_sphere.mtl'),
-          }}
-          lit={true}
-          style={{
-            transform: [
-              { translate: [0, -5, 5] },
-              { scaleX: 0.02 },
-              { scaleY: 0.02 },
-              { scaleZ: 0.02 },
-            ],
-          }}
-        />
+        <MagicSphere/>
       </View>
     );
   }
