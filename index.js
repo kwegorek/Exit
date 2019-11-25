@@ -1,43 +1,37 @@
 import React from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-360';
+import { AppRegistry, View, PointLight } from 'react-360';
+import store from './store';
+import { Provider } from 'react-redux';
+import Mario from './components/Mario';
+import Bookshelf from './components/bookshelf';
+import MagicSphere from './components/magicSphere';
 
 export default class Exit extends React.Component {
   render() {
     return (
-      <View style={styles.panel}>
-        <View style={styles.greetingBox}>
-          <Text style={styles.greeting}>
-            Welcome to React 360
-          </Text>
-        </View>
+      <View>
+        <PointLight
+          style={{
+            transform: [{ translate: [0, 0, 0] }],
+          }}
+        />
+        <Mario />
+        <Bookshelf />
+        <MagicSphere />
       </View>
     );
   }
-};
+}
 
-const styles = StyleSheet.create({
-  panel: {
-    // Fill the entire surface
-    width: 1000,
-    height: 600,
-    backgroundColor: 'rgba(255, 255, 255, 0.4)',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  greetingBox: {
-    padding: 20,
-    backgroundColor: '#000000',
-    borderColor: '#639dda',
-    borderWidth: 2,
-  },
-  greeting: {
-    fontSize: 30,
-  },
-});
+class ConnectedExit extends React.Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <Exit />
+      </Provider>
+    );
+  }
+}
 
-AppRegistry.registerComponent('Exit', () => Exit);
+AppRegistry.registerComponent('Exit', () => ConnectedExit);
+AppRegistry.registerComponent('Mario', () => Mario);
