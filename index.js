@@ -3,6 +3,8 @@ import { AppRegistry, View, PointLight } from 'react-360';
 import store from './store';
 import { Provider } from 'react-redux';
 import Mario from './components/Mario';
+import Bookshelf from './components/bookshelf';
+import MagicSphere from './components/magicSphere';
 
 export default class Exit extends React.Component {
   render() {
@@ -14,6 +16,8 @@ export default class Exit extends React.Component {
           }}
         />
         <Mario />
+        <Bookshelf />
+        <MagicSphere />
       </View>
     );
   }
