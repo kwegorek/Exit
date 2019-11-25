@@ -5,7 +5,6 @@ import { Provider } from 'react-redux';
 import NavBar from './components/navBar';
 import Location from './components/location';
 import styles from './components/styles';
-import Mario from './components/cabin/Mario';
 import Entity from 'Entity';
 
 export default class Exit extends React.Component {
@@ -15,10 +14,10 @@ export default class Exit extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
   handleClick() {
-    console.log('CKUCJSD');
-    this.setState({gameStart: true})
+    this.setState({ gameStart: true });
   }
   render() {
+    //render player's chosen location (Ex: cabin)
     if (this.state.gameStart) {
       return (
         <View>
@@ -31,6 +30,7 @@ export default class Exit extends React.Component {
         </View>
       );
     }
+    //render intro & tutorial page --> gives option to click cabin etc
     return (
       <Entity
         source={{
@@ -57,4 +57,3 @@ class ConnectedExit extends React.Component {
 
 AppRegistry.registerComponent('Exit', () => ConnectedExit);
 AppRegistry.registerComponent('NavBar', () => NavBar);
-//register intro and exit pages

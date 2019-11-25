@@ -6,7 +6,7 @@ const CHANGE_LOCATION = 'CHANGE_LOCATION';
 /**
  * INITIAL STATE
  */
-const INITIAL_STATE = 'cabin';
+const INITIAL_STATE = '';
 
 /**
  * ACTION CREATORS
@@ -14,7 +14,7 @@ const INITIAL_STATE = 'cabin';
 export const changeLocation = location => {
   return {
     type: CHANGE_LOCATION,
-    location
+    location,
   };
 };
 
