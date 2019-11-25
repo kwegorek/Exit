@@ -2,6 +2,7 @@
 // If you want to modify your application's content, start in "index.js"
 import KeyboardCameraController from '@martinpham/react-360-keyboard-camera-controller';
 import { ReactInstance } from 'react-360-web';
+import {  Location, Surface } from 'react-360-web';
 // import keyboardCamController from './keyBoardController'
 
 function init(bundle, parent, options = {}) {
@@ -17,6 +18,20 @@ function init(bundle, parent, options = {}) {
     }),
     r360.getDefaultLocation()
   );
+
+
+
+  const centralIntro = new Surface(300,600, Surface.SurfaceShape.Flat);
+
+  ///delte later
+  centralIntro.setAngle(0.0, 0);
+
+
+  r360.renderToSurface(
+    r360.createRoot('Intro'),
+    centralIntro,
+  );
+
 
   // r360.controls.addCameraController(new keyboardCamController());
   // r360.controls.addCameraController(new MouseLockCameraController(r360._eventLayer))
