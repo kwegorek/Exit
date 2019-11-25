@@ -8,31 +8,67 @@ const AnimatedEntity = Animated.createAnimatedComponent(Entity);
 class MagicSphere extends React.Component {
 
     state = {
-        fade: 0.0,
-        isFading: true
+        rotation: new Animated.Value(0),
+        isRotating: true
     };
     
     componentDidMount(){
-        setInterval(() => {
-            this.setState((prev) => {
-                const isMaxOrMinValue = (prev.fade >= 1.0 || prev.fade <= 0.0)
-                const newIsFading = (isMaxOrMinValue ? !prev.isFading : prev.isFading)
-                const newFade = prev.fade + (newIsFading ? -0.04 : 0.04)
-               // console.log(newFade)
-                return {
-                    fade: newFade, 
-                    isFading: newIsFading
-                }
-            });
-        }, 400);
+       this.startRotate()
     }
+    startRotate = () => {
+        this.state.rotation.setValue(0)
+        Animated.timing(this.state.rotation,
+            {
+                toValue: 360,
+                duration: 10000,
+            }
+        ).start(this.startRotate)
+    }
+    
+    stopRotate = () => {
+        console.log("stop rotate")
+        // this.setState({
+        //         rotation: new Animated.Value(0),
+        //         isRotating: false
+        //     })
+    }
+    // startRotate = () => {
+    //     this.setState({
+    //         rotation: new Animated.Value(0),
+    //         isRotating: true
+    //     })
+    //     this.rotate(true)
+    // }
+    // rotate = (forceRotate = false) => {
+    //     console.log(JSON.stringify(forceRotate))
+    //     if (forceRotate === true || this.state.isRotating) { 
+    //         const newValue = this.state.rotation.getValue() === 360 ? 0 : 360;
+    //         console.log("->rotate", newValue)
+    //         Animated.timing(this.state.rotation,
+    //             {
+    //                 toValue: newValue,
+    //                 duration: 10000,
+    //             }
+    //         ).start(this.rotate)
+    //     } else {
+    //         console.log("stopping")
+    //     }
+    // }
+    // stopRotate = () => {
+    //     console.log("stop rotate")
+    //     this.setState({
+    //             rotation: new Animated.Value(0),
+    //             isRotating: false
+    //         })
+    // }
 
     render() {
-        const opacityValue = this.state.fade
+        const rotationValue = this.state.rotation
         return (
 
             <View>
-                <Entity
+                <AnimatedEntity onEnter={this.startRotate} 
+                 onExit={this.stopRotate}
                
                 source={{
                 obj: asset('3d_globe/magic_sphere.obj'),
@@ -45,10 +81,9 @@ class MagicSphere extends React.Component {
                     { scaleX: 0.04 },
                     { scaleY: 0.04 },
                     { scaleZ: 0.04 },
+                    { rotateY: rotationValue}
                 ],
-               
-                
-                opacity: opacityValue
+            
                 
                 }}
                     />

@@ -40,7 +40,7 @@ export default class Exit extends React.Component {
           onInput={() => handleClick()}
         />
         <Bookshelf/>
-        <MagicSphere/>
+        <MagicSphere />
       </View>
     );
   }
