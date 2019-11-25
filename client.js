@@ -4,6 +4,8 @@ import KeyboardCameraController from '@martinpham/react-360-keyboard-camera-cont
 import { ReactInstance, Surface } from 'react-360-web';
 // import keyboardCamController from './keyBoardController'
 
+let backGroundImg = '360mansion.jpg';
+
 function init(bundle, parent, options = {}) {
   const r360 = new ReactInstance(bundle, parent, {
     // Add custom options here
@@ -12,7 +14,9 @@ function init(bundle, parent, options = {}) {
   });
 
   //intro surface
+
   //exit surface
+
   //navBar surface
   const navBarSurface = new Surface(1000, 100, Surface.SurfaceShape.Flat);
   navBarSurface.setAngle(0, 0);
@@ -30,7 +34,7 @@ function init(bundle, parent, options = {}) {
   // r360.controls.addCameraController(new MouseLockCameraController(r360._eventLayer))
 
   // Load the initial environment
-  r360.compositor.setBackground(r360.getAssetURL('360mansion.jpg'));
+  r360.compositor.setBackground(r360.getAssetURL(backGroundImg));
   r360.controls.addCameraController(new KeyboardCameraController());
 }
 

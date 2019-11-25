@@ -1,8 +1,8 @@
 import React from 'react';
-import { AppRegistry, StyleSheet, Text, View } from 'react-360';
+import { Text, View } from 'react-360';
 import styles from './styles';
 
-export default class Hello360 extends React.Component {
+export default class NavBar extends React.Component {
   render() {
     return (
       <View style={styles.panel}>
@@ -13,3 +13,4 @@ export default class Hello360 extends React.Component {
     );
   }
 }
+

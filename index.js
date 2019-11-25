@@ -2,8 +2,8 @@ import React from 'react';
 import { AppRegistry, View, PointLight } from 'react-360';
 import store from './store';
 import { Provider } from 'react-redux';
-import NavBar from './components/navBar';
 import Cabin from './components/cabin';
+import NavBar from './components/navBar';
 
 export default class Exit extends React.Component {
   render() {
@@ -32,3 +32,4 @@ class ConnectedExit extends React.Component {
 
 AppRegistry.registerComponent('Exit', () => ConnectedExit);
 AppRegistry.registerComponent('NavBar', () => NavBar);
+//register intro and exit pages 
