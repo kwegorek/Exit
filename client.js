@@ -21,7 +21,7 @@ function init(bundle, parent, options = {}) {
 
   // r360.controls.addCameraController(new keyboardCamController());
   // r360.controls.addCameraController(new MouseLockCameraController(r360._eventLayer))
-
+//test
   // Load the initial environment
   r360.compositor.setBackground(r360.getAssetURL('360mansion.jpg'));
   r360.controls.addCameraController(new KeyboardCameraController());
