@@ -6,7 +6,7 @@ const CHANGE_LOCATION = 'CHANGE_LOCATION';
 /**
  * INITIAL STATE
  */
-const INITIAL_STATE = '';
+const INITIAL_STATE = 'cabin';
 
 /**
  * ACTION CREATORS

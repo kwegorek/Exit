@@ -4,16 +4,11 @@ import { connect } from 'react-redux';
 import Cabin from './cabin';
 
 class Location extends React.Component {
-  componentDidMount() {
-    console.log('Location component mounted');
-  }
   render() {
     const location = this.props.location;
     if (location === 'cabin') {
-      {
-        Environment.setBackgroundImage(asset('360mansion.jpg'));
-      }
-      <Cabin />;
+      Environment.setBackgroundImage(asset('360mansion.jpg'));
+      return <Cabin />;
     }
   }
 }
