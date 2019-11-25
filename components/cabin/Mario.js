@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, asset } from 'react-360';
-import styles from './styles';
+import styles from '../styles/';
 import Entity from 'Entity';
 
 export default class Mario extends React.Component {
