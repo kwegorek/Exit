@@ -4,7 +4,8 @@ import styles from './components/styles';
 import Entity from 'Entity';
 import store from './store';
 import { Provider } from 'react-redux';
-import MagicSphere from './components/magicSphere';
+import Bookshelf from './components/bookshelf';
+import MagicSphere from './components/magicSphere'
 
 function handleClick() {
   console.log('hello');
@@ -38,6 +39,7 @@ export default class Exit extends React.Component {
           }}
           onInput={() => handleClick()}
         />
+        <Bookshelf/>
         <MagicSphere/>
       </View>
     );

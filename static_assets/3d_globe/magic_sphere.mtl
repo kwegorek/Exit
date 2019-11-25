@@ -16,3 +16,5 @@ newmtl wire_000000000
 
 
 map_Ks TexTuresCom_MetalBare0150_1_seamless_S.jpg
+map_Kd TexTuresCom_MetalBare0020_S.jpg
+	map_Kd TexTuresCom_MetalBare0150_1_seamless_S.jpg

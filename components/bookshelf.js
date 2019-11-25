@@ -2,10 +2,7 @@ import React from 'react';
 import {  asset, Animated, View,  VrButton, PointLight } from 'react-360';
 import Entity from 'Entity';
 
-const AnimatedEntity = Animated.createAnimatedComponent(Entity);
-
-
-class MagicSphere extends React.Component {
+class Bookshelf extends React.Component {
 
     state = {
         fade: 0.0,
@@ -26,16 +23,6 @@ class MagicSphere extends React.Component {
             });
         }, 400);
     }
-
-    // componentDidUpdate() {
-    //     Animated.timing(
-    //         this.state.fade,
-    //         {
-    //         toValue: 1,
-    //         duration: 100,
-    //         }
-    //     ).start();  
-    // }
 
     render() {
         const opacityValue = this.state.fade
@@ -59,30 +46,9 @@ class MagicSphere extends React.Component {
                 }}      lit={true}>
 
                 </Entity>
-
-                <AnimatedEntity
-               
-                source={{
-                obj: asset('3d_globe/magic_sphere.obj'),
-                mtl: asset('3d_globe/magic_sphere.mtl'),
-                }}
-                lit={true}
-                style={{
-                transform: [
-                    { translate: [0, -5, -3] },
-                    { scaleX: 0.04 },
-                    { scaleY: 0.04 },
-                    { scaleZ: 0.04 },
-                ],
-               
-                
-                opacity: opacityValue
-                
-                }}
-                    />
             </View>
         )
     }
 }
 
-export default MagicSphere
+export default Bookshelf
