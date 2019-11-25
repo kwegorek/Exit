@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-360';
-export const styles = StyleSheet.create({
+
+export default styles = StyleSheet.create({
   panel: {
     // Fill the entire surface
     width: 1000,
@@ -30,5 +31,13 @@ export const styles = StyleSheet.create({
     height: 300,
     alignItems: 'center',
     justifyContent: 'space-around',
+  },
+  mario: {
+    transform: [
+      { translate: [0, 0, -4] },
+      { scaleX: 0.02 },
+      { scaleY: 0.02 },
+      { scaleZ: 0.02 },
+    ],
   },
 });
