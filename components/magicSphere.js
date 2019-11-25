@@ -27,40 +27,12 @@ class MagicSphere extends React.Component {
         }, 400);
     }
 
-    // componentDidUpdate() {
-    //     Animated.timing(
-    //         this.state.fade,
-    //         {
-    //         toValue: 1,
-    //         duration: 100,
-    //         }
-    //     ).start();  
-    // }
-
     render() {
         const opacityValue = this.state.fade
         return (
 
             <View>
-    
-                <Entity source={{
-                obj: asset('3d_bookshelf/Old_Dusty_Bookshelf.obj'),
-               // mtl: asset('3d_bookshelf/Old_Dusty_Bookshelf.mtl'),
-                }} style={{
-                transform: [
-                    { translate: [-1, -5, -5] },
-                    { scaleX: 0.023 },
-                    { scaleY: 0.023 },
-                    { scaleZ: 0.023},
-                ],
-                color: 'white',
-                opacity: opacityValue
-                
-                }}      lit={true}>
-
-                </Entity>
-
-                <AnimatedEntity
+                <Entity
                
                 source={{
                 obj: asset('3d_globe/magic_sphere.obj'),
