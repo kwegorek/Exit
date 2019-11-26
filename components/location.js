@@ -27,8 +27,9 @@ class Location extends React.Component {
     } else if (location === 'cabin') {
       this.envChanger('360mansion.jpg');
       return <Cabin />;
-    } else if (location === 'cabin_escaped') {
-      //change environment, render surface
+    } else if (location === 'cabinEscaped') {
+      this.envChanger('360_world.jpg');
+      return null;
     }
   }
 }

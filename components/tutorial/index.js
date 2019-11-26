@@ -9,12 +9,12 @@ const { SurfaceModule } = NativeModules;
 class Tutorial extends React.Component {
   constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
+    this.handleClickPlayGame = this.handleClickPlayGame.bind(this);
   }
   componentDidMount() {
     console.log('tutorial component mounted');
   }
-  handleClick() {
+  handleClickPlayGame() {
     //unmount tutorial surrfaces
     SurfaceModule.changeSurfaceSize('TutorialOne', 1, 1);
     SurfaceModule.changeSurfaceSize('TutorialTwo', 1, 1);
@@ -30,7 +30,7 @@ class Tutorial extends React.Component {
         }}
         lit={true}
         style={styles.mario}
-        onInput={() => this.handleClick()}
+        onInput={() => this.handleClickPlayGame()}
       />
     );
   }
