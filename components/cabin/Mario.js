@@ -2,6 +2,7 @@ import React from 'react';
 import { View, asset } from 'react-360';
 import styles from '../styles/';
 import Entity from 'Entity';
+import { Environment } from 'react-360';
 
 export default class Mario extends React.Component {
   constructor(props) {
@@ -12,8 +13,8 @@ export default class Mario extends React.Component {
     console.log('Mario Mounted');
   }
   handleClick() {
-    console.log('hello');
-    return 'hello';
+    //exit room
+    Environment.setBackgroundImage(asset('360_world.jpg'));
   }
   render() {
     return (
