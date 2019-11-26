@@ -4,6 +4,8 @@ import Mario from './Mario';
 import Bookshelf from './bookshelf';
 import MagicSphere from './magicSphere';
 import FallingPicture from './fallingPicture'
+import Book from './book'
+import Table from './Table'
 import { changeLocation } from '../../store/location';
 import { connect } from 'react-redux';
 
@@ -31,6 +33,8 @@ class Cabin extends React.Component {
         <Bookshelf />
         <MagicSphere />
         <FallingPicture />
+        <Book/>
+        <Table />
       </View>
     );
   }
