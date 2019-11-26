@@ -4,12 +4,9 @@ import Mario from './Mario';
 import Bookshelf from './bookshelf';
 import MagicSphere from './magicSphere';
 import FallingPicture from './fallingPicture'
-<<<<<<< HEAD
-=======
 import Book from './book'
 import Table from './Table'
 import AncientPaper from './ancientPaper'
->>>>>>> fae004481ebe059f746736a51ca17b570e9d84b3
 import { changeLocation } from '../../store/location';
 import { connect } from 'react-redux';
 
@@ -37,11 +34,8 @@ class Cabin extends React.Component {
         <Bookshelf />
         <MagicSphere />
         <FallingPicture />
-<<<<<<< HEAD
-=======
         <Book/>
         <Table />
->>>>>>> fae004481ebe059f746736a51ca17b570e9d84b3
       </View>
     );
   }
