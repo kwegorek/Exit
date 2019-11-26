@@ -6,7 +6,7 @@ const CHANGE_LOCATION = 'CHANGE_LOCATION';
 /**
  * INITIAL STATE
  */
-const INITIAL_STATE = 'cabin';
+const INITIAL_STATE = 'tutorial';
 
 /**
  * ACTION CREATORS
@@ -21,11 +21,11 @@ export const changeLocation = location => {
 /**
  * REDUCER
  */
-export default function(collectedItems = INITIAL_STATE, action) {
+export default function(location = INITIAL_STATE, action) {
   switch (action.type) {
     case CHANGE_LOCATION:
-      return location;
+      return action.location;
     default:
-      return collectedItems;
+      return location;
   }
 }
