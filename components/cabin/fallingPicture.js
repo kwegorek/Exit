@@ -5,11 +5,16 @@ import Entity from 'Entity';
 
 const AnimatedEntity = Animated.createAnimatedComponent(Entity);
 
-
+const Console = prop => (
+    console[Object.keys(prop)[0]](...Object.values(prop))
+    ,null // ➜ React components must return something 
+  )
+  
 class FallingPicture extends React.Component {
     state = {
         //starting value/initial value for y 
         yPosition: new Animated.Value(1),
+        textureObj:'3d_globe/magic_sphere.obj'
         
     };
     componentDidMount(){
@@ -19,19 +24,30 @@ class FallingPicture extends React.Component {
 
         //onmousehover (onEnter - in invoked when cursor is
         // inside the shape of an object) the y position starts changing 
+        console.log('----------startFalling', 
         Animated.timing(
             this.state.yPosition,
             {
               toValue: -2,
               duration: 5000,
               delay: 100,
-              easing: Easing.bounce
+              easing: Easing.quad
             }
             //toValue target value for y, in our case the floor 
             //dealy means every 0.1 sec (100mlsec) the value of yPosition changes
             //setting easing to easing.bounce means object trajectory beahves like a ball that falls on the ground
+            //easing.quad - realtion is quadratic not linear -> velocity relation to time
             
-          ).start();
+          ).start(()=> { this.setState({
+            textureObj:'3d_mario/mario-sculpture.obj'
+        })}))
+
+     
+        
+
+          console.log('state', this.state)
+
+     
 
           //Animated.timing updates the state until the target calue (toValue) is reached
     }
@@ -39,14 +55,18 @@ class FallingPicture extends React.Component {
 
     render() {
         const yPosition = this.state.yPosition
-        console.log("--", yPosition)
+        console.log(yPosition._value, 'yPosition')
+        console.log(yPosition)
+
         return (
             
             <View>
+
                 <AnimatedEntity onEnter={this.startFalling}
-               
+               	
                 source={{
-                obj: asset('3d_globe/magic_sphere.obj'),
+		
+                obj: asset(this.state.textureObj),
                 mtl: asset('3d_globe/magic_sphere.mtl'),
                 }}
                 lit={true}
