@@ -5,10 +5,7 @@ import Entity from 'Entity';
 
 const AnimatedEntity = Animated.createAnimatedComponent(Entity);
 
-const Console = prop => (
-    console[Object.keys(prop)[0]](...Object.values(prop))
-    ,null // ➜ React components must return something 
-  )
+
   
 class FallingPicture extends React.Component {
     state = {
@@ -24,7 +21,7 @@ class FallingPicture extends React.Component {
 
         //onmousehover (onEnter - in invoked when cursor is
         // inside the shape of an object) the y position starts changing 
-        console.log('----------startFalling', 
+ 
         Animated.timing(
             this.state.yPosition,
             {
@@ -40,7 +37,7 @@ class FallingPicture extends React.Component {
             
           ).start(()=> { this.setState({
             textureObj:'3d_mario/mario-sculpture.obj'
-        })}))
+        })})
 
      
         
