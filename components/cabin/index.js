@@ -3,17 +3,30 @@ import { View, Environment, asset } from 'react-360';
 import Mario from './Mario';
 import Bookshelf from './bookshelf';
 import MagicSphere from './magicSphere';
-import FallingPicture from './fallingPicture';
+import { changeLocation } from '../../store/location';
+import { connect } from 'react-redux';
 
-export default class Cabin extends React.Component {
+class Cabin extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleClickEscapeKey = this.handleClickEscapeKey.bind(this);
+  }
   componentDidMount() {
-    console.log('cabin mounted');
-    Environment.setBackgroundImage(asset('360mansion.jpg'))
+    console.log('cabin mounted!');
+  }
+  handleClickEscapeKey() {
+    //unmount navbar
+    //mount winner surface
+    this.props.changeLocation('cabinEscaped');
+  }
+  handleLostGame() {
+    //unmount navbar
+    //mount loser surface
   }
   render() {
     return (
       <View>
-        <Mario />
+        <Mario handleClickEscapeKey={this.handleClickEscapeKey} />
         <Bookshelf />
         <MagicSphere />
         <FallingPicture />
@@ -21,3 +34,11 @@ export default class Cabin extends React.Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    changeLocation: location => dispatch(changeLocation(location)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Cabin);

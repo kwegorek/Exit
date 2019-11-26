@@ -4,28 +4,28 @@ import Entity from 'Entity';
 
 class Bookshelf extends React.Component {
 
-    state = {
-        fade: 0.0,
-        isFading: true
-    };
+    // state = {
+    //     fade: 0.0,
+    //     isFading: true
+    // };
     
-    componentDidMount(){
-        setInterval(() => {
-            this.setState((prev) => {
-                const isMaxOrMinValue = (prev.fade >= 1.0 || prev.fade <= 0.0)
-                const newIsFading = (isMaxOrMinValue ? !prev.isFading : prev.isFading)
-                const newFade = prev.fade + (newIsFading ? -0.04 : 0.04)
-               // console.log(newFade)
-                return {
-                    fade: newFade, 
-                    isFading: newIsFading
-                }
-            });
-        }, 400);
-    }
+    // componentDidMount(){
+    //     setInterval(() => {
+    //         this.setState((prev) => {
+    //             const isMaxOrMinValue = (prev.fade >= 1.0 || prev.fade <= 0.0)
+    //             const newIsFading = (isMaxOrMinValue ? !prev.isFading : prev.isFading)
+    //             const newFade = prev.fade + (newIsFading ? -0.04 : 0.04)
+    //            // console.log(newFade)
+    //             return {
+    //                 fade: newFade, 
+    //                 isFading: newIsFading
+    //             }
+    //         });
+    //     }, 400);
+    //}
 
     render() {
-        const opacityValue = this.state.fade
+        // const opacityValue = this.state.fade
         return (
 
             <View>
@@ -41,7 +41,7 @@ class Bookshelf extends React.Component {
                     { scaleZ: 0.023},
                 ],
                 color: 'white',
-                opacity: opacityValue
+                // opacity: opacityValue
                 
                 }}      lit={true}>
 
