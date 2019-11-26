@@ -6,6 +6,7 @@ import MagicSphere from './magicSphere';
 import FallingPicture from './fallingPicture'
 import Book from './book'
 import Table from './Table'
+import AncientPaper from './ancientPaper'
 import { changeLocation } from '../../store/location';
 import { connect } from 'react-redux';
 
