@@ -34,7 +34,7 @@ export default styles = StyleSheet.create({
   },
   mario: {
     transform: [
-      { translate: [0, 0, -4] },
+      { translate: [10, -2, -4] },
       { scaleX: 0.02 },
       { scaleY: 0.02 },
       { scaleZ: 0.02 },

@@ -12,6 +12,7 @@ class Location extends React.Component {
   }
 
   envChanger(imageUrl) {
+    Environment.preloadBackgroundImage(asset(imageUrl));
     Environment.setBackgroundImage(asset(imageUrl));
   }
 
@@ -22,6 +23,8 @@ class Location extends React.Component {
     } else if (location === 'cabin') {
       this.envChanger('360mansion.jpg');
       return <Cabin />;
+    } else if (location === 'cabin_escaped') {
+      //change environment, render surface
     }
   }
 }

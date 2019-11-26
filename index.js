@@ -4,6 +4,8 @@ import store from './store';
 import { Provider } from 'react-redux';
 import NavBar from './components/navBar';
 import Location from './components/location';
+import TutorialOne from './components/tutorial/tutorialOne';
+import TutorialTwo from './components/tutorial/tutorialTwo';
 
 export default class Exit extends React.Component {
   render() {
@@ -32,3 +34,6 @@ class ConnectedExit extends React.Component {
 
 AppRegistry.registerComponent('Exit', () => ConnectedExit);
 AppRegistry.registerComponent('NavBar', () => NavBar);
+AppRegistry.registerComponent('TutorialOne', () => TutorialOne);
+AppRegistry.registerComponent('TutorialTwo', () => TutorialTwo);
+AppRegistry.registerComponent('TutorialThree', () => TutorialThree);

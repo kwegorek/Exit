@@ -3,6 +3,8 @@ import { View, Environment, asset } from 'react-360';
 import Entity from 'Entity';
 import { changeLocation } from '../../store/location';
 import { connect } from 'react-redux';
+import { NativeModules } from 'react-360';
+const { SurfaceModule } = NativeModules;
 
 class Tutorial extends React.Component {
   constructor(props) {
@@ -10,9 +12,13 @@ class Tutorial extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
   componentDidMount() {
-    console.log('tutorial mounted!');
+    console.log('tutorial component mounted');
   }
   handleClick() {
+    //unmount tutorial surrfaces
+    SurfaceModule.changeSurfaceSize('TutorialOne', 1, 1);
+    SurfaceModule.changeSurfaceSize('TutorialTwo', 1, 1);
+    //change to chosen game room
     this.props.changeLocation('cabin');
   }
   render() {
