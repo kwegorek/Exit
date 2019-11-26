@@ -14,7 +14,7 @@ export default class Mario extends React.Component {
   }
   handleClick() {
     //exit room
-    Environment.setBackgroundImage(asset('360_world.jpg'));
+    // Environment.setBackgroundImage(asset('360_world.jpg'));
   }
   render() {
     return (

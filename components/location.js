@@ -11,7 +11,7 @@ class Location extends React.Component {
   render() {
     const location = this.props.location;
     if (location === 'cabin') {
-            Environment.setBackgroundImage(asset('360mansion.jpg'))
+           
 
      return (
      <Cabin />  )
