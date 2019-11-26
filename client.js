@@ -12,11 +12,11 @@ function init(bundle, parent, options = {}) {
   });
 
   //intro surfaces
-  let TutorialOne = new Surface(1000, 800, Surface.SurfaceShape.Flat);
+  let TutorialOne = new Surface(1000, 1000, Surface.SurfaceShape.Flat);
   TutorialOne.setAngle(0, 0);
   r360.renderToSurface(r360.createRoot('TutorialOne', {}), TutorialOne);
 
-  let TutorialTwo = new Surface(1000, 600, Surface.SurfaceShape.Flat);
+  let TutorialTwo = new Surface(2000, 1000, Surface.SurfaceShape.Flat);
   TutorialTwo.setAngle(-Math.PI / 2, 0);
   r360.renderToSurface(r360.createRoot('TutorialTwo', {}), TutorialTwo);
 
@@ -24,6 +24,8 @@ function init(bundle, parent, options = {}) {
   let NavBar = new Surface(1, 1, Surface.SurfaceShape.Flat);
   NavBar.setAngle(0, 0);
   r360.renderToSurface(r360.createRoot('NavBar', {}), NavBar);
+  // const cameraQuat = r360.getCameraQuaternion();
+  // NavBar.recenter(cameraQuat, 'yaw');
 
   //make surfaces global
   window.reactIns = r360;

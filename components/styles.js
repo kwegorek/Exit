@@ -34,10 +34,10 @@ export default styles = StyleSheet.create({
   },
   mario: {
     transform: [
-      { translate: [10, -2, -4] },
-      { scaleX: 0.02 },
-      { scaleY: 0.02 },
-      { scaleZ: 0.02 },
+      { translate: [100, 0, -100] },
+      { scaleX: 1.00 },
+      { scaleY: 1.00 },
+      { scaleZ: 1.00 },
     ],
   },
 });
