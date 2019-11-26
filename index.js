@@ -22,10 +22,6 @@ export default class Exit extends React.Component {
   }
 }
 
-
-
-
-
 class ConnectedExit extends React.Component {
   render() {
     return (
