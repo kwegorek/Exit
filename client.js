@@ -32,7 +32,7 @@ function init(bundle, parent, options = {}) {
   window.NavBar = NavBar;
   window.TutorialOne = TutorialOne;
   window.TutorialTwo = TutorialTwo;
-
+ 
   //room location
   r360.renderToLocation(r360.createRoot('Exit', {}), r360.getDefaultLocation());
 
