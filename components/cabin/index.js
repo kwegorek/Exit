@@ -6,7 +6,7 @@ import MagicSphere from './magicSphere';
 
 export default class Cabin extends React.Component {
   componentDidMount() {
-    console.log('cabin mounted');
+    console.log('cabin mounted!');
   }
   render() {
     return (

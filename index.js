@@ -1,9 +1,10 @@
 import React from 'react';
-import { AppRegistry, View, PointLight, Text, asset } from 'react-360';
+import { AppRegistry, View, PointLight, Text, asset, Environment } from 'react-360';
 import store from './store';
 import { Provider } from 'react-redux';
 import NavBar from './components/navBar';
-import Location from './components/location';
+import Cabin from './components/cabin';
+import Location from './components/location'
 import styles from './components/styles';
 import Entity from 'Entity';
 
@@ -12,12 +13,23 @@ export default class Exit extends React.Component {
     super(props);
     this.state = { gameStart: false };
     this.handleClick = this.handleClick.bind(this);
+    // this.helper =this.helper.bind(this)
   }
   handleClick() {
-    this.setState({ gameStart: true });
+    //change location in store to selected location 
+    this.setState({ gameStart: true }); 
   }
+
+  // handleClick() {
+  //   //change location in store 
+  //   Environment.setBackgroundImage(asset('360mansion.jpg'))
+  //   this.helper()
+  // }
+  // helper(){
+  //   this.setState({ gameStart: true }); 
+  // }
   render() {
-    //render player's chosen location (Ex: cabin)
+    //render cabin once player clicks start game 
     if (this.state.gameStart) {
       return (
         <View>
