@@ -11,27 +11,20 @@ function init(bundle, parent, options = {}) {
     ...options,
   });
 
-  //intro surfaces
-  let TutorialOne = new Surface(1000, 1000, Surface.SurfaceShape.Flat);
-  TutorialOne.setAngle(0, 0);
-  r360.renderToSurface(r360.createRoot('TutorialOne', {}), TutorialOne);
+  //intro surface
+  let TutorialSurface = new Surface(1000, 1000, Surface.SurfaceShape.Flat);
+  TutorialSurface.setAngle(0, 0);
+  r360.renderToSurface(r360.createRoot('TutorialSurface', {}), TutorialSurface);
 
-  let TutorialTwo = new Surface(2000, 1000, Surface.SurfaceShape.Flat);
-  TutorialTwo.setAngle(-Math.PI / 2, 0);
-  r360.renderToSurface(r360.createRoot('TutorialTwo', {}), TutorialTwo);
+  //cabin story surface 
 
-  //navBar surface
-  let NavBar = new Surface(1, 1, Surface.SurfaceShape.Flat);
-  NavBar.setAngle(0, 0);
-  r360.renderToSurface(r360.createRoot('NavBar', {}), NavBar);
-  // const cameraQuat = r360.getCameraQuaternion();
-  // NavBar.recenter(cameraQuat, 'yaw');
+  //escaped (won game) surface
+
+  //lost game surface
 
   //make surfaces global
   window.reactIns = r360;
-  window.NavBar = NavBar;
-  window.TutorialOne = TutorialOne;
-  window.TutorialTwo = TutorialTwo;
+  window.TutorialSurface = TutorialSurface;
 
   //room location
   r360.renderToLocation(r360.createRoot('Exit', {}), r360.getDefaultLocation());
