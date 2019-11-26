@@ -10,7 +10,7 @@ const AnimatedEntity = Animated.createAnimatedComponent(Entity);
 class Book  extends React.Component {
     state = {
         //starting value/initial value for y 
-        yPosition: new Animated.Value(1),
+        close:true, 
         textureObj:'ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/ChurchBookClosedV2.obj', 
         textureObjmtl: 'ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/ChurchBookClosedV2.mtl'
         
@@ -18,53 +18,36 @@ class Book  extends React.Component {
     componentDidMount(){
   
     }
-    startFalling = () => {
+    
+    openOrclose = () => {
 
-        this.setState({
-            textureObj:'ChurchBookSet/ChurchBookOpenV2/ChurchBookOpenV2-OBJ/ChurchBookOpenV2.obj', 
-            textureObjmtl: 'ChurchBookSet/ChurchBookOpenV2/ChurchBookOpenV2-OBJ/ChurchBookOpenV2.mtl'
-        })
 
-        //onmousehover (onEnter - in invoked when cursor is
-        // inside the shape of an object) the y position starts changing 
- 
-        // Animated.timing(
-        //     this.state.yPosition,
-        //     {
-        //       toValue: -2,
-        //       duration: 5000,
-        //       delay: 100,
-        //       easing: Easing.quad
-        //     }
-        //     //toValue target value for y, in our case the floor 
-        //     //dealy means every 0.1 sec (100mlsec) the value of yPosition changes
-        //     //setting easing to easing.bounce means object trajectory beahves like a ball that falls on the ground
-        //     //easing.quad - realtion is quadratic not linear -> velocity relation to time
+        if(this.state.close === true){
+            this.setState({
+                textureObj:'ChurchBookSet/ChurchBookOpenV2/ChurchBookOpenV2-OBJ/ChurchBookOpenV2.obj', 
+                textureObjmtl: 'ChurchBookSet/ChurchBookOpenV2/ChurchBookOpenV2-OBJ/ChurchBookOpenV2.mtl',
+                close:false
+
+            })
+        }else{
+            this.setState({
+                textureObj:'ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/ChurchBookClosedV2.obj', 
+                textureObjmtl: 'ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/ChurchBookClosedV2.mtl',
+                close:true
+            })
             
-        //   ).start(()=> { this.setState({
-        //     textureObj:'ChurchBookSet/ChurchBookOpenV2/ChurchBookOpenV2-OBJ/ChurchBookOpenV2.obj', 
-        //     textureObjmtl: 'ChurchBookSet/ChurchBookOpenV2/ChurchBookOpenV2-OBJ/ChurchBookOpenV2.mtl'
-        // })})
 
-     
-        
+        }
 
-          console.log('state', this.state)
-
-     
-
-          //Animated.timing updates the state until the target calue (toValue) is reached
+    
     }
 
 
     render() {
-        const yPosition = this.state.yPosition
-        console.log(yPosition._value, 'yPosition')
-        console.log(yPosition)
 
         return (
             <View>
-                <VrButton onClick={this.startFalling}>
+                <VrButton onClick={this.openOrclose}>
                     <AnimatedEntity 
                     
                     source={{
@@ -74,8 +57,7 @@ class Book  extends React.Component {
                     lit={true}
                     style={{
                     transform: [
-                        { translate: [-2, -5, -3] },
-                        { translateY: yPosition },
+                        { translate: [-8, -6, -1] },
                         { scaleX: 0.9 },
                         { scaleY: 0.9},
                         { scaleZ: 0.9 },
