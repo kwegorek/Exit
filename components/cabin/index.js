@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Environment, asset } from 'react-360';
+import { View, Environment, asset, NativeModules, VrButton } from 'react-360';
 import Mario from './Mario';
 import Bookshelf from './bookshelf';
 import MagicSphere from './magicSphere';
@@ -9,7 +9,7 @@ import Table from './Table'
 import AncientPaper from './ancientPaper'
 import { changeLocation } from '../../store/location';
 import { connect } from 'react-redux';
-import { NativeModules } from 'react-360';
+
 const { SurfaceModule } = NativeModules;
 
 class Cabin extends React.Component {
