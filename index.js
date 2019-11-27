@@ -40,3 +40,4 @@ AppRegistry.registerComponent('NavBar', () => NavBar);
 AppRegistry.registerComponent('TutorialOne', () => TutorialOne);
 AppRegistry.registerComponent('TutorialTwo', () => TutorialTwo);
 AppRegistry.registerComponent('TutorialThree', () => TutorialThree);
+
