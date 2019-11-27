@@ -71,16 +71,16 @@ class MagicSphere extends React.Component {
                  onExit={this.stopRotate}
                
                 source={{
-                obj: asset('3d_globe/magic_sphere.obj'),
-                mtl: asset('3d_globe/magic_sphere.mtl'),
+                obj: asset('spider/Only_Spider_with_Animations_Export.obj'),
+                mtl: asset('spider/Only_Spider_with_Animations_Export.mtl'),
                 }}
                 lit={true}
                 style={{
                 transform: [
                     { translate: [0, -5, -3] },
-                    { scaleX: 0.04 },
-                    { scaleY: 0.04 },
-                    { scaleZ: 0.04 },
+                    { scaleX: 0.008 },
+                    { scaleY: 0.008 },
+                    { scaleZ: 0.008 },
                     { rotateY: rotationValue}
                 ],
             

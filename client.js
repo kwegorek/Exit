@@ -37,7 +37,7 @@ function init(bundle, parent, options = {}) {
   r360.renderToLocation(r360.createRoot('Exit', {}), r360.getDefaultLocation());
 
   // Load the initial environment
-  r360.compositor.setBackground(r360.getAssetURL('360_world.jpg'));
+  r360.compositor.setBackground(r360.getAssetURL('checkered.png'));
   r360.controls.addCameraController(new KeyboardCameraController());
 }
 
