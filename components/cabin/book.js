@@ -47,7 +47,8 @@ class Book  extends React.Component {
 
         return (
             <View>
-                <VrButton onClick={this.openOrclose}>
+                {/* <VrButton onClick={this.openOrclose}> */}
+                 <VrButton onClick={this.openOrclose}>
                     <AnimatedEntity 
                     
                     source={{

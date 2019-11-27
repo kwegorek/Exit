@@ -6,9 +6,11 @@ import MagicSphere from './magicSphere';
 import FallingPicture from './fallingPicture'
 import Book from './book'
 import Table from './Table'
+import Mirror from './mirror'
 import AncientPaper from './ancientPaper'
 import { changeLocation } from '../../store/location';
 import { connect } from 'react-redux';
+import CardBoard from './cardboard';
 
 class Cabin extends React.Component {
   constructor(props) {
@@ -36,6 +38,7 @@ class Cabin extends React.Component {
         <FallingPicture />
         <Book/>
         <Table />
+        <CardBoard/>
       </View>
     );
   }
