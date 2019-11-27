@@ -23,7 +23,6 @@ class Cabin extends React.Component {
     console.log('cabin mounted!');
 
   }
-
   handleClickEscapeKey() {
     //unmount navbar
     //mount winner surface
