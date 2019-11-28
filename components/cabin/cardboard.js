@@ -1,106 +1,306 @@
+/* eslint-disable no-loop-func */
 import React from 'react';
-import { Easing } from 'react-native';
-import {  asset, Animated, View, VrButton, PointLight } from 'react-360';
+import {
+  Easing
+} from 'react-native';
+import {
+  asset,
+  Animated,
+  View,
+  VrButton,
+  PointLight
+} from 'react-360';
 import Entity from 'Entity';
 import {
-    AppRegistry,
-    PanResponder,
+  AppRegistry,
+  PanResponder,
 
-    Dimensions
-  } from "react-native";
-  
+  Dimensions
+} from "react-native";
 
-const AnimatedEntity = Animated.createAnimatedComponent(Entity);
+let torchOffObj = '3d_mario/mario-sculpture.obj'
+let torchOffMtl = '3d_mario/mario-sculpture.mtl'
+let torchOnObj = '3d_globe/magic_sphere.obj' 
+let torchOnMtl = '3d_globe/magic_sphere.mtl' 
 
-// function logKey(e) {
+let AnimatedEntity = Animated.createAnimatedComponent(Entity);
 
-//     console.log(e, 'event')
-
-//   }
-
-// const {
-//     height: deviceHeight,
-//     width: deviceWidth
-//   } = Dimensions.get('window');
-
-//   console.log(Dimensions.get('window'), 'dimension')
-//   window.addEventListener('mousemove', logKey)
-  
 class CardBoard extends React.Component {
-    state = {
-        //starting value/initial value for y 
-        clicked:true, 
-        textureObj:'3d_cardboard/cardboard.obj', 
-        textureObjmtl: '3d_cardboard/cardboard.mtl',
+  state = {
+    //starting value/initial value for y 
+    clicked: true,
+    yPosition: new Animated.Value(1),
+    textureObj: '3d_cardboard/cardboard.obj',
+    textureObjmtl: '3d_cardboard/cardboard.mtl',
 
-        
-    };
-    componentDidMount(){
-  
-    }
+    torchObj:[torchOffObj,torchOffObj,torchOffObj ,torchOffObj ,torchOffObj ],
+    torchmtl:[torchOffMtl ,torchOffMtl  ,torchOffMtl  ,torchOffMtl ,torchOffMtl ],
 
+  };
+
+  componentDidMount() {
+
+  }
+
+  startTimer = () => {
+
+    let time = 12001
+
+    let state1obj = [torchOnObj,torchOffObj,torchOffObj ,torchOffObj ]
+    let state1mtl = [torchOnMtl ,torchOffMtl  ,torchOffMtl  ,torchOffMtl ]
+
+    let state2obj = [torchOnObj,torchOnObj,torchOffObj ,torchOffObj  ]
+    let state2mtl = [torchOnMtl ,torchOnMtl  ,torchOffMtl  ,torchOffMtl ]
     
-    releaseWizard = () => {
-        console.log('clicked')
+    let state3obj = [torchOnObj,torchOnObj,torchOnObj ,torchOffObj  ]
+    let state3mtl = [torchOnMtl ,torchOnMtl  ,torchOnMtl  ,torchOffMtl ]
+
+    let state4obj = [torchOnObj,torchOnObj,torchOnObj ,torchOnObj ]
+    let state4mtl = [torchOnMtl ,torchOnMtl  ,torchOnMtl  ,torchOnMtl  ]
+
+ 
+    while(time > 1){
+        time=time-3000; 
 
 
-        if(this.state.clicked === true){
-            console.log('clicked key background')
-            this.setState({
-                textureObj: '3d_key/Worn_Key.obj',
-                textureObjmtl: '3d_key/Worn_Key.mtl',
-                clicked:false
 
-            })
+        if(time === 9001){
+            console.log(time, 'zmiana 1')
+        this.setState({
+            torchObj:state1obj,  
+            torchmtl: state1mtl
+        })} else {
 
-            console.log(this.state, 'state----text key ')
-        }else{
-            console.log('cardboard mario background')
-            this.setState({
-          
 
-                textureObj:'3d_cardboard/cardboard.obj', 
-                textureObjmtl: '3d_cardboard/cardboard.mtl',
-                clicked:true
-            })
-            
+        setTimeout(()=>{
 
+
+                console.log(time, 'time2')
+                this.setState({
+                    torchObj:state2obj,  
+                    torchmtl: state2mtl
+                })
+    
+            } ,3000)
+
+
+            setTimeout(()=>{
+
+
+                console.log(time, 'time3')
+                this.setState({
+                    torchObj:state3obj,  
+                    torchmtl: state3mtl
+                })
+    
+            } ,6000)
+
+
+            setTimeout(()=>{
+
+
+                console.log(time, 'time4')
+                this.setState({
+                    torchObj:state4obj,  
+                    torchmtl: state4mtl
+                })
+    
+            } ,9000)
         }
 
-    
+
+        
+
     }
 
+    return 
 
-    render() {
 
-        return (
-            <View>
-         
-                 <VrButton onClick={this.releaseWizard}>
-                    <AnimatedEntity 
-                    
-                    source={{
-                    obj: asset(this.state.textureObj),
-                    mtl: asset(this.state.textureObjmtl),
-                    }}
-                    lit={true}
-                    style={{
-                        transform: [
-                            { translate: [-10, -6, -1] },
-                            { scaleX: 0.04 },
-                            { scaleY: 0.04},
-                            { scaleZ: 0.04 },
-                        ],
-    
+  }
 
-                    }} 
-                        />
 
-                </VrButton>
-   
-            </View>
-        )
-    }
+  render() {
+
+
+    return ( <View >
+
+      <VrButton onClick = { () => 
+        this.startTimer()
+      } >
+      <AnimatedEntity
+
+      source = {
+        {
+          obj: asset(this.state.textureObj),
+          mtl: asset(this.state.textureObjmtl),
+        }
+      }
+      lit = {
+        true
+      }
+      style = {
+        {
+          transform: [{
+              translate: [-10, -6, -1]
+            },
+            {
+              scaleX: 0.04
+            },
+            {
+              scaleY: 0.04
+            },
+            {
+              scaleZ: 0.04
+            },
+          ],
+
+
+        }
+      }
+      />
+
+      </VrButton>
+
+
+      <VrButton>
+
+        <AnimatedEntity
+
+        source = {
+        {
+            obj: asset(this.state.torchObj[0]),
+            mtl: asset(this.state.torchmtl[0]),
+        }
+        }
+        lit = {
+        true
+        }
+        style = {
+        {
+            transform: [{
+                translate: [-9, -2, -1]
+            },
+            {
+                scaleX: 0.04
+            },
+            {
+                scaleY: 0.04
+            },
+            {
+                scaleZ: 0.04
+            },
+            ],
+
+
+        }
+        }
+        />
+
+            <AnimatedEntity
+
+            source = {
+            {
+                obj: asset(this.state.torchObj[1]),
+                mtl: asset(this.state.torchmtl[1]),
+            }
+            }
+            lit = {
+            true
+            }
+            style = {
+            {
+                transform: [{
+                    translate: [-15,4, -1]
+                },
+                {
+                    scaleX: 0.04
+                },
+                {
+                    scaleY: 0.04
+                },
+                {
+                    scaleZ: 0.04
+                },
+                ],
+
+
+            }
+            }
+            />
+
+
+        <AnimatedEntity
+
+        source = {
+        {
+            obj: asset(this.state.torchObj[2]),
+            mtl: asset(this.state.torchmtl[2]),
+        }
+        }
+        lit = {
+        true
+        }
+        style = {
+        {
+            transform: [{
+                translate: [-12, -2, -1]
+            },
+            {
+                scaleX: 0.04
+            },
+            {
+                scaleY: 0.04
+            },
+            {
+                scaleZ: 0.04
+            },
+            ],
+
+
+        }
+        }
+        />
+        <AnimatedEntity
+
+        source = {
+        {
+            obj: asset(this.state.torchObj[3]),
+            mtl: asset(this.state.torchmtl[3]),
+        }
+        }
+        lit = {
+        true
+        }
+        style = {
+        {
+            transform: [{
+                translate: [-10, 5, -1]
+            },
+            {
+                scaleX: 0.04
+            },
+            {
+                scaleY: 0.04
+            },
+            {
+                scaleZ: 0.04
+            },
+            ],
+
+
+        }
+        }
+        />
+
+ 
+
+      </VrButton>
+
+
+      </View>
+    )
+  }
 }
+
 
 export default CardBoard

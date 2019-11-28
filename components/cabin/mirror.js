@@ -9,9 +9,9 @@ const AnimatedEntity = Animated.createAnimatedComponent(Entity);
 const showCursor = (evt) => {
 
     console.log('window responds', this)
-    console.log(evt, 'event')
-    console.log(evt.clientX, 'eventX')
-    console.log(evt.clientX, 'eventY')
+    // console.log(evt, 'event')
+    // console.log(evt.clientX, 'eventX')
+    // console.log(evt.clientX, 'eventY')
   }
 
  
@@ -25,7 +25,7 @@ class Mirror extends React.Component {
         
     };
     componentDidMount(){
-        window.addEventListener('click', showCursor)
+        window.addEventListener('click', showCursor(evt))
   
     }
     

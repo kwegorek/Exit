@@ -27,24 +27,6 @@ function init(bundle, parent, options = {}) {
   // const cameraQuat = r360.getCameraQuaternion();
   // NavBar.recenter(cameraQuat, 'yaw');
 
-  // function showCursor(evt){
-
-  //   console.log('window responds', this)
-  //   console.log(evt, 'event')
-  //   console.log(evt.clientX, 'eventX')
-  //   console.log(evt.clientX, 'eventY')
-  // }
-
-  // window.document.addEventListener('click',showCursor)
-
-
-
-//   var x = event.clientX;     // Get the horizontal coordinate
-// var y = event.clientY;     // Get the vertical coordinate
-// var coor = "X coords: " + x + ", Y coords: " + y;
-
-
-
   //make surfaces global
   window.reactIns = r360;
   window.NavBar = NavBar;
