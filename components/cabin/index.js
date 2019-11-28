@@ -3,11 +3,10 @@ import { View, NativeModules } from 'react-360';
 import Mario from './Mario';
 import Bookshelf from './bookshelf';
 import MagicSphere from './magicSphere';
-import FallingPicture from './fallingPicture'
-import Book from './book'
-import Table from './Table'
-import AncientPaper from './ancientPaper'
-import TestDrag from './testDrag'
+import FallingPicture from './fallingPicture';
+import Book from './book';
+import Table from './Table';
+import AncientPaper from './ancientPaper';
 import { changeLocation } from '../../store/location';
 import { connect } from 'react-redux';
 
@@ -19,10 +18,9 @@ class Cabin extends React.Component {
     this.handleClickEscapeKey = this.handleClickEscapeKey.bind(this);
   }
   async componentDidMount() {
-    await SurfaceModule.renderNavBar()
-    console.log("DO", window.document)
+    await SurfaceModule.renderNavBar();
+    console.log('DO', window.document);
     console.log('cabin mounted!');
-
   }
   handleClickEscapeKey() {
     //unmount navbar
@@ -37,11 +35,10 @@ class Cabin extends React.Component {
     return (
       <View>
         <Mario />
-        <TestDrag />
         <Bookshelf />
         <MagicSphere />
         <FallingPicture />
-        <Book/>
+        <Book />
         <Table />
       </View>
     );

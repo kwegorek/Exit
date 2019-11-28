@@ -6,8 +6,8 @@ import SurfaceModule from './surfaceModule';
 import {Math as GLMath} from 'webgl-ui';
 
 function init(bundle, parent, options = {}) {
-  //candle surface
-  let FixedCandleSurface = new Surface(1, 1, Surface.SurfaceShape.Flat);
+  //fixed surface (use case: lost game & pop ups...)
+  let FixedSurface = new Surface(1, 1, Surface.SurfaceShape.Flat);
   
   const cameraDirection = [0, 0, -1];
   
@@ -28,12 +28,12 @@ function init(bundle, parent, options = {}) {
       const cz = cameraDirection[2];
       const horizAngle = Math.atan2(cx, -cz);
       const vertAngle = Math.asin(cy / Math.sqrt(cx * cx + cy * cy + cz * cz));
-      FixedCandleSurface.setAngle(horizAngle, vertAngle);
+      FixedSurface.setAngle(horizAngle, vertAngle);
     },
     ...options,
   });
 
-  r360.renderToSurface(r360.createRoot('FixedCandleSurface'), FixedCandleSurface);
+  r360.renderToSurface(r360.createRoot('FixedSurface'), FixedSurface);
 
   //intro surface
   let TutorialSurface = new Surface(1000, 1000, Surface.SurfaceShape.Flat);
@@ -53,7 +53,7 @@ function init(bundle, parent, options = {}) {
   //make surfaces global
   window.reactIns = r360;
   window.TutorialSurface = TutorialSurface;
-  window.FixedCandleSurface = FixedCandleSurface;
+  window.FixedSurface = FixedSurface;
   window.TutorialSurface2 = TutorialSurface2
 
   //room location

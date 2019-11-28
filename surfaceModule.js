@@ -13,6 +13,7 @@ export default class SurfaceModule extends Module {
     cameraPosition[1] = objLocation[1]
     cameraPosition[2] = objLocation[2]
   }
+  //attempting to disable button if camera is too far
   disableButton(objDistance) {
     //if z index of camera is close to obj --> can click
     // const zIndex = cameraPosition[2]
