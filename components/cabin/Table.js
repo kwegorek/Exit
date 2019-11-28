@@ -5,7 +5,6 @@ import Entity from 'Entity';
 
 const AnimatedEntity = Animated.createAnimatedComponent(Entity);
 
-
   
 class Table extends React.Component {
     state = {

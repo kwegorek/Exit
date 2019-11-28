@@ -4,7 +4,7 @@ import styles from '../styles';
 import { NativeModules } from 'react-360';
 const { SurfaceModule } = NativeModules;
 
-export default class TutorialSurface extends React.Component {
+export default class CandleSurface extends React.Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
@@ -12,15 +12,14 @@ export default class TutorialSurface extends React.Component {
   handleClick() {
     //unmount tutorial surrface
     console.log('unmounting surface');
-    SurfaceModule.changeSurfaceSize('TutorialSurface', 1, 1);
+    SurfaceModule.changeSurfaceSize('CandleSurface', 1, 1);
   }
   render() {
     return (
       <View style={styles.panel}>
         <View style={styles.greetingBox}>
           <Text style={styles.greeting}>
-            Welcome to Exit - Escape The Room! Use your mouse or trackpad to
-            look around.
+            *Riddle about finding 3 candles* 
           </Text>
         </View>
         <VrButton style={styles.rootButton} onClick={this.handleClick}>

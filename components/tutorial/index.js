@@ -14,8 +14,9 @@ class Tutorial extends React.Component {
     console.log('tutorial component mounted');
   }
   handleClickPlayGame() {
-    //unmount surface if not already unmounted
+    //unmount surfaces if not already unmounted
     SurfaceModule.changeSurfaceSize('TutorialSurface', 1, 1);
+    SurfaceModule.changeSurfaceSize('TutorialSurface2', 1, 1);
     //change to chosen game room
     this.props.changeLocation('cabin');
   }

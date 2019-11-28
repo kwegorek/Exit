@@ -16,7 +16,7 @@ export default class StartGameButton extends React.Component {
             mtl: asset('3d_mario/mario-sculpture.mtl'),
           }}
           lit={true}
-          style={styles.mario}
+          style={styles.startButton}
         />
       </VrButton>
     );
