@@ -8,9 +8,12 @@ import Book from './book'
 import Table from './Table'
 import Mirror from './mirror'
 import AncientPaper from './ancientPaper'
+import MagicGlass from './magicGlass'
 import { changeLocation } from '../../store/location';
 import { connect } from 'react-redux';
 import CardBoard from './cardboard';
+import Chest from './chest';
+import MagicPiano from './magicPiano'
 import { NativeModules } from 'react-360';
 const { SurfaceModule } = NativeModules;
 
@@ -44,6 +47,9 @@ class Cabin extends React.Component {
         <Book/>
         <Table />
         <CardBoard/>
+        <Chest/>
+        <MagicGlass/>
+        <MagicPiano/>
       </View>
     );
   }

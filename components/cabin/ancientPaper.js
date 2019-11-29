@@ -17,6 +17,8 @@ import Entity from 'Entity';
 const AnimatedEntity = Animated.createAnimatedComponent(Entity);
 
 
+
+
 class AncientPaper extends React.Component {
   state = {
 
@@ -33,11 +35,29 @@ class AncientPaper extends React.Component {
 
     return ( 
 
-    <View style={styles.panel}>
-        <View style={styles.greetingBox}>
-          <Text style={styles.greeting}>Hey Tani and Aga</Text>
-        </View>
-      </View>
+    <View>
+
+    <AnimatedEntity
+     
+    source={{
+
+    obj: asset(this.state.textureObj),
+    mtl: asset('3d_globe/magic_sphere.mtl'),
+    }}
+    lit={true}
+    style={{
+    transform: [
+        { translate: [-2, -2, -3] },
+        { translateY: yPosition },
+        { scaleX: 0.01 },
+        { scaleY: 0.01},
+        { scaleZ: 0.01 },
+    ],
+
+    
+    }}
+        />
+</View>
     )
   }
 }
