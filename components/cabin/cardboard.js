@@ -129,11 +129,12 @@ class CardBoard extends React.Component {
           mtl: asset(this.state.textureObjmtl),
         }
       }
+
       lit = {
         true
       }
       style = {
-        { //not this capboard 
+        { // cardboard entity
           transform: [{
               translate: [-10, -6, -1]
             },
@@ -163,7 +164,7 @@ class CardBoard extends React.Component {
         source = {
         {
             obj: asset(this.state.torchObj[3]),
-          //  mtl: asset(this.state.torchmtl[0]),
+      
         }
         }
         lit = {
@@ -171,7 +172,7 @@ class CardBoard extends React.Component {
         }
 
         texture = {asset(this.state.torchmtl[3])}
-        // texture = {asset('light/lamp_texture/Color.png')}
+      
         style = {
         {
             transform: [{
@@ -198,15 +199,14 @@ class CardBoard extends React.Component {
             source = {
             {
                 obj: asset(this.state.torchObj[1]),
-               // mtl: asset(this.state.torchmtl[1]),
-            
+    
             }
             }
             lit = {
             true
             }
             texture = {asset(this.state.torchmtl[1])}
-            // texture = {asset('light/lamp_texture/Color2.png')}
+            
             style = {
             {
                 transform: [{
@@ -234,14 +234,14 @@ class CardBoard extends React.Component {
         source = {
         {
             obj: asset(this.state.torchObj[0]),
-            //mtl: asset(this.state.torchmtl[2]),
+
         }
         }
         lit = {
         true
         }
         texture = {asset(this.state.torchmtl[0])}
-        // texture = {asset('light/lamp_texture/Metallic.png')}
+   
         style = {
         {
             transform: [{
@@ -267,14 +267,14 @@ class CardBoard extends React.Component {
         source = {
         {
             obj: asset(this.state.torchObj[2]),
-           // mtl: asset(this.state.torchmtl[3]),
+      
         }
         }
         lit = {
         true
         }
         texture = {asset(this.state.torchmtl[2])}
-        // texture = {asset('light/lamp_texture/Diffuse.png')}
+    
         style = {
         {
             transform: [{

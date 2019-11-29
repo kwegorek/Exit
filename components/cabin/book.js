@@ -4,6 +4,11 @@ import Entity from "Entity";
 const { AudioModule } = NativeModules;
 const AnimatedEntity = Animated.createAnimatedComponent(Entity);
 
+
+let openedBookTexture = 'ChurchBookSet/ChurchBookOpenV2/ChurchBookOpenV2-OBJ/Textures/ChurchBookOpenV2-DiffuseHints.png'
+
+let closedBooktexture = 'ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/Textures/ChurchBookClosedV2-Diffuse.png'
+
 class Book extends React.Component {
   state = {
     //starting value/initial value for y
@@ -11,7 +16,7 @@ class Book extends React.Component {
     textureObj:
       "ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/ChurchBookClosedV2.obj",
     textureObjmtl:
-      "ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/ChurchBookClosedV2.mtl"
+    closedBooktexture
   };
   openOrclose = () => {
     if (this.state.close === true) {
@@ -19,7 +24,7 @@ class Book extends React.Component {
         textureObj:
           "ChurchBookSet/ChurchBookOpenV2/ChurchBookOpenV2-OBJ/ChurchBookOpenV2.obj",
         textureObjmtl:
-          "ChurchBookSet/ChurchBookOpenV2/ChurchBookOpenV2-OBJ/ChurchBookOpenV2.mtl",
+        openedBookTexture,
         close: false
       });
     } else {
@@ -27,7 +32,7 @@ class Book extends React.Component {
         textureObj:
           "ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/ChurchBookClosedV2.obj",
         textureObjmtl:
-          "ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/ChurchBookClosedV2.mtl",
+        closedBooktexture,
         close: true
       });
     }
@@ -47,7 +52,6 @@ class Book extends React.Component {
           <AnimatedEntity
             source={{
               obj: asset(this.state.textureObj),
-              mtl: asset(this.state.textureObjmtl)
             }}
             lit={true}
             style={{
@@ -57,7 +61,10 @@ class Book extends React.Component {
                 { scaleY: 0.9 },
                 { scaleZ: 0.9 }
               ]
+
             }}
+
+            texture = {asset(this.state.textureObjmtl)}
           />
         </VrButton>
       </View>
