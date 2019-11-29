@@ -18,8 +18,8 @@ import {
   Dimensions
 } from "react-native";
 
-let torchOffObj = '3d_mario/mario-sculpture.obj'
-let torchOffMtl = '3d_mario/mario-sculpture.mtl'
+let torchOffObj = '3d_light/1(standart).obj'
+let torchOffMtl = '3d_light/1(standart).obj'
 let torchOnObj = '3d_globe/magic_sphere.obj' 
 let torchOnMtl = '3d_globe/magic_sphere.mtl' 
 
@@ -31,7 +31,7 @@ class CardBoard extends React.Component {
     clicked: true,
     yPosition: new Animated.Value(1),
     textureObj: '3d_cardboard/cardboard.obj',
-    textureObjmtl: '3d_cardboard/cardboard.mtl',
+    textureObjmtl:'3d_cardboard/cardboard.mtl',
 
     torchObj:[torchOffObj,torchOffObj,torchOffObj ,torchOffObj ,torchOffObj ],
     torchmtl:[torchOffMtl ,torchOffMtl  ,torchOffMtl  ,torchOffMtl ,torchOffMtl ],
@@ -139,7 +139,7 @@ class CardBoard extends React.Component {
         true
       }
       style = {
-        {
+        { //not this capboard 
           transform: [{
               translate: [-10, -6, -1]
             },
@@ -178,16 +178,16 @@ class CardBoard extends React.Component {
         style = {
         {
             transform: [{
-                translate: [-9, -2, -1]
+                translate: [-9, -2, 4]
             },
             {
-                scaleX: 0.04
+                scaleX: 0.05
             },
             {
-                scaleY: 0.04
+                scaleY: 0.05
             },
             {
-                scaleZ: 0.04
+                scaleZ: 0.05
             },
             ],
 
@@ -210,16 +210,16 @@ class CardBoard extends React.Component {
             style = {
             {
                 transform: [{
-                    translate: [-15,4, -1]
+                    translate: [-2,-1, -3]
                 },
                 {
-                    scaleX: 0.04
+                    scaleX: 0.05
                 },
                 {
-                    scaleY: 0.04
+                    scaleY: 0.05
                 },
                 {
-                    scaleZ: 0.04
+                    scaleZ: 0.05
                 },
                 ],
 
@@ -246,13 +246,13 @@ class CardBoard extends React.Component {
                 translate: [-12, -2, -1]
             },
             {
-                scaleX: 0.04
+                scaleX: 0.05
             },
             {
-                scaleY: 0.04
+                scaleY: 0.05
             },
             {
-                scaleZ: 0.04
+                scaleZ: 0.05
             },
             ],
 
@@ -277,13 +277,13 @@ class CardBoard extends React.Component {
                 translate: [-10, 5, -1]
             },
             {
-                scaleX: 0.04
+                scaleX: 0.05
             },
             {
-                scaleY: 0.04
+                scaleY: 0.05
             },
             {
-                scaleZ: 0.04
+                scaleZ: 0.05
             },
             ],
 
