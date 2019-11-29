@@ -19,10 +19,10 @@ export default styles = StyleSheet.create({
     fontSize: 30,
   },
   rootButton: {
+    padding: 20,
     width: 100,
     height: 100,
-    borderRadius: 100 / 2,
-    borderWidth: 0,
+    borderWidth: 2,
     backgroundColor: 'green',
   },
   root: {

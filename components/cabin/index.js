@@ -11,14 +11,19 @@ import AncientPaper from './ancientPaper'
 import { changeLocation } from '../../store/location';
 import { connect } from 'react-redux';
 import CardBoard from './cardboard';
+import { NativeModules } from 'react-360';
+const { SurfaceModule } = NativeModules;
 
 class Cabin extends React.Component {
   constructor(props) {
     super(props);
     this.handleClickEscapeKey = this.handleClickEscapeKey.bind(this);
   }
-  componentDidMount() {
+  async componentDidMount() {
+    await SurfaceModule.renderNavBar()
+    console.log("DO", window.document)
     console.log('cabin mounted!');
+
   }
   handleClickEscapeKey() {
     //unmount navbar
