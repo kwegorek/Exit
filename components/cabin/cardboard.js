@@ -162,7 +162,7 @@ class CardBoard extends React.Component {
 
         source = {
         {
-            obj: asset(this.state.torchObj[0]),
+            obj: asset(this.state.torchObj[3]),
           //  mtl: asset(this.state.torchmtl[0]),
         }
         }
@@ -170,7 +170,7 @@ class CardBoard extends React.Component {
         true
         }
 
-        texture = {asset(this.state.torchmtl[0])}
+        texture = {asset(this.state.torchmtl[3])}
         // texture = {asset('light/lamp_texture/Color.png')}
         style = {
         {
@@ -233,14 +233,14 @@ class CardBoard extends React.Component {
 
         source = {
         {
-            obj: asset(this.state.torchObj[2]),
+            obj: asset(this.state.torchObj[0]),
             //mtl: asset(this.state.torchmtl[2]),
         }
         }
         lit = {
         true
         }
-        texture = {asset(this.state.torchmtl[2])}
+        texture = {asset(this.state.torchmtl[0])}
         // texture = {asset('light/lamp_texture/Metallic.png')}
         style = {
         {
@@ -266,14 +266,14 @@ class CardBoard extends React.Component {
 
         source = {
         {
-            obj: asset(this.state.torchObj[3]),
+            obj: asset(this.state.torchObj[2]),
            // mtl: asset(this.state.torchmtl[3]),
         }
         }
         lit = {
         true
         }
-        texture = {asset(this.state.torchmtl[3])}
+        texture = {asset(this.state.torchmtl[2])}
         // texture = {asset('light/lamp_texture/Diffuse.png')}
         style = {
         {
