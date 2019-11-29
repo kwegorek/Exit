@@ -8,20 +8,14 @@ import {
   Animated,
   View,
   VrButton,
-  PointLight
 } from 'react-360';
 import Entity from 'Entity';
-import {
-  AppRegistry,
-  PanResponder,
 
-  Dimensions
-} from "react-native";
 
-let torchOffObj = '3d_light/1(standart).obj'
-let torchOffMtl = '3d_light/1(standart).obj'
-let torchOnObj = '3d_globe/magic_sphere.obj' 
-let torchOnMtl = '3d_globe/magic_sphere.mtl' 
+let torchOffObj = 'light/Option_with_glass/2(torch-lamp).obj'
+let torchOffMtl = 'light/lamp_texture/Color.png'
+let torchOnObj = torchOffObj
+let torchOnMtl = 'light/lamp_texture/Color2.png' 
 
 let AnimatedEntity = Animated.createAnimatedComponent(Entity);
 
@@ -34,7 +28,7 @@ class CardBoard extends React.Component {
     textureObjmtl:'3d_cardboard/cardboard.mtl',
 
     torchObj:[torchOffObj,torchOffObj,torchOffObj ,torchOffObj ,torchOffObj ],
-    torchmtl:[torchOffMtl ,torchOffMtl  ,torchOffMtl  ,torchOffMtl ,torchOffMtl ],
+    torchmtl:[torchOffMtl ,torchOffMtl, torchOffMtl  ,torchOffMtl ,torchOffMtl ],
 
   };
 
@@ -169,25 +163,28 @@ class CardBoard extends React.Component {
         source = {
         {
             obj: asset(this.state.torchObj[0]),
-            mtl: asset(this.state.torchmtl[0]),
+          //  mtl: asset(this.state.torchmtl[0]),
         }
         }
         lit = {
         true
         }
+
+        texture = {asset(this.state.torchmtl[0])}
+        // texture = {asset('light/lamp_texture/Color.png')}
         style = {
         {
             transform: [{
-                translate: [-9, -2, 4]
+                translate: [-60, -50, 100]
             },
             {
-                scaleX: 0.05
+                scaleX: 1.00
             },
             {
-                scaleY: 0.05
+                scaleY: 1.00
             },
             {
-                scaleZ: 0.05
+                scaleZ: 1.00
             },
             ],
 
@@ -201,25 +198,28 @@ class CardBoard extends React.Component {
             source = {
             {
                 obj: asset(this.state.torchObj[1]),
-                mtl: asset(this.state.torchmtl[1]),
+               // mtl: asset(this.state.torchmtl[1]),
+            
             }
             }
             lit = {
             true
             }
+            texture = {asset(this.state.torchmtl[1])}
+            // texture = {asset('light/lamp_texture/Color2.png')}
             style = {
             {
                 transform: [{
-                    translate: [-2,-1, -3]
+                    translate: [60,-50, -100]
                 },
                 {
-                    scaleX: 0.05
+                    scaleX: 1.00
                 },
                 {
-                    scaleY: 0.05
+                    scaleY: 1.00
                 },
                 {
-                    scaleZ: 0.05
+                    scaleZ: 1.00
                 },
                 ],
 
@@ -234,25 +234,27 @@ class CardBoard extends React.Component {
         source = {
         {
             obj: asset(this.state.torchObj[2]),
-            mtl: asset(this.state.torchmtl[2]),
+            //mtl: asset(this.state.torchmtl[2]),
         }
         }
         lit = {
         true
         }
+        texture = {asset(this.state.torchmtl[2])}
+        // texture = {asset('light/lamp_texture/Metallic.png')}
         style = {
         {
             transform: [{
-                translate: [-12, -2, -1]
+                translate: [-190, -80, -150]
             },
             {
-                scaleX: 0.05
+                scaleX: 1.00
             },
             {
-                scaleY: 0.05
+                scaleY: 1.00
             },
             {
-                scaleZ: 0.05
+                scaleZ: 1.00
             },
             ],
 
@@ -265,25 +267,27 @@ class CardBoard extends React.Component {
         source = {
         {
             obj: asset(this.state.torchObj[3]),
-            mtl: asset(this.state.torchmtl[3]),
+           // mtl: asset(this.state.torchmtl[3]),
         }
         }
         lit = {
         true
         }
+        texture = {asset(this.state.torchmtl[3])}
+        // texture = {asset('light/lamp_texture/Diffuse.png')}
         style = {
         {
             transform: [{
-                translate: [-10, 5, -1]
+                translate: [190, -80, 150]
             },
             {
-                scaleX: 0.05
+                scaleX: 1.00
             },
             {
-                scaleY: 0.05
+                scaleY: 1.00
             },
             {
-                scaleZ: 0.05
+                scaleZ: 1.00
             },
             ],
 
