@@ -13,7 +13,7 @@ import Entity from 'Entity';
 
 
 let glassObj = '3d_glass_piano/szklanka+2.obj'
-let glassTextureObj = '3d_glass_piano/glass-v2.jpg'
+let glassTextureObj = '3d_glass_piano/oie_3022417tXo7WH59.jpg'
 
 let AnimatedEntity = Animated.createAnimatedComponent(Entity);
 
