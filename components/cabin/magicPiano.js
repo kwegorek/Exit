@@ -84,7 +84,7 @@ class MagicPiano extends React.Component {
     glassObj: '3d_glass_piano/szklanka+2.obj',
     glassTextureObj: '3d_glass_piano/glass-v2.jpg',
     userSequence:[0], 
-    patternSequence:[],
+    patternSequence:[8,6,4,2,1,3,5,7], // describes order in which glasses will change
     arrSounds: [this.playNoteMidC, this.playNoteD, this.playNoteE, this.playNoteF, this.playNoteG, this.playNoteA , this.playNoteB, this.playNoteC],
     glassesTexture: Array(arrOfTextures.length).fill(glassTextureObjRegular),
   };
@@ -93,13 +93,27 @@ class MagicPiano extends React.Component {
 
   }
 
+  tableClicked = () => {
+    arrOfTextures.forEach((texture, index) => {
+      setTimeout(function (that) {
+
+        that.setState(prevState => {
+          let newGlassesTexture = that.state.glassesTexture.slice() // copy array
+          newGlassesTexture[index] = texture
+          return {...prevState, glassesTexture : newGlassesTexture}
+        
+        })
+      }, 500*this.state.patternSequence[index], this);
+    })
+  }
+
   
 
   render() {
 
     return ( <View >
 
-      <VrButton>
+      <VrButton onClick={this.tableClicked}>
       <AnimatedEntity
 
       source = {
