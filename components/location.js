@@ -11,13 +11,9 @@ class Location extends React.Component {
     this.envChanger = this.envChanger.bind(this);
   }
 
-  async envChanger(imageUrl) {
-    try {
-      await Environment.preloadBackgroundImage(asset(imageUrl));
-      await Environment.setBackgroundImage(asset(imageUrl));
-    } catch (err) {
-      console.log("Couldn't change background");
-    }
+  envChanger(imageUrl) {
+    Environment.preloadBackgroundImage(asset(imageUrl));
+    Environment.setBackgroundImage(asset(imageUrl));
   }
 
   render() {

@@ -40,4 +40,21 @@ export default styles = StyleSheet.create({
       { scaleZ: 1.00 },
     ],
   },
+  mario2: {
+    transform: [
+      { translate: [200, 0, -100] },
+      { scaleX: 1.00 },
+      { scaleY: 1.00 },
+      { scaleZ: 1.00 },
+    ],
+  },
+  startButton: {
+    transform: [
+      { translate: [0, 0, 600] },
+      {rotateY: 200},
+      { scaleX: 1.00 },
+      { scaleY: 1.00 },
+      { scaleZ: 1.00 },
+    ],
+  }
 });

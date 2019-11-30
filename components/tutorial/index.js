@@ -1,9 +1,8 @@
 import React from 'react';
-import { View, Environment, asset } from 'react-360';
-import Entity from 'Entity';
+import { View, Environment, asset, NativeModules, VrButton } from 'react-360';
 import { changeLocation } from '../../store/location';
 import { connect } from 'react-redux';
-import { NativeModules } from 'react-360';
+import StartGameButton  from './startGameButton';
 const { SurfaceModule } = NativeModules;
 
 class Tutorial extends React.Component {
@@ -15,22 +14,17 @@ class Tutorial extends React.Component {
     console.log('tutorial component mounted');
   }
   handleClickPlayGame() {
-    //unmount surface if not already unmounted
+    //unmount surfaces if not already unmounted
     SurfaceModule.changeSurfaceSize('TutorialSurface', 1, 1);
+    SurfaceModule.changeSurfaceSize('TutorialSurface2', 1, 1);
     //change to chosen game room
     this.props.changeLocation('cabin');
   }
   render() {
     return (
-      <Entity
-        source={{
-          obj: asset('3d_mario/mario-sculpture.obj'),
-          mtl: asset('3d_mario/mario-sculpture.mtl'),
-        }}
-        lit={true}
-        style={styles.mario}
-        onInput={() => this.handleClickPlayGame()}
-      />
+      <View>
+        <StartGameButton handleClickPlayGame={this.handleClickPlayGame} />
+      </View>
     );
   }
 }
