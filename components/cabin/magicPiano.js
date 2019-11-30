@@ -16,7 +16,6 @@ const { AudioModule } = NativeModules;
 let glassObj = '3d_glass_piano/szklanka+2.obj'
 let glassTextureObjRegular = '3d_glass_piano/glass-v2.jpg'
 
-
 //glass color variabels 
 let glassTextureObjDarkYellow = '3d_glass_piano/oie_3022417tXo7WH59.jpg'
 let glassTextureObjBlue = '3d_glass_piano/blue_glass.png'
@@ -45,6 +44,37 @@ let arrOfTextures = [glassTextureObjDarkGrey,glassTextureObjLightPink,glassTextu
 let AnimatedEntity = Animated.createAnimatedComponent(Entity);
 
 class MagicPiano extends React.Component {
+  playSound = (sound) => {
+    AudioModule.stopEnvironmental()
+    AudioModule.playOneShot({
+      source: asset(sound)
+    });
+  }
+
+  playNoteMidC = () => {
+    this.playSound(noteMidC)
+  }
+  playNoteD = () => {
+    this.playSound(noteD)
+  }
+  playNoteE = () => {
+    this.playSound(noteE)
+  }
+  playNoteF = () => {
+    this.playSound(noteF)
+  }
+  playNoteG = () => {
+    this.playSound(noteG)
+  }
+  playNoteA = () => {
+    this.playSound(noteA)
+  }
+  playNoteB = () => {
+    this.playSound(noteB)
+  }
+  playNoteC = () => {
+    this.playSound(noteC)
+  }
   state = {
     //starting value/initial value for y 
     clicked: 0,
@@ -54,99 +84,18 @@ class MagicPiano extends React.Component {
     glassObj: '3d_glass_piano/szklanka+2.obj',
     glassTextureObj: '3d_glass_piano/glass-v2.jpg',
     userSequence:[0], 
-    patternSequence:[]
-
+    patternSequence:[],
+    arrSounds: [this.playNoteMidC, this.playNoteD, this.playNoteE, this.playNoteF, this.playNoteG, this.playNoteA , this.playNoteB, this.playNoteC],
+    glassesTexture: Array(arrOfTextures.length).fill(glassTextureObjRegular),
   };
 
   componentDidMount() {
 
   }
 
-  playNoteMidC(){
-
-    // let newState = this.state.userSequence.concat([1])
-
-    // this.setState({
-    //     userSequence:newState
-        
-    // })
-    AudioModule.playOneShot({
-        source: asset(noteMidC)
-      });
-
-  }
-
-
-  playNoteD(){
-
-    AudioModule.playOneShot({
-        source: asset(noteD)
-      });
-
-
-      
-    }
-    playNoteE(){
-
-        AudioModule.playOneShot({
-            source: asset(noteE)
-          });
-
- 
-        
-    }
-    playNoteF(){
-
-        AudioModule.playOneShot({
-            source: asset(noteF)
-          });
-
-
-      
-        
-    }
-    playNoteG(){
-
-        AudioModule.playOneShot({
-            source: asset(noteG)
-          });
-
-
-    
-        
-    }
-    playNoteA(){
-        AudioModule.playOneShot({
-            source: asset(noteA)
-          });
-
-
-
-        
-    }
-    playNoteB(){
-
-        AudioModule.playOneShot({
-            source: asset(noteB)
-          });
-
-
-        
-    }
-    playNoteC(){
-
-        AudioModule.playOneShot({
-            source: asset(noteC)
-          });
-
-
-    }
-
-
-
+  
 
   render() {
-
 
     return ( <View >
 
@@ -187,305 +136,10 @@ class MagicPiano extends React.Component {
 
       </VrButton>
 
-      {/* C sound */}
-      <VrButton onClick={this.playNoteMidC}>
+     { this.state.arrSounds.map((sound, index) =>
+      <VrButton onClick={sound} key={index}>
       <AnimatedEntity
-
-      source = {
-        {
-          obj: asset(this.state.glassObj),
-        //   mtl: asset(this.state.tableTextureAsset)
-        }
-      }
-
-      lit = {
-        true
-      }
-
-
-
-      texture = {asset(this.state.glassTextureObj)}
-      style = {
-        {
-          transform: [{
-              translate: [60, -130, 190]
-            },
-            {
-              scaleX: 1.0
-            },
-            {
-              scaleY: 1.0
-            },
-            {
-              scaleZ: 1.0
-            },
-          ],
-
-
-        }
-      }
-      />
-
-      </VrButton>
-
-     {/* D sound */}
-
-     <VrButton onClick={this.playNoteD}>
-      <AnimatedEntity
-
-      source = {
-        {
-          obj: asset(this.state.glassObj),
-        //   mtl: asset(this.state.tableTextureAsset)
-        }
-      }
-
-      lit = {
-        true
-      }
-
-
-
-      texture = {asset(this.state.glassTextureObj)}
-      style = {
-        {
-          transform: [{
-              translate: [73, -130, 190]
-            },
-            {
-              scaleX: 1.0
-            },
-            {
-              scaleY: 1.0
-            },
-            {
-              scaleZ: 1.0
-            },
-          ],
-
-
-        }
-      }
-      />
-
-      </VrButton>
-
-      {/* E sound */}
-
-      <VrButton onClick={this.playNoteE}>
-      <AnimatedEntity
-
-      source = {
-        {
-          obj: asset(this.state.glassObj),
-        //   mtl: asset(this.state.tableTextureAsset)
-        }
-      }
-
-      lit = {
-        true
-      }
-
-
-
-      texture = {asset(this.state.glassTextureObj)}
-      style = {
-        {
-          transform: [{
-              translate: [87, -130, 190]
-            },
-            {
-              scaleX: 1.0
-            },
-            {
-              scaleY: 1.0
-            },
-            {
-              scaleZ: 1.0
-            },
-          ],
-
-
-        }
-      }
-      />
-
-      </VrButton>
-
-      {/* F sound  */}
-
-      <VrButton onClick={this.playNoteF}>
-      <AnimatedEntity
-
-      source = {
-        {
-          obj: asset(this.state.glassObj),
-        //   mtl: asset(this.state.tableTextureAsset)
-        }
-      }
-
-      lit = {
-        true
-      }
-
-
-
-      texture = {asset(this.state.glassTextureObj)}
-      style = {
-        {
-          transform: [{
-              translate: [100, -130, 190]
-            },
-            {
-              scaleX: 1.0
-            },
-            {
-              scaleY: 1.0
-            },
-            {
-              scaleZ: 1.0
-            },
-          ],
-
-
-        }
-      }
-      />
-
-      </VrButton>
-
-      {/* G sound */}
-
-
-      <VrButton onClick={this.playNoteG}>
-      <AnimatedEntity
-
-      source = {
-        {
-          obj: asset(this.state.glassObj),
-        //   mtl: asset(this.state.tableTextureAsset)
-        }
-      }
-
-      lit = {
-        true
-      }
-
-
-
-      texture = {asset(this.state.glassTextureObj)}
-      style = {
-        {
-          transform: [{
-              translate: [113, -130, 190]
-            },
-            {
-              scaleX: 1.0
-            },
-            {
-              scaleY: 1.0
-            },
-            {
-              scaleZ: 1.0
-            },
-          ],
-
-
-        }
-      }
-      />
-
-      </VrButton>
-
-      {/* A sound */}
-
-      <VrButton onClick={this.playNoteA}>
-      <AnimatedEntity
-
-      source = {
-        {
-          obj: asset(this.state.glassObj),
-        //   mtl: asset(this.state.tableTextureAsset)
-        }
-      }
-
-      lit = {
-        true
-      }
-
-
-
-      texture = {asset(this.state.glassTextureObj)}
-      style = {
-        {
-          transform: [{
-              translate: [128, -130, 190]
-            },
-            {
-              scaleX: 1.0
-            },
-            {
-              scaleY: 1.0
-            },
-            {
-              scaleZ: 1.0
-            },
-          ],
-
-
-        }
-      }
-      />
-
-      </VrButton>
-
-      {/* B sound */}
-
-      <VrButton onClick={this.playNoteB}>
-      <AnimatedEntity
-
-      source = {
-        {
-          obj: asset(this.state.glassObj),
-        //   mtl: asset(this.state.tableTextureAsset)
-        }
-      }
-
-      lit = {
-        true
-      }
-
-
-
-      texture = {asset(this.state.glassTextureObj)}
-      style = {
-        {
-          transform: [{
-              translate: [139, -130, 190]
-            },
-            {
-              scaleX: 1.0
-            },
-            {
-              scaleY: 1.0
-            },
-            {
-              scaleZ: 1.0
-            },
-          ],
-
-
-        }
-      }
-      />
-
-      </VrButton>
       
-      {/* C sound */}
-
-      <VrButton onClick={this.playNoteC}>
-      <AnimatedEntity
-
       source = {
         {
           obj: asset(this.state.glassObj),
@@ -499,11 +153,11 @@ class MagicPiano extends React.Component {
 
 
 
-      texture = {asset(this.state.glassTextureObj)}
+      texture = {asset(this.state.glassesTexture[index])}
       style = {
         {
           transform: [{
-              translate: [153, -130, 190]
+              translate: [60+index*14, -130, 190]
             },
             {
               scaleX: 1.0
@@ -521,7 +175,10 @@ class MagicPiano extends React.Component {
       }
       />
 
-      </VrButton>
+      </VrButton>)}
+
+    
+
 
 
 
