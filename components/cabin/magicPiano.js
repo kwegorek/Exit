@@ -50,7 +50,7 @@ class MagicPiano extends React.Component {
     clicked: 0,
     yPosition: new Animated.Value(1),
     tableAsset: '3d_piano/O&C_COFFEE TABLE_1200x600x450.obj',
-    tableTextureAsset:'3d_piano/O&C_COFFEE TABLE_1200x600x450.mtl 2', 
+    tableTextureAsset:'3d_glass_piano/Null.1Surface_Color.jpg', 
     glassObj: '3d_glass_piano/szklanka+2.obj',
     glassTextureObj: '3d_glass_piano/glass-v2.jpg',
     userSequence:[0], 
@@ -156,14 +156,14 @@ class MagicPiano extends React.Component {
       source = {
         {
           obj: asset(this.state.tableAsset),
-          mtl: asset(this.state.tableTextureAsset)
+          // mtl: asset(this.state.tableTextureAsset)
         }
       }
 
       lit = {
         true
       }
-    //   texture = {asset(this.state.tableTextureAsset)}
+      texture = {asset(this.state.tableTextureAsset)}
       style = {
         {
           transform: [{
@@ -208,7 +208,7 @@ class MagicPiano extends React.Component {
       style = {
         {
           transform: [{
-              translate: [60, -200, 190]
+              translate: [60, -130, 190]
             },
             {
               scaleX: 1.0
@@ -250,7 +250,7 @@ class MagicPiano extends React.Component {
       style = {
         {
           transform: [{
-              translate: [73, -200, 190]
+              translate: [73, -130, 190]
             },
             {
               scaleX: 1.0
@@ -292,7 +292,7 @@ class MagicPiano extends React.Component {
       style = {
         {
           transform: [{
-              translate: [87, -200, 190]
+              translate: [87, -130, 190]
             },
             {
               scaleX: 1.0
@@ -334,7 +334,7 @@ class MagicPiano extends React.Component {
       style = {
         {
           transform: [{
-              translate: [100, -200, 190]
+              translate: [100, -130, 190]
             },
             {
               scaleX: 1.0
@@ -377,7 +377,7 @@ class MagicPiano extends React.Component {
       style = {
         {
           transform: [{
-              translate: [113, -200, 190]
+              translate: [113, -130, 190]
             },
             {
               scaleX: 1.0
@@ -419,7 +419,7 @@ class MagicPiano extends React.Component {
       style = {
         {
           transform: [{
-              translate: [128, -200, 190]
+              translate: [128, -130, 190]
             },
             {
               scaleX: 1.0
@@ -461,7 +461,7 @@ class MagicPiano extends React.Component {
       style = {
         {
           transform: [{
-              translate: [139, -200, 190]
+              translate: [139, -130, 190]
             },
             {
               scaleX: 1.0
@@ -503,7 +503,7 @@ class MagicPiano extends React.Component {
       style = {
         {
           transform: [{
-              translate: [153, -200, 190]
+              translate: [153, -130, 190]
             },
             {
               scaleX: 1.0

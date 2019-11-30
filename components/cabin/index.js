@@ -14,6 +14,7 @@ import { connect } from 'react-redux';
 import CardBoard from './cardboard';
 import Chest from './chest';
 import MagicPiano from './magicPiano'
+import Hero from './animationimg'
 import { NativeModules } from 'react-360';
 const { SurfaceModule } = NativeModules;
 
@@ -50,6 +51,7 @@ class Cabin extends React.Component {
         <Chest/>
         <MagicGlass/>
         <MagicPiano/>
+        <AncientPaper/>
       </View>
     );
   }

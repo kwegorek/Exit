@@ -19,40 +19,40 @@ import Entity from 'Entity';
 const AnimatedEntity = Animated.createAnimatedComponent(Entity);
 
 
-class AncientPaper extends React.Component {
+export default class Hero extends React.Component {
   static defaultProps = {
     op: 1, // opacity of hero picture
     width: 1, // width of hero picture
     height: 1, // height of hero picture
-    // rotateY: 0, // position
+    rotateY: 0, // position
     src: 'scroll/Scroll.png', // file name
   };
 
   constructor(props) {
     super();
-    // this.state = {
-    //   rotAnim: new Animated.Value(0),
-    // };
+    this.state = {
+      rotAnim: new Animated.Value(0),
+    };
   }
 
   componentDidMount() {
-    // this.startAnimation();
+    this.startAnimation();
   }
 
-  // startAnimation() {
-  //   Animated.timing(
-  //     this.state.rotAnim,
-  //     {
-  //       toValue: 360,
-  //       duration: 3000,
-  //     }
-  //   )
-  //   .start(() => {
-  //     // Restart at end
-  //     this.state.rotAnim.setValue(0);
-  //     this.startAnimation();
-  //   });
-  // }
+  startAnimation() {
+    Animated.timing(
+      this.state.rotAnim,
+      {
+        toValue: 360,
+        duration: 3000,
+      }
+    )
+    .start(() => {
+      // Restart at end
+      this.state.rotAnim.setValue(0);
+      this.startAnimation();
+    });
+  }
 
   render() {
     return (
@@ -63,9 +63,9 @@ class AncientPaper extends React.Component {
           width: this.props.width,
           height: this.props.height,
           transform: [
-            // {rotateY: this.props.rotateY},
+            {rotateY: this.props.rotateY},
             {translateZ: -3},
-            // {rotateY: this.state.rotAnim},
+            {rotateY: this.state.rotAnim},
             {translateX: 0.5}
           ],
           opacity: this.props.op,
@@ -75,5 +75,3 @@ class AncientPaper extends React.Component {
     );
   }
 }
-
-export default AncientPaper

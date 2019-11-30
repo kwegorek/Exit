@@ -20,7 +20,7 @@ class MagicGlass extends React.Component {
     clicked: true,
     yPosition: new Animated.Value(1),
     objAsset: ['3d_globe/magic_sphere.obj','3d_hintboard/placa.obj'],
-    textureAsset:['3d_globe/TexturesCom_MetalBare0150_1_seamless_S.jpg','3d_chest/wood03.jpg'],
+    textureAsset:['3d_globe/TexturesCom_MetalBare0150_1_seamless_S.jpg','3d_hintboard/oie_floaties.gif'],
   };
 
   componentDidMount() {
@@ -77,41 +77,39 @@ class MagicGlass extends React.Component {
       }
       />
 
+                    <AnimatedEntity
 
-          {/* round chest next to the table  */}
-          <AnimatedEntity
+            source = {
+            {
+                obj: asset(this.state.objAsset[1]),
+            }
+            }
 
-source = {
-  {
-    obj: asset(this.state.objAsset[1]),
-  }
-}
+            lit = {
+            true
+            }
 
-lit = {
-  true
-}
-
-texture = {asset(this.state.textureAsset[1])}
-style = {
-  {
-    transform: [{
-        translate: [60, -70, 170]
-      },
-      {
-        scaleX: 4.00
-      },
-      {
-        scaleY: 4.00
-      },
-      {
-        scaleZ: 4.00
-      },
-    ],
+            texture = {asset(this.state.textureAsset[1])}
+            style = {
+            {
+                transform: [{
+                    translate: [60, -70, 170]
+                },
+                {
+                    scaleX: 4.00
+                },
+                {
+                    scaleY: 4.00
+                },
+                {
+                    scaleZ: 4.00
+                },
+                ],
 
 
-  }
-}
-/>
+            }
+            }
+            />
 
 
 
