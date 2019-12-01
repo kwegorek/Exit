@@ -12,6 +12,8 @@ import {
 } from 'react-360';
 import Entity from 'Entity';
 const { AudioModule } = NativeModules;
+import { connect } from 'react-redux';
+import {addCompletedTasks} from '../../store/tasksCompleted'
 
 //regular color 
 let glassObj = '3d_glass_piano/szklanka+2.obj'
@@ -95,6 +97,7 @@ class MagicPiano extends React.Component {
   };
 
   componentDidMount() {
+    console.log('--->',this.props.musiscTask.musictable)
 
   }
 
@@ -237,6 +240,8 @@ class MagicPiano extends React.Component {
               clickedBtn: 8,
               currentlyDiplayedHint:'3d_hintboard/paper_task_completed.jpg', 
             })
+
+            this.props.addTaskCompleted(true)
           }else {
             this.setState({
               gameStarted:false, 
@@ -390,5 +395,25 @@ class MagicPiano extends React.Component {
   }
 }
 
+mapStateToProps = (state) => {
 
-export default MagicPiano
+  return {
+    musiscTask: state.tasksCompleted
+  }
+
+}
+
+
+mapDispatchToProps = (dispatch) => {
+
+  return {
+
+    addTaskCompleted: (val) => dispatch(addCompletedTasks(val))
+    
+  }
+
+  
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(MagicPiano);

@@ -10,6 +10,7 @@ import {
   VrButton,
 } from 'react-360';
 import Entity from 'Entity';
+import { connect } from 'react-redux';
 
 
 let AnimatedEntity = Animated.createAnimatedComponent(Entity);
@@ -26,6 +27,8 @@ class Compass extends React.Component {
   };
 
  componentDidMount(){
+
+  let finalTaskState  = this.props.musiscTask.musisctable
         
     }
 
@@ -36,7 +39,7 @@ class Compass extends React.Component {
         const isMaxOrMinValue = (prev.fade >= 1.0 || prev.fade <= 0.0)
         const newIsFading = (isMaxOrMinValue ? !prev.isFading : prev.isFading)
         const newFade = prev.fade + (newIsFading ? -0.04 : 0.04)
-       // console.log(newFade)
+
         return {
             fade: newFade,
             isFading: newIsFading
@@ -51,207 +54,223 @@ class Compass extends React.Component {
   render() {
 
         const opacityValue = this.state.fade
+        const finalTaskStatus = this.props.musiscTask.musisctable
 
-    
+        if(finalTaskStatus){
+
+          return ( <View >
+
+            <VrButton onClick={()=>this.showEscape()}>
+      
+              {/* //compasss object  */}
+           <AnimatedEntity
+      
+      source = {
+        {
+          obj: asset(this.state.objAsset[1]),
+        }
+      }
+      
+      lit = {
+        true
+      }
+      
+      texture = {asset(this.state.textureAsset[0])}
+      style = {
+        {
+          transform: [{
+              translate: [30, -110, 150]
+            },
+            {
+              scaleX: 20.00
+            },
+            {
+              scaleY:20.00
+            },
+            {
+              scaleZ: 20.00
+            },
+          ],  
+      
+      
+        }
+      }
+      />
+       
+      
+            </VrButton>
+      
+            <VrButton>
+      
+           {/* round chest next to the table  */}
+      
+      
+      
+      <AnimatedEntity
+      
+      source = {
+        {
+          obj: asset(this.state.objAsset[0]),
+        }
+      }
+      
+      lit = {
+        true
+      }
+      
+      texture = {asset(this.state.textureAsset[0])}
+      style = {
+        {
+          transform: [{
+              translate: [40, -200, 100]
+            },
+            {
+              scaleX: 50.00
+            },
+            {
+              scaleY:50.00
+            },
+            {
+              scaleZ: 50.00
+            },
+          ],opacity: opacityValue
+      
+      
+        }
+      }
+      />
+      
+      
+      <AnimatedEntity
+      
+      source = {
+        {
+          obj: asset(this.state.objAsset[0]),
+        }
+      }
+      
+      lit = {
+        true
+      }
+      
+      texture = {asset(this.state.textureAsset[0])}
+      style = {
+        {
+          transform: [{
+              translate: [-80, -200, 150]
+            },
+            {
+              scaleX: 50.00
+            },
+            {
+              scaleY:50.00
+            },
+            {
+              scaleZ: 50.00
+            },
+          ],opacity: opacityValue
+      
+      
+        }
+      }
+      />
+      
+      
+      
+      <AnimatedEntity
+      
+      source = {
+        {
+          obj: asset(this.state.objAsset[0]),
+        }
+      }
+      
+      lit = {
+        true
+      }
+      
+      texture = {asset(this.state.textureAsset[0])}
+      style = {
+        {
+          transform: [{
+              translate: [-150, -200, 100]
+            },
+            {
+              scaleX: 50.00
+            },
+            {
+              scaleY:50.00
+            },
+            {
+              scaleZ: 50.00
+            },
+          ],opacity: opacityValue
+      
+      
+        }
+      }
+      />
+      
+      <AnimatedEntity
+      
+      source = {
+        {
+          obj: asset(this.state.objAsset[0]),
+        }
+      }
+      
+      lit = {
+        true
+      }
+      
+      texture = {asset(this.state.textureAsset[0])}
+      style = {
+        {
+          transform: [{
+              translate: [-240, -200, 100]
+            },
+            {
+              scaleX: 50.00
+            },
+            {
+              scaleY:50.00
+            },
+            {
+              scaleZ: 50.00
+            },
+          ],opacity: opacityValue
+      
+      
+        }
+      }
+      />
+      
+      
+      
+            </VrButton>
+      
+      
+      
+            </View>
+          )
 
 
-    return ( <View >
 
-      <VrButton onClick={()=>this.showEscape()}>
+        }else{
+          return null
+        }
 
-        {/* //compasss object  */}
-     <AnimatedEntity
+  
 
-source = {
-  {
-    obj: asset(this.state.objAsset[1]),
   }
 }
 
-lit = {
-  true
-}
+const mapStateToProps = (state) => {
 
-texture = {asset(this.state.textureAsset[0])}
-style = {
-  {
-    transform: [{
-        translate: [30, -110, 150]
-      },
-      {
-        scaleX: 20.00
-      },
-      {
-        scaleY:20.00
-      },
-      {
-        scaleZ: 20.00
-      },
-    ],  
-
-
-  }
-}
-/>
- 
-
-      </VrButton>
-
-      <VrButton>
-
-     {/* round chest next to the table  */}
-
-
-
-<AnimatedEntity
-
-source = {
-  {
-    obj: asset(this.state.objAsset[0]),
-  }
-}
-
-lit = {
-  true
-}
-
-texture = {asset(this.state.textureAsset[0])}
-style = {
-  {
-    transform: [{
-        translate: [40, -200, 100]
-      },
-      {
-        scaleX: 50.00
-      },
-      {
-        scaleY:50.00
-      },
-      {
-        scaleZ: 50.00
-      },
-    ],opacity: opacityValue
-
-
-  }
-}
-/>
-
-
-<AnimatedEntity
-
-source = {
-  {
-    obj: asset(this.state.objAsset[0]),
-  }
-}
-
-lit = {
-  true
-}
-
-texture = {asset(this.state.textureAsset[0])}
-style = {
-  {
-    transform: [{
-        translate: [-80, -200, 150]
-      },
-      {
-        scaleX: 50.00
-      },
-      {
-        scaleY:50.00
-      },
-      {
-        scaleZ: 50.00
-      },
-    ],opacity: opacityValue
-
-
-  }
-}
-/>
-
-
-
-<AnimatedEntity
-
-source = {
-  {
-    obj: asset(this.state.objAsset[0]),
-  }
-}
-
-lit = {
-  true
-}
-
-texture = {asset(this.state.textureAsset[0])}
-style = {
-  {
-    transform: [{
-        translate: [-150, -200, 100]
-      },
-      {
-        scaleX: 50.00
-      },
-      {
-        scaleY:50.00
-      },
-      {
-        scaleZ: 50.00
-      },
-    ],opacity: opacityValue
-
-
-  }
-}
-/>
-
-<AnimatedEntity
-
-source = {
-  {
-    obj: asset(this.state.objAsset[0]),
-  }
-}
-
-lit = {
-  true
-}
-
-texture = {asset(this.state.textureAsset[0])}
-style = {
-  {
-    transform: [{
-        translate: [-240, -200, 100]
-      },
-      {
-        scaleX: 50.00
-      },
-      {
-        scaleY:50.00
-      },
-      {
-        scaleZ: 50.00
-      },
-    ],opacity: opacityValue
-
-
-  }
-}
-/>
-
-
-
-      </VrButton>
-
-
-
-      </View>
-    )
+  return {
+    musiscTask: state.tasksCompleted
   }
 }
 
 
-export default Compass
+export default connect(mapStateToProps, null)(Compass);
