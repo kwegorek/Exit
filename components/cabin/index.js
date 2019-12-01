@@ -1,8 +1,9 @@
 import React from 'react';
 import { View, NativeModules } from 'react-360';
-import Mario from './Mario';
+import Skeleton from './Skeleton';
 import Bookshelf from './bookshelf';
 import MagicSphere from './magicSphere';
+import Hat from './hat'
 import FallingPicture from './fallingPicture';
 import Book from './book';
 import Table from './Table';
@@ -34,7 +35,8 @@ class Cabin extends React.Component {
   render() {
     return (
       <View>
-        <Mario />
+        <Skeleton />
+        <Hat />
         <Bookshelf />
         <MagicSphere />
         <FallingPicture />

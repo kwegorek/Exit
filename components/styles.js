@@ -32,29 +32,31 @@ export default styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-around',
   },
-  mario: {
+  skeleton: {
     transform: [
-      { translate: [100, 0, -100] },
-      { scaleX: 1.00 },
-      { scaleY: 1.00 },
-      { scaleZ: 1.00 },
+      { translate: [100, -400, 300] },
+      { rotateY: 200 },
+      { scaleX: 200.0 },
+      { scaleY: 200.0 },
+      { scaleZ: 200.0 },
     ],
   },
-  mario2: {
+  hat: {
     transform: [
-      { translate: [200, 0, -100] },
-      { scaleX: 1.00 },
-      { scaleY: 1.00 },
-      { scaleZ: 1.00 },
+      { translate: [100, -230, 300] },
+      { rotateY: 200 },
+      { scaleX: 350.0 },
+      { scaleY: 350.0 },
+      { scaleZ: 350.0 },
     ],
   },
   startButton: {
     transform: [
       { translate: [0, 0, 600] },
-      {rotateY: 200},
-      { scaleX: 1.00 },
-      { scaleY: 1.00 },
-      { scaleZ: 1.00 },
+      { rotateY: 200 },
+      { scaleX: 1.0 },
+      { scaleY: 1.0 },
+      { scaleZ: 1.0 },
     ],
-  }
+  },
 });
