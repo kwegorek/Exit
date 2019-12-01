@@ -43,13 +43,13 @@ class Cabin extends React.Component {
       <View>
         <Mario handleClickEscapeKey={this.handleClickEscapeKey} />
         <Bookshelf />
-        <MagicSphere />
-        <FallingPicture />
+        {/* <MagicSphere /> */}
+        {/* <FallingPicture /> */}
         <Book/>
         <Table />
         <CardBoard/>
-        <Chest/>
-        <MagicGlass/>
+        {/* <Chest/> */}
+        {/* <MagicGlass/> */}
         <MagicPiano/>
         <AncientPaper/>
       </View>

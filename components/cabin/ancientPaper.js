@@ -39,20 +39,7 @@ class AncientPaper extends React.Component {
     // this.startAnimation();
   }
 
-  // startAnimation() {
-  //   Animated.timing(
-  //     this.state.rotAnim,
-  //     {
-  //       toValue: 360,
-  //       duration: 3000,
-  //     }
-  //   )
-  //   .start(() => {
-  //     // Restart at end
-  //     this.state.rotAnim.setValue(0);
-  //     this.startAnimation();
-  //   });
-  // }
+
 
   render() {
     return (
@@ -60,15 +47,15 @@ class AncientPaper extends React.Component {
         style={{
           position:'absolute',
           layoutOrigin: [0.5, 0.5, 0],
-          width: this.props.width,
-          height: this.props.height,
+          width: 1,
+          height: 1,
           transform: [
-            // {rotateY: this.props.rotateY},
+
             {translateZ: -3},
-            // {rotateY: this.state.rotAnim},
+
             {translateX: 0.5}
           ],
-          opacity: this.props.op,
+          opacity: 1,
         }}
         source={ asset(this.props.src) }
       />
