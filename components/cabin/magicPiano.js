@@ -89,7 +89,7 @@ class MagicPiano extends React.Component {
     patternSequence:[0,1,2,3,4,5,6,7], // describes order in which glasses will change
     arrSounds: [this.playNoteMidC, this.playNoteD, this.playNoteE, this.playNoteF, this.playNoteG, this.playNoteA , this.playNoteB, this.playNoteC],
     glassesTexture: Array(arrOfTextures.length).fill(glassTextureObjRegular),
-    currentlyDiplayedHint: '3d_hintboard/task_hint.jpg', 
+    currentlyDiplayedHint: '3d_hintboard/flippedHint.png', 
     userPattern: [], 
     gameStarted:false,
     gameFinished:false, 
@@ -121,7 +121,7 @@ class MagicPiano extends React.Component {
         }else {
           this.setState({
             gameStarted:false, 
-            currentlyDiplayedHint:'3d_hintboard/paper_try_again.jpg', 
+            currentlyDiplayedHint:'3d_hintboard/paper_try_again.png', 
             glassesTexture: Array(arrOfTextures.length).fill(glassTextureObjRegular),
             clickedBtn:0
           })
@@ -137,7 +137,7 @@ class MagicPiano extends React.Component {
           }else {
             this.setState({
               gameStarted:false, 
-              currentlyDiplayedHint:'3d_hintboard/paper_try_again.jpg', 
+              currentlyDiplayedHint:'3d_hintboard/paper_try_again.png', 
               glassesTexture: Array(arrOfTextures.length).fill(glassTextureObjRegular),
               clickedBtn:0
             })
@@ -154,7 +154,7 @@ class MagicPiano extends React.Component {
           }else {
             this.setState({
               gameStarted:false, 
-              currentlyDiplayedHint:'3d_hintboard/paper_try_again.jpg', 
+              currentlyDiplayedHint:'3d_hintboard/paper_try_again.png', 
               glassesTexture: Array(arrOfTextures.length).fill(glassTextureObjRegular),
               clickedBtn:0
             })
@@ -171,7 +171,7 @@ class MagicPiano extends React.Component {
           }else {
             this.setState({
               gameStarted:false, 
-              currentlyDiplayedHint:'3d_hintboard/paper_try_again.jpg', 
+              currentlyDiplayedHint:'3d_hintboard/paper_try_again.png', 
               glassesTexture: Array(arrOfTextures.length).fill(glassTextureObjRegular),
               clickedBtn:0
             })
@@ -188,7 +188,7 @@ class MagicPiano extends React.Component {
           }else {
             this.setState({
               gameStarted:false, 
-              currentlyDiplayedHint:'3d_hintboard/paper_try_again.jpg', 
+              currentlyDiplayedHint:'3d_hintboard/paper_try_again.png', 
               glassesTexture: Array(arrOfTextures.length).fill(glassTextureObjRegular),
               gameFinished:true, 
               clickedBtn:0
@@ -206,7 +206,7 @@ class MagicPiano extends React.Component {
           }else {
             this.setState({
               gameStarted:false, 
-              currentlyDiplayedHint:'3d_hintboard/paper_try_again.jpg', 
+              currentlyDiplayedHint:'3d_hintboard/paper_try_again.png', 
               glassesTexture: Array(arrOfTextures.length).fill(glassTextureObjRegular),
               gameFinished:true, 
               clickedBtn:0
@@ -224,7 +224,7 @@ class MagicPiano extends React.Component {
           }else {
             this.setState({
               gameStarted:false, 
-              currentlyDiplayedHint:'3d_hintboard/paper_try_again.jpg', 
+              currentlyDiplayedHint:'3d_hintboard/paper_try_again.png', 
               glassesTexture: Array(arrOfTextures.length).fill(glassTextureObjRegular),
               gameFinished:true, 
               clickedBtn:0
@@ -238,14 +238,14 @@ class MagicPiano extends React.Component {
   
             this.setState({
               clickedBtn: 8,
-              currentlyDiplayedHint:'3d_hintboard/paper_task_completed.jpg', 
+              currentlyDiplayedHint:'3d_hintboard/task_completed.png', 
             })
 
             this.props.addTaskCompleted(true)
           }else {
             this.setState({
               gameStarted:false, 
-              currentlyDiplayedHint:'3d_hintboard/paper_try_again.jpg', 
+              currentlyDiplayedHint:'3d_hintboard/paper_try_again.png', 
               glassesTexture: Array(arrOfTextures.length).fill(glassTextureObjRegular),
               clickedBtn:0
             })
@@ -282,7 +282,7 @@ class MagicPiano extends React.Component {
 
     this.setState({
 
-      currentlyDiplayedHint: '3d_hintboard/task_hint.jpg'
+      currentlyDiplayedHint: '3d_hintboard/flippedHint.png'
  
     })
 

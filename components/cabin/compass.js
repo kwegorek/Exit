@@ -20,15 +20,11 @@ class Compass extends React.Component {
     //starting value/initial value for y 
     fade: 0.0,
     isFading: true, 
-    clicked: true,
-    yPosition: new Animated.Value(1),
     objAsset: ['3d_direction/directional-generic-marker.obj','3d_compass/3d-model.obj',],
-    textureAsset:['3d_compass/light_borwn_glass copy.png'],
+    textureAsset:['3d_direction/irregular_stone_wall.png','3d_compass/metal_compass.jpeg',],
   };
 
  componentDidMount(){
-
-  let finalTaskState  = this.props.musiscTask.musisctable
         
     }
 
@@ -75,7 +71,7 @@ class Compass extends React.Component {
         true
       }
       
-      texture = {asset(this.state.textureAsset[0])}
+      texture = {asset(this.state.textureAsset[1])}
       style = {
         {
           transform: [{
@@ -101,46 +97,7 @@ class Compass extends React.Component {
             </VrButton>
       
             <VrButton>
-      
-           {/* round chest next to the table  */}
-      
-      
-      
-      <AnimatedEntity
-      
-      source = {
-        {
-          obj: asset(this.state.objAsset[0]),
-        }
-      }
-      
-      lit = {
-        true
-      }
-      
-      texture = {asset(this.state.textureAsset[0])}
-      style = {
-        {
-          transform: [{
-              translate: [40, -200, 100]
-            },
-            {
-              scaleX: 50.00
-            },
-            {
-              scaleY:50.00
-            },
-            {
-              scaleZ: 50.00
-            },
-          ],opacity: opacityValue
-      
-      
-        }
-      }
-      />
-      
-      
+            
       <AnimatedEntity
       
       source = {

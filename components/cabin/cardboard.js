@@ -20,23 +20,42 @@ let torchOnMtl = 'light/lamp_texture/Color2.png'
 let AnimatedEntity = Animated.createAnimatedComponent(Entity);
 
 class CardBoard extends React.Component {
+
   state = {
-    //starting value/initial value for y 
-    clicked: true,
     yPosition: new Animated.Value(1),
     textureObj: '3d_cardboard/cardboard.obj',
     textureObjmtl:'3d_cardboard/cardboard.mtl',
 
+
     torchObj:[torchOffObj,torchOffObj,torchOffObj ,torchOffObj ,torchOffObj ],
     torchmtl:[torchOffMtl ,torchOffMtl, torchOffMtl  ,torchOffMtl ,torchOffMtl ],
-
   };
 
   componentDidMount() {
 
+
+  }
+  
+
+  startsMoving = () => {
+
+    Animated.timing(
+        this.state.yPosition,
+        {
+          toValue: -2,
+          duration: 5000,
+          delay: 100,
+          easing: Easing.bounce
+        }
+        
+      ).start()
   }
 
+
   startTimer = () => {
+
+    this.setState({
+      textureObj:'3d_book/bookmodel.obj'})
 
     let time = 12001
 
@@ -118,10 +137,10 @@ class CardBoard extends React.Component {
 
     return ( <View >
 
-      <VrButton onClick = { () => 
+      <VrButton onClick = {() => 
         this.startTimer()
       } >
-      <AnimatedEntity
+      <AnimatedEntity onEnter={this.startsMoving}
 
       source = {
         {
@@ -134,7 +153,7 @@ class CardBoard extends React.Component {
         true
       }
       style = {
-        { // cardboard entity
+        { // cardboardbox 
           transform: [{
               translate: [-10, -6, -1]
             },

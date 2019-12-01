@@ -6,17 +6,15 @@ import MagicSphere from './magicSphere';
 import FallingPicture from './fallingPicture'
 import Book from './book'
 import Table from './Table'
-import Mirror from './mirror'
 import AncientPaper from './ancientPaper'
-import MagicGlass from './magicGlass'
 import { changeLocation } from '../../store/location';
 import { connect } from 'react-redux';
 import CardBoard from './cardboard';
 import Compass from './compass';
 import MagicPiano from './magicPiano'
-import Hero from './animationimg'
 import { NativeModules } from 'react-360';
 const { SurfaceModule } = NativeModules;
+import MagicGlass from './magicGlass'
 
 class Cabin extends React.Component {
   constructor(props) {
@@ -43,15 +41,15 @@ class Cabin extends React.Component {
       <View>
         <Mario handleClickEscapeKey={this.handleClickEscapeKey} />
         <Bookshelf />
-        {/* <MagicSphere /> */}
-        {/* <FallingPicture /> */}
+        <MagicSphere />
+        <FallingPicture />
         <Book/>
         <Table />
         <CardBoard/>
         <Compass/>
-        {/* <MagicGlass/> */}
         <MagicPiano/>
         <AncientPaper/>
+        <MagicGlass/>
       </View>
     );
   }
