@@ -28,14 +28,23 @@ let glassTextureObjDarkGrey = '3d_glass_piano/dark_grey.jpg'
 
 
 //music variables
-let noteMidC = '3d_glass_piano/Hear Piano Note - Middle C.wav'
-let noteD = '3d_glass_piano/Hear Piano Note - D.wav'
-let noteE = '3d_glass_piano/Hear Piano Note - Mid E.wav'
-let noteF = '3d_glass_piano/Hear Piano Note - Mid F.wav'
-let noteG = '3d_glass_piano/Hear Piano Note - Mid G.wav'
-let noteA = '3d_glass_piano/Hear Piano Note - Mid A.wav'
-let noteB= '3d_glass_piano/Hear Piano Note - Mid B.wav'
-let noteC = '3d_glass_piano/Hear Piano Note - Middle C.wav'
+// let noteMidC = '3d_glass_piano/Hear Piano Note - Middle C.wav'
+// let noteD = '3d_glass_piano/Hear Piano Note - D.wav'
+// let noteE = '3d_glass_piano/Hear Piano Note - Mid E.wav'
+// let noteF = '3d_glass_piano/Hear Piano Note - Mid F.wav'
+// let noteG = '3d_glass_piano/Hear Piano Note - Mid G.wav'
+// let noteA = '3d_glass_piano/Hear Piano Note - Mid A.wav'
+// let noteB= '3d_glass_piano/Hear Piano Note - Mid B.wav'
+// let noteC = '3d_glass_piano/Hear Piano Note - Middle C.wav'
+
+let noteMidC = '3d_glass_piano/do.wav'
+let noteD = '3d_glass_piano/re.wav'
+let noteE = '3d_glass_piano/mi.wav'
+let noteF = '3d_glass_piano/fa.wav'
+let noteG = '3d_glass_piano/si.wav' 
+let noteA = '3d_glass_piano/la.wav'
+let noteB= '3d_glass_piano/do2.wav'
+let noteC = '3d_glass_piano/mi.wav'
 
 
 let arrOfTextures = [glassTextureObjDarkGrey,glassTextureObjLightPink,glassTextureObjDarkYellow,glassTextureObjBlue,glassTextureObjGrey, glassTextureObjBlack,glassTextureObjPink,glassTextureObjBrown,]
@@ -103,6 +112,7 @@ class MagicPiano extends React.Component {
           return {...prevState, glassesTexture : newGlassesTexture}
         
         })
+        that.state.arrSounds[index]()
       }, 500*this.state.patternSequence[index], this);
     })
   }
