@@ -10,8 +10,8 @@ import Table from './Table';
 import AncientPaper from './ancientPaper';
 import { changeLocation } from '../../store/location';
 import { connect } from 'react-redux';
-
 const { SurfaceModule } = NativeModules;
+
 
 class Cabin extends React.Component {
   constructor(props) {
@@ -23,20 +23,18 @@ class Cabin extends React.Component {
     console.log('DO', window.document);
     console.log('cabin mounted!');
   }
+  //pass this function to whiever 3d object leads to escape/winning
   handleClickEscapeKey() {
-    //unmount navbar
-    //mount winner surface
     this.props.changeLocation('cabinEscaped');
   }
   handleLostGame() {
-    //unmount navbar
     //mount loser surface
   }
   render() {
     return (
       <View>
         <Skeleton />
-        <Hat />
+        <Hat handleClickEscapeKey={this.handleClickEscapeKey}/>
         <Bookshelf />
         <MagicSphere />
         <FallingPicture />
