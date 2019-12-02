@@ -14,7 +14,6 @@ import Chest from './chest'
 import Frame from './frame'
 import { changeLocation } from '../../store/location';
 import { connect } from 'react-redux';
-import CardBoard from './cardboard';
 import Compass from './compass';
 import MagicPiano from './magicPiano'
 import Hat from './hat'
@@ -46,7 +45,6 @@ class Cabin extends React.Component {
         <Hat handleClickEscapeKey={this.handleClickEscapeKey}/>
         <Bookshelf />
         <MagicSphere />
-     
         <Book />
         <Table />
         <Face/>
@@ -54,7 +52,6 @@ class Cabin extends React.Component {
         <Frame/>
         <Skull/>
         <Painting/>
-        <CardBoard/>
         <Compass/>
         <MagicPiano/>
         <AncientPaper/>
