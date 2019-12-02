@@ -65,14 +65,14 @@ class Face extends React.Component {
         <Animated.Image
         style={{
           position:'absolute',
-          layoutOrigin: [-0.5, -0.5, 0],
-          width: 1,
-          height: 1,
+          layoutOrigin: [0.5, 0.5, 0],
+          width: 6,
+          height: 6,
           transform: [
 
             {translateZ: 5},
-
-            {translateX: 0}
+            {translateX: 10},
+            {rotateY: -100}
           ],
           opacity: 1,
         }}
