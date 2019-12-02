@@ -267,7 +267,7 @@ class CardBoard extends React.Component {
         style = {
         {
             transform: [{
-                translate: [-190, -80, -150]
+                translate: [-250, -80, -150]
             },
             {
                 scaleX: 1.00

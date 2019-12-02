@@ -19,9 +19,8 @@ class Book extends React.Component {
    "ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/ChurchBookClosedV2.mtl",
 info :'',
 fade: new Animated.Value(0),
-// // =======
-//     closedBooktexture
-// >>>>>>> a62b124432b616430246e8385f960be292d991ba
+mirrorClue: false,
+mirrorClueSrc: 'Clues/mirrorClue.jpg'
   };
   openOrclose = () => {
     if (this.state.close === true) {
@@ -62,6 +61,9 @@ fade: new Animated.Value(0),
     AudioModule.playOneShot({
       source: asset("magic.wav")
     });
+    this.setState({
+      mirrorClue: true
+    })
   };
 
   render() {
@@ -95,6 +97,23 @@ fade: new Animated.Value(0),
             texture = {asset(this.state.textureObjmtl)}
           />
         </VrButton>
+        {this.state.mirrorClue ?
+        <Animated.Image
+        style={{
+          position:'absolute',
+          layoutOrigin: [0.5, 0.5, 0],
+          width: 2,
+          height: 2,
+          transform: [
+
+            {translateZ: -3},
+
+            {translateX:-1.0}
+          ],
+          opacity: 1,
+        }}
+        source={ asset(this.state.mirrorClueSrc)}
+      />: null}
       </View>
     );
   }
