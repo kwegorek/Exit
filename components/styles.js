@@ -34,11 +34,11 @@ export default styles = StyleSheet.create({
   },
   skeleton: {
     transform: [
-      { translate: [100, -400, 300] },
-      { rotateY: 200 },
-      { scaleX: 200.0 },
-      { scaleY: 200.0 },
-      { scaleZ: 200.0 },
+      { translate: [300, -550, -170] },
+      { rotateY: -50 },
+      { scaleX: 250.0 },
+      { scaleY: 250.0 },
+      { scaleZ: 250.0 },
     ],
   },
   hat: {
@@ -52,11 +52,12 @@ export default styles = StyleSheet.create({
   },
   startButton: {
     transform: [
-      { translate: [0, 0, 600] },
-      { rotateY: 200 },
-      { scaleX: 1.0 },
-      { scaleY: 1.0 },
-      { scaleZ: 1.0 },
+      { translate: [0, 0, 50] },
+      // { rotateY: 50 },
+      // { rotateX: 80 },
+      { scaleX: 10.0 },
+      { scaleY: 10.0 },
+      { scaleZ: 10.0 },
     ],
   },
 });

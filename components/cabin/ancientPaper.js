@@ -23,7 +23,7 @@ class AncientPaper extends React.Component {
   static defaultProps = {
     op: 1,
     width: 1,
-    height: 1, 
+    height: 1,
     // rotateY: 0, // position
     src: '2d_intro/intro_page.jpg', // file name
   };

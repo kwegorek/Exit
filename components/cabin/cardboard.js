@@ -12,9 +12,6 @@ import {
 import Entity from 'Entity';
 import { connect } from 'react-redux';
 import {addAdditionalTask} from '../../store/tasksCompleted'
-
-
-
 let torchOffObj = 'light/Option_with_glass/2(torch-lamp).obj'
 let torchOffMtl = 'light/lamp_texture/Color.png'
 let torchOnObj = torchOffObj
@@ -267,7 +264,7 @@ class CardBoard extends React.Component {
         style = {
         {
             transform: [{
-                translate: [-190, -80, -150]
+                translate: [-250, -80, -150]
             },
             {
                 scaleX: 1.00

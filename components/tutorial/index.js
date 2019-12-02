@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Environment, asset, NativeModules, VrButton } from 'react-360';
 import { changeLocation } from '../../store/location';
 import { connect } from 'react-redux';
-import StartGameButton  from './startGameButton';
+import StartGameButton from './startGameButton';
 const { SurfaceModule } = NativeModules;
 
 class Tutorial extends React.Component {
@@ -11,7 +11,7 @@ class Tutorial extends React.Component {
     this.handleClickPlayGame = this.handleClickPlayGame.bind(this);
   }
   componentDidMount() {
-    //render tutorial surfaces 
+    //render tutorial surfaces
     SurfaceModule.changeSurfaceSize('TutorialSurface', 1000, 1000);
     SurfaceModule.changeSurfaceSize('TutorialSurface2', 1000, 1000);
     console.log('tutorial component mounted');
