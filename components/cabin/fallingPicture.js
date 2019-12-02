@@ -11,8 +11,8 @@ class FallingPicture extends React.Component {
     state = {
         //starting value/initial value for y
         yPosition: new Animated.Value(1),
-        textureObj:'3d_globe/magic_sphere.obj',
-        textureMtl:'3d_globe/magic_sphere.mtl'
+        textureObj:'picture/album.obj',
+        textureMtl:'picture/album.mtl'
     };
     componentDidMount(){
 
@@ -69,11 +69,11 @@ class FallingPicture extends React.Component {
                 lit={true}
                 style={{
                 transform: [
-                    { translate: [-2, -2, -3] },
+                    { translate: [-10, -6, 1] },
                     { translateY: yPosition },
-                    { scaleX: 0.01 },
-                    { scaleY: 0.01},
-                    { scaleZ: 0.01 },
+                    { scaleX: 10.01 },
+                    { scaleY: 10.01},
+                    { scaleZ: 10.01 },
                 ],
 
 

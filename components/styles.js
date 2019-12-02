@@ -52,11 +52,12 @@ export default styles = StyleSheet.create({
   },
   startButton: {
     transform: [
-      { translate: [0, 0, 600] },
-      { rotateY: 200 },
-      { scaleX: 1.0 },
-      { scaleY: 1.0 },
-      { scaleZ: 1.0 },
+      { translate: [0, 0, 50] },
+      // { rotateY: 50 },
+      // { rotateX: 80 },
+      { scaleX: 10.0 },
+      { scaleY: 10.0 },
+      { scaleZ: 10.0 },
     ],
   },
 });
