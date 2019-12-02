@@ -12,9 +12,6 @@ import {
 import Entity from 'Entity';
 import { connect } from 'react-redux';
 import {addAdditionalTask} from '../../store/tasksCompleted'
-
-
-
 let torchOffObj = 'light/Option_with_glass/2(torch-lamp).obj'
 let torchOffMtl = 'light/lamp_texture/Color.png'
 let torchOnObj = torchOffObj
