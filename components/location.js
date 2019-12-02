@@ -3,33 +3,31 @@ import { Environment, asset } from 'react-360';
 import { connect } from 'react-redux';
 import Cabin from './cabin';
 import Tutorial from './tutorial';
+import ExitPage from './exitPage';
 
-//RENDERS CORRECT LOCATION BASED ON PLAYERS CHOICE OF ROOM
+//RENDERS CORRECT 360 VIEW BASED ON LOCATION (TUTORIAL, CABIN, etc.)
 class Location extends React.Component {
   constructor(props) {
     super(props);
     this.envChanger = this.envChanger.bind(this);
   }
 
-  async envChanger(imageUrl) {
-    try {
-      await Environment.preloadBackgroundImage(asset(imageUrl));
-      await Environment.setBackgroundImage(asset(imageUrl));
-    } catch (err) {
-      console.log("Couldn't change background");
-    }
+  envChanger(imageUrl) {
+    Environment.preloadBackgroundImage(asset(imageUrl));
+    Environment.setBackgroundImage(asset(imageUrl));
   }
 
   render() {
     const location = this.props.location;
     if (location === 'tutorial') {
+      this.envChanger('checkered.png');
       return <Tutorial />;
     } else if (location === 'cabin') {
-      this.envChanger('360mansion.jpg');
+      this.envChanger('360_cabin.jpg');
       return <Cabin />;
     } else if (location === 'cabinEscaped') {
-      this.envChanger('360_world.jpg');
-      return null;
+      this.envChanger('forest.jpg');
+      return <ExitPage />;
     }
   }
 }
