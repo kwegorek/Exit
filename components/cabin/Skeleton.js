@@ -12,7 +12,7 @@ export default class Skeleton extends React.Component {
   handleClickZoom() {
     console.log('clicked skeleton');
     //change camera position to clicked obj's location
-    SurfaceModule.zoomCamera([100, 0, 100]);
+    SurfaceModule.zoomCamera([100, 0, -70]);
   }
   render() {
     return (
