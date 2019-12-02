@@ -12,8 +12,8 @@ export default class StartGameButton extends React.Component {
       <VrButton onClick={() => this.props.handleClickPlayGame()}>
         <Entity
           source={{
-            obj: asset('3d_mario/mario-sculpture.obj'),
-            mtl: asset('3d_mario/mario-sculpture.mtl'),
+            obj: asset('doorhandle/Door_Component_BI3.obj'),
+            mtl: asset('doorhandle/Door_Component_BI3.mtl'),
           }}
           lit={true}
           style={styles.startButton}
