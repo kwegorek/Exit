@@ -105,7 +105,7 @@ class MagicPiano extends React.Component {
 
   startGame = (_evt, index) => {
 
-    // this.props.disableButtons('tableButton', 'bookButton');
+    // this.props.disableButtons('tableButton', 'tableButton');
 
     console.log('index clicked', index)
 
