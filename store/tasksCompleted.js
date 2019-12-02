@@ -3,11 +3,12 @@
  */
 const GET_COMPLETED_TASKS = 'GET_COMPLETED_TASKS';
 const ADD_MUSIC_TASK = 'ADD_MUSIC_TASK';
-
+const GET_ADDITIONAL_TASK = 'GET_ADDITIONAL_TASK';
+const ADD_ADDITIONAL_TASK = 'ADD_ADDITIONAL_TASK';
 /**
  * INITIAL STATE
  */
-const INITIAL_STATE = {musisctable:false}
+const INITIAL_STATE = {musisctable:false, additionalTask:false}
 
 /**
  * ACTION CREATORS
@@ -18,9 +19,23 @@ export const getCompletedTasks = () => {
   };
 };
 
+export const getAdditionalTask = () => {
+  return {
+    type: GET_ADDITIONAL_TASK,
+  };
+};
+
 export const addCompletedTasks = bool => {
   return {
     type: ADD_MUSIC_TASK,
+    bool,
+  };
+};
+
+
+export const addAdditionalTask = bool => {
+  return {
+    type: ADD_ADDITIONAL_TASK,
     bool,
   };
 };
@@ -33,7 +48,11 @@ export default function(tasksCompleted = INITIAL_STATE, action) {
     case ADD_MUSIC_TASK :
       return {...tasksCompleted, musisctable:action.bool};
     case GET_COMPLETED_TASKS:
-      return tasksCompleted 
+      return tasksCompleted
+    case GET_ADDITIONAL_TASK:
+      return tasksCompleted
+    case ADD_ADDITIONAL_TASK:
+      return {...tasksCompleted, additionalTask:action.bool};
     default:
       return tasksCompleted;
   }

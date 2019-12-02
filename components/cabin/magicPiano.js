@@ -395,7 +395,7 @@ class MagicPiano extends React.Component {
   }
 }
 
-mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
 
   return {
     musiscTask: state.tasksCompleted
@@ -404,7 +404,7 @@ mapStateToProps = (state) => {
 }
 
 
-mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
 
   return {
 

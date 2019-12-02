@@ -21,22 +21,20 @@ const AnimatedEntity = Animated.createAnimatedComponent(Entity);
 
 class AncientPaper extends React.Component {
   static defaultProps = {
-    op: 1, // opacity of hero picture
-    width: 1, // width of hero picture
-    height: 1, // height of hero picture
+    op: 1,
+    width: 1,
+    height: 1, 
     // rotateY: 0, // position
-    src: 'scroll/Scroll.png', // file name
+    src: '2d_intro/intro_page.jpg', // file name
   };
 
   constructor(props) {
     super();
-    // this.state = {
-    //   rotAnim: new Animated.Value(0),
-    // };
+
   }
 
   componentDidMount() {
-    // this.startAnimation();
+
   }
 
 

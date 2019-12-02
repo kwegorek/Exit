@@ -10,52 +10,62 @@ import {
   VrButton,
 } from 'react-360';
 import Entity from 'Entity';
+import { connect } from 'react-redux';
+import {addAdditionalTask} from '../../store/tasksCompleted'
+
 
 
 let torchOffObj = 'light/Option_with_glass/2(torch-lamp).obj'
 let torchOffMtl = 'light/lamp_texture/Color.png'
 let torchOnObj = torchOffObj
 let torchOnMtl = 'light/lamp_texture/Color2.png' 
+let animatedValue = new Animated.Value(0)
 
 let AnimatedEntity = Animated.createAnimatedComponent(Entity);
 
 class CardBoard extends React.Component {
 
   state = {
-    yPosition: new Animated.Value(1),
+    yPosition: new Animated.Value(1)  ,
+    timeOver:false,
     textureObj: '3d_cardboard/cardboard.obj',
     textureObjmtl:'3d_cardboard/cardboard.mtl',
-
-
+    renderTimerHint:false,
     torchObj:[torchOffObj,torchOffObj,torchOffObj ,torchOffObj ,torchOffObj ],
     torchmtl:[torchOffMtl ,torchOffMtl, torchOffMtl  ,torchOffMtl ,torchOffMtl ],
   };
 
   componentDidMount() {
 
+    console.log(this.state.props, 'props-box')
 
   }
   
-
   startsMoving = () => {
 
-    Animated.timing(
-        this.state.yPosition,
-        {
-          toValue: -2,
-          duration: 5000,
-          delay: 100,
-          easing: Easing.bounce
-        }
-        
+    //additional task is rendered
+    this.props.addAdditionalTask(true)
+
+    this.state.yPosition.setValue(0)
+
+        Animated.timing(
+          this.state.yPosition,
+
+          {
+            toValue: 1,
+            duration: 1000,
+            easing:Easing.inOut(Easing.bounce)
+          }
       ).start()
-  }
-
-
+    }
+    
   startTimer = () => {
 
+    if(!this.state.timeOver){
+
     this.setState({
-      textureObj:'3d_book/bookmodel.obj'})
+      timeOver:true,
+    renderTimerHint:true})
 
     let time = 12001
 
@@ -124,23 +134,23 @@ class CardBoard extends React.Component {
 
         
 
-    }
+    }}else{
 
-    return 
+    return}
 
 
   }
 
 
   render() {
-
+    const cardboardYPosition = this.state.yPosition
 
     return ( <View >
 
       <VrButton onClick = {() => 
         this.startTimer()
       } >
-      <AnimatedEntity onEnter={this.startsMoving}
+      <AnimatedEntity onEnter={()=>this.startsMoving()}
 
       source = {
         {
@@ -156,6 +166,9 @@ class CardBoard extends React.Component {
         { // cardboardbox 
           transform: [{
               translate: [-10, -6, -1]
+            },
+            { 
+              translateY: cardboardYPosition
             },
             {
               scaleX: 0.04
@@ -319,6 +332,25 @@ class CardBoard extends React.Component {
 
       </VrButton>
 
+      {this.state.renderTimerHint ? 
+             <Animated.Image
+             style={{
+               position:'absolute',
+               layoutOrigin: [0.5, 0.5, 0],
+               width: 1,
+               height: 1,
+               transform: [
+     
+                 {translateZ: -3},
+     
+                 {translateX: 0}
+               ],
+               opacity: 1,
+             }}
+             source={ asset('2d_hints/timer_on.jpg') }
+           />: null}
+
+
 
       </View>
     )
@@ -326,4 +358,18 @@ class CardBoard extends React.Component {
 }
 
 
-export default CardBoard
+mapDispatchToProps = (dispatch) => {
+
+  return {
+
+    addAdditionalTask: (val) => dispatch(addAdditionalTask(val))
+    
+  }
+
+  
+}
+
+
+export default connect(null, mapDispatchToProps)(CardBoard);
+
+

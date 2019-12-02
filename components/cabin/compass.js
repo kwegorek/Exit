@@ -20,6 +20,7 @@ class Compass extends React.Component {
     //starting value/initial value for y 
     fade: 0.0,
     isFading: true, 
+    yPosition: new Animated.Value(1),
     objAsset: ['3d_direction/directional-generic-marker.obj','3d_compass/3d-model.obj',],
     textureAsset:['3d_direction/irregular_stone_wall.png','3d_compass/metal_compass.jpeg',],
   };

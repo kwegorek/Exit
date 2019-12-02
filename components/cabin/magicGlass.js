@@ -7,25 +7,51 @@ import {
   VrButton,
 } from 'react-360';
 import Entity from 'Entity';
+import { connect } from 'react-redux';
+import {getAdditionalTask} from '../../store/tasksCompleted'
 
 
 let AnimatedEntity = Animated.createAnimatedComponent(Entity);
 
 class MagicGlass extends React.Component {
   state = {
-    objAsset: ['3d_globe/magic_sphere.obj'],
-    textureAsset:['3d_globe/TexturesCom_MetalBare0150_1_seamless_S.jpg'],
+    //showKey state is on when timer state is on 
+    hint:'2d_hints/turn_right.jpg',
+    showHint:false,
+    showKey:false,
+    objAsset: ['3d_globe/magic_sphere.obj', '3d_round_chest/chest04.obj'],
+    textureAsset:['3d_globe/TexturesCom_MetalBare0150_1_seamless_S.jpg','3d_round_chest/marble.jpg', '3d_round_chest/copper.jpg', '3d_round_chest/felt.jpg'],
   };
 
   componentDidMount() {
+
+    console.log(this.props.additionalTask, 'additionalTask')
+
+  }
+
+  showKey(){
+
+    if(this.props.additionalTask){
+    this.setState({
+      showKey: true
+    })}
+  }
+
+  showHint(){
+
+    this.setState({
+      showHint: true
+    })
+
 
   }
 
   render() {
 
+
     return ( 
 
-    <View >
+    <View>
         <VrButton>
             <AnimatedEntity
 
@@ -60,11 +86,113 @@ class MagicGlass extends React.Component {
             }
             />
         </VrButton>
+        <VrButton onClick={()=> this.showKey()}>
+            <AnimatedEntity
 
-      </View>
+            source = {
+              {
+                obj: asset(this.state.objAsset[1]),
+              }
+            }
+
+            lit = {
+              true
+            }
+        
+
+            texture = {asset(this.state.textureAsset[1])}
+            style = {
+              {
+                transform: [{
+                    translate: [240, -190, 60]
+                  },
+                  {
+                    scaleX: 10.00
+                  },
+                  {
+                    scaleY: 10.00
+                  },
+                  {
+                    scaleZ: 10.00
+                  },
+                ]
+
+              }
+            }
+            />
+        </VrButton>
+        {this.state.showKey ? 
+
+   
+                <VrButton onClick={()=> this.showHint()}>
+                <AnimatedEntity 
+    
+                source = {
+                  {
+                    obj: asset('3d_music_note/sixteenth_note.obj'),
+                  }
+                }
+    
+                lit = {
+                  true
+                }
+    
+                // texture = {asset(this.state.keyText[1])}
+                style = {
+                  {
+                    transform: [{
+                        translate: [200, -60, 60]
+                      },
+                      {
+                        scaleX: 25.00
+                      },
+                      {
+                        scaleY: 25.00
+                      },
+                      {
+                        scaleZ: 25.00
+                      },
+                    ],color: 'black',
+    
+                  }
+                }
+                />
+            </VrButton> : null }
+
+            {this.state.showHint ? 
+             <Animated.Image
+             style={{
+               position:'absolute',
+               layoutOrigin: [0.5, 0.5, 0],
+               width: 1,
+               height: 1,
+               transform: [
+     
+                {translateZ: -3},
+     
+                {translateX: -1}
+               ],
+               opacity: 1,
+             }}
+             source={ asset('2d_hints/sound_pattern_task.jpg') }
+           />: null}
+
+      </View> 
     )
   }
 }
 
 
-export default MagicGlass
+const mapStateToProps = (state) => {
+
+  return {
+    additionalTask: state.tasksCompleted.additionalTask
+  }
+
+}
+
+
+
+
+export default connect(mapStateToProps, null)(MagicGlass);
+
