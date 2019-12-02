@@ -19,11 +19,12 @@ export default class TutorialSurface2 extends React.Component {
       <View style={styles.panel}>
         <View style={styles.greetingBox}>
           <Text style={styles.greeting}>
-            Use your keyboard arrow keys to walk around. Walk to the red button and press to play!
+            Use your keyboard arrow keys to walk to the door. Then press it to
+            play!
           </Text>
         </View>
         <VrButton style={styles.rootButton} onClick={this.handleClick}>
-          <Text>Got it!</Text>
+          <Text style={styles.text}>Got it!</Text>
         </VrButton>
       </View>
     );
