@@ -4,16 +4,24 @@ import Entity from "Entity";
 const { AudioModule } = NativeModules;
 const AnimatedEntity = Animated.createAnimatedComponent(Entity);
 
+
+let openedBookTexture = 'ChurchBookSet/ChurchBookOpenV2/ChurchBookOpenV2-OBJ/Textures/ChurchBookOpenV2-DiffuseHints.png'
+
+let closedBooktexture = 'ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/Textures/ChurchBookClosedV2-Diffuse.png'
+
 class Book extends React.Component {
   state = {
     //starting value/initial value for y
     close: true,
     textureObj:
       "ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/ChurchBookClosedV2.obj",
-    textureObjmtl:
-      "ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/ChurchBookClosedV2.mtl",
-      info :'',
-      fade: new Animated.Value(0),
+     textureObjmtl:
+   "ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/ChurchBookClosedV2.mtl",
+info :'',
+fade: new Animated.Value(0),
+// // =======
+//     closedBooktexture
+// >>>>>>> a62b124432b616430246e8385f960be292d991ba
   };
   openOrclose = () => {
     if (this.state.close === true) {
@@ -29,15 +37,14 @@ class Book extends React.Component {
       this.setState({
         textureObj:
           "ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/ChurchBookClosedV2.obj",
-        textureObjmtl:
-          "ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/ChurchBookClosedV2.mtl",
+          textureObjmtl:
+        "ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/ChurchBookClosedV2.mtl",
         close: true,
-
+        info :'',
+       fade: new Animated.Value(0),
       });
     }
-  };
-
-
+  }
   componentDidUpdate() {
     const { close } = this.state;
     const value = close ? 0 : 1;
@@ -73,7 +80,6 @@ class Book extends React.Component {
           <AnimatedEntity
             source={{
               obj: asset(this.state.textureObj),
-              mtl: asset(this.state.textureObjmtl)
             }}
             lit={true}
             style={{
@@ -83,12 +89,16 @@ class Book extends React.Component {
                 { scaleY: 80.0 },
                 { scaleZ: 80.0 }
               ]
+
             }}
+
+            texture = {asset(this.state.textureObjmtl)}
           />
         </VrButton>
       </View>
     );
   }
 }
+
 
 export default Book;

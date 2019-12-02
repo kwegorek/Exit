@@ -14,8 +14,12 @@ import Chest from './chest'
 import Frame from './frame'
 import { changeLocation } from '../../store/location';
 import { connect } from 'react-redux';
+import CardBoard from './cardboard';
+import Compass from './compass';
+import MagicPiano from './magicPiano'
 import { NativeModules } from 'react-360';
 const { SurfaceModule } = NativeModules;
+import MagicGlass from './magicGlass'
 
 class Cabin extends React.Component {
   constructor(props) {
@@ -51,6 +55,11 @@ class Cabin extends React.Component {
         <Frame/>
         <Skull/>
         <Painting/>
+        <CardBoard/>
+        <Compass/>
+        <MagicPiano/>
+        <AncientPaper/>
+        <MagicGlass/>
       </View>
     );
   }
