@@ -11,7 +11,7 @@ class MagicSphere extends React.Component {
         rotation: new Animated.Value(0),
         isRotating: true
     };
-    
+
     componentDidMount(){
        this.startRotate()
     }
@@ -24,7 +24,7 @@ class MagicSphere extends React.Component {
             }
         ).start(this.startRotate)
     }
-    
+
     stopRotate = () => {
         console.log("stop rotate")
         // this.setState({
@@ -41,7 +41,7 @@ class MagicSphere extends React.Component {
     // }
     // rotate = (forceRotate = false) => {
     //     console.log(JSON.stringify(forceRotate))
-    //     if (forceRotate === true || this.state.isRotating) { 
+    //     if (forceRotate === true || this.state.isRotating) {
     //         const newValue = this.state.rotation.getValue() === 360 ? 0 : 360;
     //         console.log("->rotate", newValue)
     //         Animated.timing(this.state.rotation,
@@ -67,24 +67,24 @@ class MagicSphere extends React.Component {
         return (
 
             <View>
-                <AnimatedEntity onEnter={this.startRotate} 
+                <AnimatedEntity onEnter={this.startRotate}
                  onExit={this.stopRotate}
-               
+
                 source={{
-                obj: asset('3d_globe/magic_sphere.obj'),
-                mtl: asset('3d_globe/magic_sphere.mtl'),
+                obj: asset('crystal/magic-sphere.obj'),
+                mtl: asset('crystal/magic-sphere.mtl'),
                 }}
                 lit={true}
                 style={{
                 transform: [
-                    { translate: [0, -5, -3] },
-                    { scaleX: 0.04 },
-                    { scaleY: 0.04 },
-                    { scaleZ: 0.04 },
+                    { translate: [-500, -800 ,400] },
+                    { scaleX: 0.0004 },
+                    { scaleY: 0.0004 },
+                    { scaleZ: 0.0004 },
                     { rotateY: rotationValue}
                 ],
-            
-                
+
+
                 }}
                     />
             </View>

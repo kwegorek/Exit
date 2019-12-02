@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import Location from './components/location';
 import TutorialSurface from './components/tutorial/tutorialSurface';
 import TutorialSurface2 from './components/tutorial/tutorialSurface2';
-import CandleSurface from './components/cabin/candleSurface';
+import EscapedSurface from './components/exitPage/escapedSurface'
 
 export default class Exit extends React.Component {
   render() {
@@ -35,4 +35,5 @@ class ConnectedExit extends React.Component {
 AppRegistry.registerComponent('Exit', () => ConnectedExit);
 AppRegistry.registerComponent('TutorialSurface', () => TutorialSurface);
 AppRegistry.registerComponent('TutorialSurface2', () => TutorialSurface2);
-AppRegistry.registerComponent('FixedSurface', () => CandleSurface);
+AppRegistry.registerComponent('EscapedSurface', () => EscapedSurface);
+

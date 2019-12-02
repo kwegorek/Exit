@@ -11,6 +11,9 @@ class Tutorial extends React.Component {
     this.handleClickPlayGame = this.handleClickPlayGame.bind(this);
   }
   componentDidMount() {
+    //render tutorial surfaces 
+    SurfaceModule.changeSurfaceSize('TutorialSurface', 1000, 1000);
+    SurfaceModule.changeSurfaceSize('TutorialSurface2', 1000, 1000);
     console.log('tutorial component mounted');
   }
   handleClickPlayGame() {

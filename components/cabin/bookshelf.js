@@ -36,7 +36,7 @@ class Bookshelf extends React.Component {
                 <VrButton onClick={this.handleClick}>
                 <Entity source={{
                 obj: asset('3d_bookshelf/Old_Dusty_Bookshelf.obj'),
-               // mtl: asset('3d_bookshelf/Old_Dusty_Bookshelf.mtl'),
+               mtl: asset('3d_bookshelf/Old_Dusty_Bookshelf.mtl'),
                 }} style={{
                 transform: [
                     { translate: [-1, -5, -5] },
@@ -45,9 +45,9 @@ class Bookshelf extends React.Component {
                     { scaleZ: 0.023},
                 ],
                 color: 'white',
-                // opacity: opacityValue
-
                 }}      lit={true}>
+
+ 
 
                 </Entity>
                 </VrButton>
