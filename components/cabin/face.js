@@ -9,7 +9,7 @@ class Face extends React.Component {
         isFading: true,
         textFade: new Animated.Value(0),
         tableClue: false,
-        src:"Clues/tableClue.jpg"
+        tableSrc:"Clues/tableClue.jpg"
 
     };
 
@@ -26,26 +26,12 @@ class Face extends React.Component {
             });
         }, 200);
     }
-    // componentDidUpdate() {
-    //     Animated.timing(
-    //       this.state.textFade,
-    //       {
-    //         toValue: value,
-    //         duration: 3000,
-    //       }
-    //     ).start();
-    //   }
+
     handleClick=()=>{
         AudioModule.playOneShot({
             source: asset('Laugh.wav'),
           });
-        //  Animated.timing(
-        //     this.state.textFade,
-        //     {
-        //       toValue: 1,
-        //       duration: 3000,
-        //     }
-        //   ).start();
+
           this.setState({
             tableClue: true
           })
@@ -55,13 +41,7 @@ class Face extends React.Component {
         return (
 
             <View>
-                 {/* <Animated.Text style={[{
-    color: 'black',
-    fontSize: 6,
-    fontWeight: 'bold',
-  },{ opacity: this.state.textFade }]}>
-          {this.state.newInfo}
-        </Animated.Text> */}
+
                 <VrButton onClick={this.handleClick}>
                 <Entity source={{
                 obj: asset('face/151out.obj'),
@@ -81,22 +61,22 @@ class Face extends React.Component {
 
                 </Entity>
                 </VrButton>
-                {this.state.mirrorClue ?
+                {this.state.tableClue ?
         <Animated.Image
         style={{
           position:'absolute',
-          layoutOrigin: [0.5, 0.5, 0],
-          width: 2,
-          height: 2,
+          layoutOrigin: [-0.5, -0.5, 0],
+          width: 1,
+          height: 1,
           transform: [
 
-            {translateZ: -3},
+            {translateZ: 5},
 
-            {translateX: -1.0}
+            {translateX: 0}
           ],
           opacity: 1,
         }}
-        source={ asset(this.state.src)}
+        source={ asset(this.state.tableSrc)}
       />: null}
             </View>
         )

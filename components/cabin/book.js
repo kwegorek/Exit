@@ -54,14 +54,14 @@ mirrorClueSrc: 'Clues/mirrorClue.jpg'
       });
     }
   };
-  componentDidUpdate() {
-    const { close } = this.state;
-    const value = close ? 0 : 1;
-    Animated.timing(this.state.fade, {
-      toValue: value,
-      duration: 3000,
-    }).start();
-  }
+  // componentDidUpdate() {
+  //   const { close } = this.state;
+  //   const value = close ? 0 : 1;
+  //   Animated.timing(this.state.fade, {
+  //     toValue: value,
+  //     duration: 3000,
+  //   }).start();
+  // }
 
   handleClick = () => {
     this.props.disableButtons('tableButton', 'bookButton');
@@ -75,11 +75,11 @@ mirrorClueSrc: 'Clues/mirrorClue.jpg'
   };
 
   render() {
-    const { fade } = this.state;
+    // const { fade } = this.state;
     const disableStatus = !this.props.buttons.bookButton;
     return (
       <View>
-        <Animated.Text
+        {/* <Animated.Text
           style={[
             {
               color: 'black',
@@ -91,7 +91,7 @@ mirrorClueSrc: 'Clues/mirrorClue.jpg'
           ]}
         >
           {this.state.info}
-        </Animated.Text>
+        </Animated.Text> */}
         <VrButton onClick={this.handleClick} disabled={disableStatus}>
           <AnimatedEntity
             source={{
