@@ -53,6 +53,8 @@ export default function(tasksCompleted = INITIAL_STATE, action) {
       return tasksCompleted
     case ADD_ADDITIONAL_TASK:
       return {...tasksCompleted, additionalTask:action.bool};
+
+      
     default:
       return tasksCompleted;
   }
