@@ -8,6 +8,8 @@ export default class ExitPage extends React.Component {
     super(props);
   }
   componentDidMount() {
+    //return to center camera view [0,0,0] so that surfaces are visible
+    SurfaceModule.zoomCamera([0, 0, 0]);
     //mount winner surface
     SurfaceModule.changeSurfaceSize('EscapedSurface', 1000, 1000);
     console.log('escaped room component mounted');
@@ -16,5 +18,3 @@ export default class ExitPage extends React.Component {
     return null;
   }
 }
-
-

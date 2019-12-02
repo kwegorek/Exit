@@ -5,13 +5,13 @@ export default class SurfaceModule extends Module {
     super('SurfaceModule');
     this.canClick = false;
   }
-  zoomCamera(objLocation) {
+  zoomCamera(newLocation) {
     console.log('....zooming camera');
     const r360 = window.reactIns;
     let cameraPosition = r360.getCameraPosition();
-    cameraPosition[0] = objLocation[0] 
-    cameraPosition[1] = objLocation[1]
-    cameraPosition[2] = objLocation[2]
+    cameraPosition[0] = newLocation[0];
+    cameraPosition[1] = newLocation[1];
+    cameraPosition[2] = newLocation[2];
   }
   //attempting to disable button if camera is too far
   disableButton(objDistance) {
