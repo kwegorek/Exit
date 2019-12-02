@@ -20,8 +20,7 @@ export default class TutorialSurface extends React.Component {
         <View style={styles.greetingBox}>
           <Text style={styles.greeting}>
             Welcome to Exit - Escape The Room! Use your mouse or trackpad to
-            look around. Use your keyboard arrow keys to walk around. Find the
-            red button and press it to play!
+            look around.
           </Text>
         </View>
         <VrButton style={styles.rootButton} onClick={this.handleClick}>

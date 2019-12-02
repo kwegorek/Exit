@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Environment, asset } from 'react-360';
-import Mario from './Mario';
+import { View, NativeModules } from 'react-360';
+import Skeleton from './Skeleton';
 import Bookshelf from './bookshelf';
 import MagicSphere from './magicSphere';
 import FallingPicture from './fallingPicture'
@@ -17,9 +17,10 @@ import { connect } from 'react-redux';
 import CardBoard from './cardboard';
 import Compass from './compass';
 import MagicPiano from './magicPiano'
-import { NativeModules } from 'react-360';
+import Hat from './hat'
 const { SurfaceModule } = NativeModules;
 import MagicGlass from './magicGlass'
+
 
 class Cabin extends React.Component {
   constructor(props) {
@@ -27,28 +28,26 @@ class Cabin extends React.Component {
     this.handleClickEscapeKey = this.handleClickEscapeKey.bind(this);
   }
   async componentDidMount() {
-    await SurfaceModule.renderNavBar()
-    console.log("DO", window.document)
+    await SurfaceModule.renderNavBar();
+    console.log('DO', window.document);
     console.log('cabin mounted!');
-
   }
+  //pass this function to whiever 3d object leads to escape/winning
   handleClickEscapeKey() {
-    //unmount navbar
-    //mount winner surface
     this.props.changeLocation('cabinEscaped');
   }
   handleLostGame() {
-    //unmount navbar
     //mount loser surface
   }
   render() {
     return (
       <View>
-        <Mario handleClickEscapeKey={this.handleClickEscapeKey} />
+        <Skeleton />
+        <Hat handleClickEscapeKey={this.handleClickEscapeKey}/>
         <Bookshelf />
         <MagicSphere />
         <FallingPicture />
-        <Book/>
+        <Book />
         <Table />
         <Face/>
         <Chest/>

@@ -18,7 +18,7 @@ import {addAdditionalTask} from '../../store/tasksCompleted'
 let torchOffObj = 'light/Option_with_glass/2(torch-lamp).obj'
 let torchOffMtl = 'light/lamp_texture/Color.png'
 let torchOnObj = torchOffObj
-let torchOnMtl = 'light/lamp_texture/Color2.png' 
+let torchOnMtl = 'light/lamp_texture/Color2.png'
 let animatedValue = new Animated.Value(0)
 
 let AnimatedEntity = Animated.createAnimatedComponent(Entity);
@@ -28,8 +28,8 @@ class CardBoard extends React.Component {
   state = {
     yPosition: new Animated.Value(1)  ,
     timeOver:false,
-    textureObj: '3d_cardboard/cardboard.obj',
-    textureObjmtl:'3d_cardboard/cardboard.mtl',
+    textureObj: 'crystal/magic-sphere.obj',
+    textureObjmtl:'crystal/magic-sphere.mtl',
     renderTimerHint:false,
     torchObj:[torchOffObj,torchOffObj,torchOffObj ,torchOffObj ,torchOffObj ],
     torchmtl:[torchOffMtl ,torchOffMtl, torchOffMtl  ,torchOffMtl ,torchOffMtl ],
@@ -40,7 +40,7 @@ class CardBoard extends React.Component {
     console.log(this.state.props, 'props-box')
 
   }
-  
+
   startsMoving = () => {
 
     //additional task is rendered
@@ -58,7 +58,7 @@ class CardBoard extends React.Component {
           }
       ).start()
     }
-    
+
   startTimer = () => {
 
     if(!this.state.timeOver){
@@ -74,23 +74,23 @@ class CardBoard extends React.Component {
 
     let state2obj = [torchOnObj,torchOnObj,torchOffObj ,torchOffObj  ]
     let state2mtl = [torchOnMtl ,torchOnMtl  ,torchOffMtl  ,torchOffMtl ]
-    
+
     let state3obj = [torchOnObj,torchOnObj,torchOnObj ,torchOffObj  ]
     let state3mtl = [torchOnMtl ,torchOnMtl  ,torchOnMtl  ,torchOffMtl ]
 
     let state4obj = [torchOnObj,torchOnObj,torchOnObj ,torchOnObj ]
     let state4mtl = [torchOnMtl ,torchOnMtl  ,torchOnMtl  ,torchOnMtl  ]
 
- 
+
     while(time > 1){
-        time=time-3000; 
+        time=time-3000;
 
 
 
         if(time === 9001){
             console.log(time, 'zmiana 1')
         this.setState({
-            torchObj:state1obj,  
+            torchObj:state1obj,
             torchmtl: state1mtl
         })} else {
 
@@ -100,10 +100,10 @@ class CardBoard extends React.Component {
 
                 console.log(time, 'time2')
                 this.setState({
-                    torchObj:state2obj,  
+                    torchObj:state2obj,
                     torchmtl: state2mtl
                 })
-    
+
             } ,3000)
 
 
@@ -112,10 +112,10 @@ class CardBoard extends React.Component {
 
                 console.log(time, 'time3')
                 this.setState({
-                    torchObj:state3obj,  
+                    torchObj:state3obj,
                     torchmtl: state3mtl
                 })
-    
+
             } ,6000)
 
 
@@ -124,15 +124,15 @@ class CardBoard extends React.Component {
 
                 console.log(time, 'time4')
                 this.setState({
-                    torchObj:state4obj,  
+                    torchObj:state4obj,
                     torchmtl: state4mtl
                 })
-    
+
             } ,9000)
         }
 
 
-        
+
 
     }}else{
 
@@ -147,7 +147,7 @@ class CardBoard extends React.Component {
 
     return ( <View >
 
-      <VrButton onClick = {() => 
+      <VrButton onClick = {() =>
         this.startTimer()
       } >
       <AnimatedEntity onEnter={()=>this.startsMoving()}
@@ -163,22 +163,12 @@ class CardBoard extends React.Component {
         true
       }
       style = {
-        { // cardboardbox 
-          transform: [{
-              translate: [-10, -6, -1]
-            },
-            { 
-              translateY: cardboardYPosition
-            },
-            {
-              scaleX: 0.04
-            },
-            {
-              scaleY: 0.04
-            },
-            {
-              scaleZ: 0.04
-            },
+        { // cardboardbox
+          transform: [{ translate: [-500, -600 ,400] },
+          { scaleX: 0.0004 },
+          { scaleY: 0.0004 },
+          { scaleZ: 0.0004 },
+          // { rotateY: rotationValue}
           ],
 
 
@@ -196,7 +186,7 @@ class CardBoard extends React.Component {
         source = {
         {
             obj: asset(this.state.torchObj[3]),
-      
+
         }
         }
         lit = {
@@ -204,7 +194,7 @@ class CardBoard extends React.Component {
         }
 
         texture = {asset(this.state.torchmtl[3])}
-      
+
         style = {
         {
             transform: [{
@@ -231,14 +221,14 @@ class CardBoard extends React.Component {
             source = {
             {
                 obj: asset(this.state.torchObj[1]),
-    
+
             }
             }
             lit = {
             true
             }
             texture = {asset(this.state.torchmtl[1])}
-            
+
             style = {
             {
                 transform: [{
@@ -273,7 +263,7 @@ class CardBoard extends React.Component {
         true
         }
         texture = {asset(this.state.torchmtl[0])}
-   
+
         style = {
         {
             transform: [{
@@ -299,14 +289,14 @@ class CardBoard extends React.Component {
         source = {
         {
             obj: asset(this.state.torchObj[2]),
-      
+
         }
         }
         lit = {
         true
         }
         texture = {asset(this.state.torchmtl[2])}
-    
+
         style = {
         {
             transform: [{
@@ -328,11 +318,11 @@ class CardBoard extends React.Component {
         }
         />
 
- 
+
 
       </VrButton>
 
-      {this.state.renderTimerHint ? 
+      {this.state.renderTimerHint ?
              <Animated.Image
              style={{
                position:'absolute',
@@ -340,9 +330,9 @@ class CardBoard extends React.Component {
                width: 1,
                height: 1,
                transform: [
-     
+
                  {translateZ: -3},
-     
+
                  {translateX: 0}
                ],
                opacity: 1,
@@ -363,10 +353,10 @@ mapDispatchToProps = (dispatch) => {
   return {
 
     addAdditionalTask: (val) => dispatch(addAdditionalTask(val))
-    
+
   }
 
-  
+
 }
 
 

@@ -1,0 +1,27 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b
+
+newmtl witch_hat
+	Ns 9.999999
+	Ni 1.500000
+	Ka 0.588235 0.588235 0.588235
+	Kd 0.588235 0.588235 0.588235
+	Ks 0.090000 0.090000 0.090000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka maps\witch_hat(color).jpg
+	map_Kd maps\witch_hat(color).jpg
+	map_Ks maps\witch_hat(specular).jpg
+	map_bump maps\witch_hat(bump).jpg
+	bump maps\witch_hat(bump).jpg
+
+newmtl witch_skullband
+	Ns 12.000000
+	Ni 1.500000
+	Ka 0.588235 0.588235 0.588235
+	Kd 0.588235 0.588235 0.588235
+	Ks 0.090000 0.090000 0.090000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka maps\witch_skullband(color).jpg
+	map_Kd maps\witch_skullband(color).jpg
+	map_Ks maps\witch_skullband(specular).jpg
+	map_bump maps\witch_skullband(bump).jpg
+	bump maps\witch_skullband(bump).jpg
