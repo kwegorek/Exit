@@ -20,7 +20,7 @@ class Location extends React.Component {
   render() {
     const location = this.props.location;
     if (location === 'tutorial') {
-      this.envChanger('360_world.jpg');
+      this.envChanger('checkered.png');
       return <Tutorial />;
     } else if (location === 'cabin') {
       this.envChanger('360_cabin.jpg');
