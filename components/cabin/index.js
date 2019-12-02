@@ -7,6 +7,9 @@ import FallingPicture from './fallingPicture'
 import Book from './book'
 import Table from './Table'
 import AncientPaper from './ancientPaper'
+import Face from './face'
+import Chest from './chest'
+import Frame from './frame'
 import { changeLocation } from '../../store/location';
 import { connect } from 'react-redux';
 import { NativeModules } from 'react-360';
@@ -41,6 +44,9 @@ class Cabin extends React.Component {
         <FallingPicture />
         <Book/>
         <Table />
+        <Face/>
+        <Chest/>
+        <Frame/>
       </View>
     );
   }

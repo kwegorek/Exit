@@ -6,25 +6,25 @@ import Entity from 'Entity';
 const AnimatedEntity = Animated.createAnimatedComponent(Entity);
 
 
-  
+
 class Table extends React.Component {
     state = {
-        
+
     };
 
     componentDidMount(){
-  
+
     }
 
 
     render() {
-        
+
 
         return (
             <View>
                 <VrButton>
-                    <AnimatedEntity 
-                    
+                    <AnimatedEntity
+
                     source={{
                     obj: asset('wooden-coffe-table-obj/wooden-coffe-table.obj'),
                     mtl: asset('wooden-coffe-table-obj/wooden-coffe-table.mtl'),
@@ -32,12 +32,12 @@ class Table extends React.Component {
                     lit={true}
                     style={{
                     transform: [
-                        { translate: [-10, -9, -2] },
-                        { scaleX: 2 },
-                        { scaleY: 2 },
-                        { scaleZ: 2 },
+                        { translate: [-600, -800, -100] },
+                        { scaleX: 200 },
+                        { scaleY: 200 },
+                        { scaleZ: 200 },
                     ],
-                
+
                     }}
                         />
 

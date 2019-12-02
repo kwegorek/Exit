@@ -45,8 +45,6 @@ class Bookshelf extends React.Component {
                     { scaleZ: 0.023},
                 ],
                 color: 'white',
-                // opacity: opacityValue
-
                 }}      lit={true}>
 
                 </Entity>
