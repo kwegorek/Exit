@@ -3,6 +3,7 @@ import { View, Environment, asset, NativeModules, VrButton } from 'react-360';
 import { changeLocation } from '../../store/location';
 import { connect } from 'react-redux';
 import StartGameButton from './startGameButton';
+import Table from './table';
 const { SurfaceModule } = NativeModules;
 
 class Tutorial extends React.Component {
@@ -26,6 +27,7 @@ class Tutorial extends React.Component {
   render() {
     return (
       <View>
+        <Table />
         <StartGameButton handleClickPlayGame={this.handleClickPlayGame} />
       </View>
     );

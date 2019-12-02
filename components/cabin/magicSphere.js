@@ -1,95 +1,372 @@
+/* eslint-disable no-loop-func */
 import React from 'react';
-import {  asset, Animated, View,  VrButton, PointLight } from 'react-360';
+import {
+  Easing
+} from 'react-native';
+import {
+  asset,
+  Animated,
+  View,
+  VrButton,
+} from 'react-360';
 import Entity from 'Entity';
+import { connect } from 'react-redux';
+import {addAdditionalTask} from '../../store/tasksCompleted'
+let torchOffObj = 'light/Option_with_glass/2(torch-lamp).obj'
+let torchOffMtl = 'light/lamp_texture/Color.png'
+let torchOnObj = torchOffObj
+let torchOnMtl = 'light/lamp_texture/Color2.png'
+let animatedValue = new Animated.Value(0)
 
-const AnimatedEntity = Animated.createAnimatedComponent(Entity);
-
+let AnimatedEntity = Animated.createAnimatedComponent(Entity);
 
 class MagicSphere extends React.Component {
 
-    state = {
-        rotation: new Animated.Value(0),
-        isRotating: true
-    };
+  state = {
+    yPosition: new Animated.Value(1)  ,
+    timeOver:false,
+    textureObj: 'crystal/magic-sphere.obj',
+    textureObjmtl:'crystal/magic-sphere.mtl',
+    renderTimerHint:false,
+    torchObj:[torchOffObj,torchOffObj,torchOffObj ,torchOffObj ,torchOffObj ],
+    torchmtl:[torchOffMtl ,torchOffMtl, torchOffMtl  ,torchOffMtl ,torchOffMtl ],
+    rotation: new Animated.Value(0),
+    isRotating: true
+  };
 
-    componentDidMount(){
-       this.startRotate()
-    }
-    startRotate = () => {
-        this.state.rotation.setValue(0)
-        Animated.timing(this.state.rotation,
+  componentDidMount() {
+    this.startRotate()
+    console.log(this.state.props, 'props-box')
+
+  }
+  startRotate = () => {
+    this.state.rotation.setValue(0)
+    Animated.timing(this.state.rotation,
+        {
+            toValue: 360,
+            duration: 10000,
+        }
+    ).start(this.startRotate)
+}
+
+  // startsMoving = () => {
+
+  //   //additional task is rendered
+  //   this.props.addAdditionalTask(true)
+
+  //   this.state.yPosition.setValue(0)
+
+  //       Animated.timing(
+  //         this.state.yPosition,
+
+  //         {
+  //           toValue: 1,
+  //           duration: 1000,
+  //           easing:Easing.inOut(Easing.bounce)
+  //         }
+  //     ).start()
+  //   }
+
+  startTimer = () => {
+
+    if(!this.state.timeOver){
+
+    this.setState({
+      timeOver:true,
+    renderTimerHint:true})
+
+    let time = 12001
+
+    let state1obj = [torchOnObj,torchOffObj,torchOffObj ,torchOffObj ]
+    let state1mtl = [torchOnMtl ,torchOffMtl  ,torchOffMtl  ,torchOffMtl ]
+
+    let state2obj = [torchOnObj,torchOnObj,torchOffObj ,torchOffObj  ]
+    let state2mtl = [torchOnMtl ,torchOnMtl  ,torchOffMtl  ,torchOffMtl ]
+
+    let state3obj = [torchOnObj,torchOnObj,torchOnObj ,torchOffObj  ]
+    let state3mtl = [torchOnMtl ,torchOnMtl  ,torchOnMtl  ,torchOffMtl ]
+
+    let state4obj = [torchOnObj,torchOnObj,torchOnObj ,torchOnObj ]
+    let state4mtl = [torchOnMtl ,torchOnMtl  ,torchOnMtl  ,torchOnMtl  ]
+
+
+    while(time > 1){
+        time=time-3000;
+
+
+
+        if(time === 9001){
+            console.log(time, 'zmiana 1')
+        this.setState({
+            torchObj:state1obj,
+            torchmtl: state1mtl
+        })} else {
+
+
+        setTimeout(()=>{
+
+
+                console.log(time, 'time2')
+                this.setState({
+                    torchObj:state2obj,
+                    torchmtl: state2mtl
+                })
+
+            } ,3000)
+
+
+            setTimeout(()=>{
+
+
+                console.log(time, 'time3')
+                this.setState({
+                    torchObj:state3obj,
+                    torchmtl: state3mtl
+                })
+
+            } ,6000)
+
+
+            setTimeout(()=>{
+
+
+                console.log(time, 'time4')
+                this.setState({
+                    torchObj:state4obj,
+                    torchmtl: state4mtl
+                })
+
+            } ,9000)
+        }
+
+
+
+
+    }}else{
+
+    return}
+
+
+  }
+
+
+  render() {
+    const rotationValue = this.state.rotation
+    return ( <View >
+
+      <VrButton onClick = {() =>
+        this.startTimer()
+      } >
+      <AnimatedEntity onEnter={this.startRotate}
+
+      source = {
+        {
+          obj: asset(this.state.textureObj),
+          mtl: asset(this.state.textureObjmtl),
+        }
+      }
+
+      lit = {
+        true
+      }
+      style = {
+        { // cardboardbox
+          transform: [{ translate: [-500, -600 ,400] },
+          { scaleX: 0.0004 },
+          { scaleY: 0.0004 },
+          { scaleZ: 0.0004 },
+          { rotateY: rotationValue}
+          ],
+
+
+        }
+      }
+      />
+
+      </VrButton>
+
+
+      <VrButton>
+
+        <AnimatedEntity
+
+        source = {
+        {
+            obj: asset(this.state.torchObj[3]),
+
+        }
+        }
+        lit = {
+        true
+        }
+
+        texture = {asset(this.state.torchmtl[3])}
+
+        style = {
+        {
+            transform: [{
+                translate: [-60, -50, 100]
+            },
             {
-                toValue: 360,
-                duration: 10000,
+                scaleX: 1.00
+            },
+            {
+                scaleY: 1.00
+            },
+            {
+                scaleZ: 1.00
+            },
+            ],
+
+
+        }
+        }
+        />
+
+            <AnimatedEntity
+
+            source = {
+            {
+                obj: asset(this.state.torchObj[1]),
+
             }
-        ).start(this.startRotate)
-    }
+            }
+            lit = {
+            true
+            }
+            texture = {asset(this.state.torchmtl[1])}
 
-    stopRotate = () => {
-        console.log("stop rotate")
-        // this.setState({
-        //         rotation: new Animated.Value(0),
-        //         isRotating: false
-        //     })
-    }
-    // startRotate = () => {
-    //     this.setState({
-    //         rotation: new Animated.Value(0),
-    //         isRotating: true
-    //     })
-    //     this.rotate(true)
-    // }
-    // rotate = (forceRotate = false) => {
-    //     console.log(JSON.stringify(forceRotate))
-    //     if (forceRotate === true || this.state.isRotating) {
-    //         const newValue = this.state.rotation.getValue() === 360 ? 0 : 360;
-    //         console.log("->rotate", newValue)
-    //         Animated.timing(this.state.rotation,
-    //             {
-    //                 toValue: newValue,
-    //                 duration: 10000,
-    //             }
-    //         ).start(this.rotate)
-    //     } else {
-    //         console.log("stopping")
-    //     }
-    // }
-    // stopRotate = () => {
-    //     console.log("stop rotate")
-    //     this.setState({
-    //             rotation: new Animated.Value(0),
-    //             isRotating: false
-    //         })
-    // }
-
-    render() {
-        const rotationValue = this.state.rotation
-        return (
-
-            <View>
-                <AnimatedEntity onEnter={this.startRotate}
-                 onExit={this.stopRotate}
-
-                source={{
-                obj: asset('crystal/magic-sphere.obj'),
-                mtl: asset('crystal/magic-sphere.mtl'),
-                }}
-                lit={true}
-                style={{
-                transform: [
-                    { translate: [-500, -800 ,400] },
-                    { scaleX: 0.0004 },
-                    { scaleY: 0.0004 },
-                    { scaleZ: 0.0004 },
-                    { rotateY: rotationValue}
+            style = {
+            {
+                transform: [{
+                    translate: [60,-50, -100]
+                },
+                {
+                    scaleX: 1.00
+                },
+                {
+                    scaleY: 1.00
+                },
+                {
+                    scaleZ: 1.00
+                },
                 ],
 
 
-                }}
-                    />
-            </View>
-        )
-    }
+            }
+            }
+            />
+
+
+        <AnimatedEntity
+
+        source = {
+        {
+            obj: asset(this.state.torchObj[0]),
+
+        }
+        }
+        lit = {
+        true
+        }
+        texture = {asset(this.state.torchmtl[0])}
+
+        style = {
+        {
+            transform: [{
+                translate: [-250, -80, -150]
+            },
+            {
+                scaleX: 1.00
+            },
+            {
+                scaleY: 1.00
+            },
+            {
+                scaleZ: 1.00
+            },
+            ],
+
+
+        }
+        }
+        />
+        <AnimatedEntity
+
+        source = {
+        {
+            obj: asset(this.state.torchObj[2]),
+
+        }
+        }
+        lit = {
+        true
+        }
+        texture = {asset(this.state.torchmtl[2])}
+
+        style = {
+        {
+            transform: [{
+                translate: [190, -80, 150]
+            },
+            {
+                scaleX: 1.00
+            },
+            {
+                scaleY: 1.00
+            },
+            {
+                scaleZ: 1.00
+            },
+            ],
+
+
+        }
+        }
+        />
+
+
+
+      </VrButton>
+
+      {this.state.renderTimerHint ?
+             <Animated.Image
+             style={{
+               position:'absolute',
+               layoutOrigin: [0.5, 0.5, 0],
+               width: 1,
+               height: 1,
+               transform: [
+
+                 {translateZ: -3},
+
+                 {translateX: 0}
+               ],
+               opacity: 1,
+             }}
+             source={ asset('2d_hints/timer_on.jpg') }
+           />: null}
+
+
+
+      </View>
+    )
+  }
 }
 
-export default MagicSphere
+
+mapDispatchToProps = (dispatch) => {
+
+  return {
+
+    addAdditionalTask: (val) => dispatch(addAdditionalTask(val))
+
+  }
+
+
+}
+
+
+export default connect(null, mapDispatchToProps)(MagicSphere);
+
+
