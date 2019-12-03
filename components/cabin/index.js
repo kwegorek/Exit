@@ -16,7 +16,7 @@ import { changeLocation } from '../../store/location';
 import { connect } from 'react-redux';
 import Compass from './compass';
 import MagicPiano from './magicPiano'
-import Hat from './hat'
+// import Hat from './hat'
 const { SurfaceModule } = NativeModules;
 import MagicGlass from './magicGlass'
 
@@ -42,7 +42,7 @@ class Cabin extends React.Component {
     return (
       <View>
         <Skeleton />
-        <Hat handleClickEscapeKey={this.handleClickEscapeKey}/>
+        {/* <Hat handleClickEscapeKey={this.handleClickEscapeKey}/> */}
         <Bookshelf />
         <MagicSphere />
         <FallingPicture />
