@@ -55,7 +55,7 @@ class Cabin extends React.Component {
         <Curtain/>
         <Compass/>
         <MagicPiano/>
-        <AncientPaper/>
+        {/* <AncientPaper/> */}
         <MagicGlass/>
       </View>
     );
