@@ -2,14 +2,19 @@
  * ACTION TYPES
  */
 const DISABLE_BUTTONS = 'DISABLE_BUTTONS';
+const UPDATEL_COMPLETED = 'UPDATEL_COMPLETED';
 
 /**
  * INITIAL STATE
  */
 const INITIAL_STATE = {
   bookButton: true,
-  tableButton: false,
+  faceButton : false,
+  tableButton: true,
+  chestButton: false,
   hatButton: false,
+  allCompleted: true, //set to true temporarily ,
+  exitButton: false
 };
 
 /**
@@ -23,6 +28,14 @@ export const disableAllExcept = (buttonToEnable, buttonToDisable) => {
   };
 };
 
+//use update in the last component to just update allCpomplted to true 
+export const updateCompleted = () => {
+  return {
+    type: UPDATE_COMPLETED ,
+   
+  }
+}
+
 /**
  * REDUCER
  */
@@ -33,6 +46,8 @@ export default function(buttons = INITIAL_STATE, action) {
       newState[action.buttonToEnable] = true;
       newState[action.buttonToDisable] = false;
       return newState;
+    case UPDATEL_COMPLETED:
+      return {...buttons,allCompleted:true };
     default:
       return buttons;
   }

@@ -255,12 +255,15 @@ class MagicSphere extends React.Component {
       </View>
     );
   }
+
 }
 
 mapDispatchToProps = dispatch => {
   return {
+
     addAdditionalTask: val => dispatch(addAdditionalTask(val)),
   };
 };
+
 
 export default connect(null, mapDispatchToProps)(MagicSphere);
