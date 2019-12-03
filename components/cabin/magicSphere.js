@@ -25,7 +25,7 @@ class MagicSphere extends React.Component {
   };
 
   componentDidMount() {
-
+    this.startRotateCrystal()
   }
 
 
@@ -38,8 +38,17 @@ class MagicSphere extends React.Component {
                 duration: 6000,
             }
         ).start(this.startRotate)
-    } 
+    }
+    startRotateCrystal= () => {
 
+      this.state.rotation.setValue(0)
+      Animated.timing(this.state.rotation,
+          {
+              toValue: 360,
+              duration: 6000,
+          }
+      ).start(this.startRotate)
+  }
 
   startTimer = () => {
     if (!this.state.timeOver) {
@@ -106,8 +115,30 @@ class MagicSphere extends React.Component {
     const rotationValue = this.state.rotation;
     return (
       <View>
+                <VrButton onEnter={() => this.startRotateCrystal()}>
+                <AnimatedEntity
+                 onExit={this.stopRotate}
+
+                source={{
+                obj: asset('crystal/magic-sphere.obj'),
+                mtl: asset('crystal/magic-sphere.mtl'),
+                }}
+                lit={true}
+                style={{
+                transform: [
+                    { translate:  [-500, -600 ,400] },
+                    { scaleX: 0.0004 },
+                    { scaleY: 0.0004},
+                    { scaleZ: 0.0004 },
+                    { rotateY: rotationValue}
+                ],
+
+
+                }}
+                    />
+                </VrButton>
                 <VrButton onClick={() => this.startRotate()}>
-                <AnimatedEntity 
+                <AnimatedEntity
                  onExit={this.stopRotate}
 
                 source={{
@@ -128,7 +159,6 @@ class MagicSphere extends React.Component {
                 }}
                     />
                 </VrButton>
-
         <VrButton>
           <AnimatedEntity
             source={{

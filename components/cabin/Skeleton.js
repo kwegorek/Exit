@@ -13,7 +13,7 @@ const { SurfaceModule } = NativeModules;
     this.handleClickZoom = this.handleClickZoom.bind(this);
   }
   handleClickZoom() {
-    this.props.disableButtons('exitButton','skeletonButton');
+    this.props.disableButtons('allCompleted','skeletonButton');
     console.log('clicked skeleton');
     //change camera position to clicked obj's location
     SurfaceModule.zoomCamera([100, 0, -70]);

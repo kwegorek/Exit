@@ -21,10 +21,12 @@ class Book extends React.Component {
       ]
     },
     clickedOnce: false,
-    zPosition: new Animated.Value(1),
+    zPosition: new Animated.Value(700),
   };
   moveToSkeleton = () => {
     console.log("trying to move to skeleton")
+
+    console.log(
     Animated.timing(
                   this.state.zPosition,
                   {
@@ -32,19 +34,8 @@ class Book extends React.Component {
                     duration: 5000,
                     delay: 100,
                     easing: Easing.quad
-                  }).start(()=> { this.setState({
-                    textureObj: "3d_hat/witch_hat(POSER).obj",
-                    textureObjmtl: "3d_hat/witch_hat.mtl",
-                    styles: {
-                      transform: [
-                        { translate: [200, -500, 700] },
-                        { translateZ: this.state.zPosition },
-                        { scaleX: 700.0 },
-                        { scaleY: 700.0 },
-                        { scaleZ: 700.0 }
-                      ]
-                    }
-                })})
+                  }).start())
+
 
   };
   openOrclose = () => {
@@ -62,21 +53,25 @@ class Book extends React.Component {
           ]
         }
       });
-
+this.moveToSkeleton()
   };
 
   handleClick = () => {
-    this.props.disableButtons('skeletonButton', 'chestButton');
+ if(!this.state.clickedOnce){
     this.openOrclose();
     this.state.clickedOnce = true;
-    if (this.state.clickedOnce) this.moveToSkeleton();
+ }
+    else{
+      // this.moveToSkeleton();
+      this.props.disableButtons('skeletonButton', 'chestButton');}
+
   };
 
   render() {
     const disableStatus = !this.props.buttons.chestButton
     return (
       <View>
-        <VrButton onClick={this.handleClick} disabled={disableStatus}>
+        <VrButton onClick={this.handleClick} disabled={disableStatus} >
           <AnimatedEntity
             source={{
               obj: asset(this.state.textureObj),
