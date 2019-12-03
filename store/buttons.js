@@ -10,10 +10,10 @@ const UPDATEL_COMPLETED = 'UPDATEL_COMPLETED';
 const INITIAL_STATE = {
   bookButton: true,
   faceButton : false,
-  tableButton: true,
+  tableButton: false,
   chestButton: false,
-  hatButton: false,
-  allCompleted: true, //set to true temporarily ,
+  skeletonButton: false,
+  allCompleted: false, //set to true temporarily ,
   exitButton: false
 };
 
@@ -28,11 +28,11 @@ export const disableAllExcept = (buttonToEnable, buttonToDisable) => {
   };
 };
 
-//use update in the last component to just update allCpomplted to true 
+//use update in the last component to just update allCpomplted to true
 export const updateCompleted = () => {
   return {
     type: UPDATE_COMPLETED ,
-   
+
   }
 }
 
