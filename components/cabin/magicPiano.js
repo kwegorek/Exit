@@ -285,17 +285,17 @@ class MagicPiano extends React.Component {
 
     })
 
-
+    this.props.disableButtons('chestButton', 'tableButton');
 
   }
 
 
 
   render() {
-
+    const disableStatus = !this.props.buttons.tableButton
     return ( <View >
-   
-      <VrButton onClick={this.tableClicked}>
+
+      <VrButton onClick={this.tableClicked} disabled={disableStatus}>
       <AnimatedEntity
 
       source = {
