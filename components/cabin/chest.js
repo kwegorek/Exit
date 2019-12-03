@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 
 const AnimatedEntity = Animated.createAnimatedComponent(Entity);
 
-class Book extends React.Component {
+class Chest extends React.Component {
   state = {
     close: true,
     textureObj: "chest/chest1/treasure-chest-model.obj",
@@ -98,4 +98,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default  connect(mapStateToProps, mapDispatchToProps)(Book);
+export default  connect(mapStateToProps, mapDispatchToProps)(Chest);
