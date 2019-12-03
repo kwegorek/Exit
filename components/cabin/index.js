@@ -8,7 +8,7 @@ import Book from './book'
 import Table from './Table'
 import Skull from './skull'
 import AncientPaper from './ancientPaper'
-import Painting from './painting'
+import Curtain from './curtain'
 import Face from './face'
 import Chest from './chest'
 import Frame from './frame'
@@ -52,7 +52,7 @@ class Cabin extends React.Component {
         <Chest/>
         <Frame/>
         <Skull/>
-        <Painting/>
+        <Curtain/>
         <Compass/>
         <MagicPiano/>
         <AncientPaper/>

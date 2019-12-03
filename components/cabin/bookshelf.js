@@ -46,7 +46,7 @@ class Bookshelf extends React.Component {
             }}
             style={{
               transform: [
-                { translate: [-100, -650, -750] },
+                { translate: [-100, -650, -730] },
                 { scaleX: 3 },
                 { scaleY: 3 },
                 { scaleZ: 3 },

@@ -31,6 +31,7 @@ export default styles = StyleSheet.create({
     backgroundColor: 'green',
     justifyContent: 'center',
     alignItems: 'center',
+    borderRadius: 10
   },
   root: {
     flexDirection: 'column',

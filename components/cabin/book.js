@@ -16,6 +16,7 @@ class Book extends React.Component {
   state = {
     close: true,
     textureObj:
+
       "ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/ChurchBookClosedV2.obj",
     textureObjmtl:
       "ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/ChurchBookClosedV2.mtl",
@@ -23,6 +24,7 @@ class Book extends React.Component {
     fade: new Animated.Value(0),
     mirrorClue: false,
     mirrorClueSrc: "Clues/mirrorClue.jpg"
+
   };
   openOrclose = () => {
     if (this.state.close === true) {
@@ -54,7 +56,9 @@ class Book extends React.Component {
       source: asset("magic.wav")
     });
     this.setState({
-      mirrorClue: true
+
+     mirrorClue: true
+
     });
   };
 
@@ -88,6 +92,7 @@ class Book extends React.Component {
               height: 2,
               transform: [{ translateZ: -3 }, { translateX: -1.0 }],
               opacity: 1
+
             }}
             source={asset(this.state.mirrorClueSrc)}
           />
