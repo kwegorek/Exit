@@ -3,7 +3,7 @@ import { View, NativeModules } from 'react-360';
 import Skeleton from './Skeleton';
 import Bookshelf from './bookshelf';
 import MagicSphere from './magicSphere';
-// import FallingPicture from './fallingPicture'
+import FallingPicture from './fallingPicture'
 import Book from './book'
 import Table from './Table'
 import Skull from './skull'
@@ -46,7 +46,7 @@ class Cabin extends React.Component {
         <Hat handleClickEscapeKey={this.handleClickEscapeKey}/>
         <Bookshelf />
         <MagicSphere />
-     
+        <FallingPicture />
         <Book />
         <Table />
         <Face/>

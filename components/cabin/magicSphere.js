@@ -9,21 +9,24 @@ class MagicSphere extends React.Component {
 
     state = {
         rotation: new Animated.Value(0),
-        isRotating: true
+        inMotion: false
     };
 
-    componentDidMount(){
-       this.startRotate()
-    }
-    startRotate = () => {
-        this.state.rotation.setValue(0)
-        Animated.timing(this.state.rotation,
-            {
-                toValue: 360,
-                duration: 10000,
-            }
-        ).start(this.startRotate)
-    }
+    // componentDidMount(){
+    //    this.startRotate()
+    // }
+    startRotateOrStop = () => {
+        if(this.state.inMotion === false ) {
+            console.log("start rotate")
+            this.state.rotation.setValue(0)
+            Animated.timing(this.state.rotation,
+                {
+                    toValue: 360,
+                    duration: 6000,
+                }
+            ).start(this.startRotateOrStop)
+        } 
+    } 
 
     stopRotate = () => {
         console.log("stop rotate")
@@ -54,39 +57,41 @@ class MagicSphere extends React.Component {
     //         console.log("stopping")
     //     }
     // }
-    // stopRotate = () => {
-    //     console.log("stop rotate")
-    //     this.setState({
-    //             rotation: new Animated.Value(0),
-    //             isRotating: false
-    //         })
-    // }
+    stopRotate = () => {
+        console.log("stop rotate")
+        this.setState({
+                rotation: new Animated.Value(0),
+                isRotating: false
+            })
+    }
 
     render() {
         const rotationValue = this.state.rotation
         return (
 
             <View>
-                <AnimatedEntity onEnter={this.startRotate}
+                <VrButton onClick={() => this.startRotateOrStop()}>
+                <AnimatedEntity 
                  onExit={this.stopRotate}
 
                 source={{
-                obj: asset('crystal/magic-sphere.obj'),
-                mtl: asset('crystal/magic-sphere.mtl'),
+                obj: asset('spider/Only_Spider_with_Animations_Export.obj'),
+                mtl: asset('spider/Only_Spider_with_Animations_Export.mtl'),
                 }}
                 lit={true}
                 style={{
                 transform: [
-                    { translate: [-500, -800 ,400] },
-                    { scaleX: 0.0004 },
-                    { scaleY: 0.0004 },
-                    { scaleZ: 0.0004 },
+                    { translate: [0, -5, -3] },
+                    { scaleX: 0.008 },
+                    { scaleY: 0.008 },
+                    { scaleZ: 0.008 },
                     { rotateY: rotationValue}
                 ],
 
 
                 }}
                     />
+                </VrButton>
             </View>
         )
     }

@@ -2,6 +2,7 @@
  * ACTION TYPES
  */
 const DISABLE_BUTTONS = 'DISABLE_BUTTONS';
+const GET_ALL_COMPLETED = 'GET_ALL_COMPLETED';
 
 /**
  * INITIAL STATE
@@ -10,6 +11,7 @@ const INITIAL_STATE = {
   bookButton: true,
   tableButton: false,
   hatButton: false,
+  allCompleted: true
 };
 
 /**
@@ -22,6 +24,11 @@ export const disableAllExcept = (buttonToEnable, buttonToDisable) => {
     buttonToDisable,
   };
 };
+export const getAllCompleted = () => {
+  return {
+    type: GET_ALL_COMPLETED,
+  }
+}
 
 /**
  * REDUCER
@@ -33,6 +40,8 @@ export default function(buttons = INITIAL_STATE, action) {
       newState[action.buttonToEnable] = true;
       newState[action.buttonToDisable] = false;
       return newState;
+    case GET_ALL_COMPLETED:
+      return {...buttons};
     default:
       return buttons;
   }
