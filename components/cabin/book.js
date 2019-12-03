@@ -25,8 +25,8 @@ class Book extends React.Component {
     close: true,
     textureObj:
       "ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/ChurchBookClosedV2.obj",
-  //    textureObjmtl:
-  //  "ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/ChurchBookClosedV2.mtl",
+     textureObjmtl:
+    "ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/ChurchBookClosedV2.mtl",
 info :'',
 fade: new Animated.Value(0),
 mirrorClue: false,
