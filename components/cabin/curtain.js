@@ -20,7 +20,6 @@ class Curtain extends React.Component {
               { scaleY: 440 },
               { scaleZ: 440 },
             ],
-            color: 'green',
           }}
           lit={true}
         ></Entity>
