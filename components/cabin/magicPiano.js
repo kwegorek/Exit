@@ -274,16 +274,17 @@ class MagicPiano extends React.Component {
         this
       );
     });
-
+    this.props.disableButtons('chestButton', 'tableButton');
     this.setState({
       currentlyDiplayedHint: '3d_hintboard/flippedHint.png',
     });
   };
 
   render() {
+    const disableStatus = !this.props.buttons.tableButton
     return (
       <View>
-        <VrButton onClick={this.tableClicked}>
+        <VrButton onClick={this.tableClicked} disabled={disableStatus}>
           <AnimatedEntity
             source={{
               obj: asset(this.state.tableAsset),
