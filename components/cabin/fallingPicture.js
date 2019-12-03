@@ -79,7 +79,7 @@ class FallingPicture extends React.Component {
                 lit={true}
                 style={{
                 transform: [
-                    { translate: [-600, -100, 800] },
+                    { translate: [-600, -100, 500] },
                     { translateY: yPosition },
                     { rotateY: 150 },
                     { scaleX: 5 },
