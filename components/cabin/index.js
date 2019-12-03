@@ -3,7 +3,7 @@ import { View, NativeModules } from 'react-360';
 import Skeleton from './Skeleton';
 import Bookshelf from './bookshelf';
 import MagicSphere from './magicSphere';
-import FallingPicture from './fallingPicture'
+import FallingCurtain from './fallingCurtain'
 import Book from './book'
 import Table from './Table'
 import Skull from './skull'
@@ -42,10 +42,10 @@ class Cabin extends React.Component {
     return (
       <View>
         <Skeleton />
-        {/* <Hat handleClickEscapeKey={this.handleClickEscapeKey}/> */}
+        {/* <Hat /> */}
         <Bookshelf />
         <MagicSphere />
-        <FallingPicture />
+        <FallingCurtain handleClickEscapeKey={this.handleClickEscapeKey} />
         <Book />
         <Table />
         <Face/>
@@ -55,7 +55,7 @@ class Cabin extends React.Component {
         <Curtain/>
         <Compass/>
         <MagicPiano/>
-        <AncientPaper/>
+        {/* <AncientPaper/> */}
         <MagicGlass/>
       </View>
     );

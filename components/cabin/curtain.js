@@ -1,6 +1,6 @@
-import React from 'react';
-import { asset, View, NativeModules } from 'react-360';
-import Entity from 'Entity';
+import React from "react";
+import { asset, View, NativeModules } from "react-360";
+import Entity from "Entity";
 const { AudioModule } = NativeModules;
 class Curtain extends React.Component {
   render() {
@@ -8,8 +8,8 @@ class Curtain extends React.Component {
       <View>
         <Entity
           source={{
-            obj: asset('curtain-obj/curtain.obj'),
-            mtl: asset('curtain-obj/curtain.mtl'),
+            obj: asset("curtain-obj/curtain.obj"),
+            mtl: asset("curtain-obj/curtain.mtl")
           }}
           style={{
             transform: [
@@ -18,8 +18,8 @@ class Curtain extends React.Component {
               { rotateX: 0 },
               { scaleX: 440 },
               { scaleY: 440 },
-              { scaleZ: 440 },
-            ],
+              { scaleZ: 440 }
+            ]
           }}
           lit={true}
         ></Entity>

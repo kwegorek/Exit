@@ -22,7 +22,9 @@ class Book extends React.Component {
     info: "",
     fade: new Animated.Value(0),
     mirrorClue: false,
-    mirrorClueSrc: "Clues/mirrorClue.jpg"
+    mirrorClueSrc: "Clues/mirrorClue.jpg",
+    currentlyDisplayedHint: '2d_intro/intro_page.jpg',
+    introClueState: true
   };
   openOrclose = () => {
     if (this.state.close === true) {
@@ -54,8 +56,10 @@ class Book extends React.Component {
       source: asset("magic.wav")
     });
     this.setState({
-      mirrorClue: true
+      mirrorClue: true,
+      introClueState: false
     });
+
   };
 
   render() {
@@ -95,6 +99,18 @@ class Book extends React.Component {
             source={asset(this.state.mirrorClueSrc)}
           />
         ) : null}
+       {this.state.introClueState ?
+       <Animated.Image
+          style={{
+            position: 'absolute',
+            layoutOrigin: [0.5, 0.5, 0],
+            width: 90,
+            height: 60,
+            transform: [{ translateZ: 170 }, { translateX: 60 }],
+            opacity: 1,
+          }}
+          source={asset(this.state.currentlyDisplayedHint)}
+        />:null}
       </View>
     );
   }

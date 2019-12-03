@@ -336,7 +336,7 @@ class MagicPiano extends React.Component {
           </VrButton>
         ))}
 
-        <Animated.Image
+        {/* <Animated.Image
           style={{
             position: 'absolute',
             layoutOrigin: [0.5, 0.5, 0],
@@ -346,7 +346,7 @@ class MagicPiano extends React.Component {
             opacity: 1,
           }}
           source={asset(this.state.currentlyDiplayedHint)}
-        />
+        /> */}
       </View>
     );
   }
