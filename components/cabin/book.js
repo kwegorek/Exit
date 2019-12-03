@@ -24,13 +24,13 @@ class Book extends React.Component {
     //starting value/initial value for y
     close: true,
     textureObj:
-      "ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/ChurchBookClosedV2.obj",
-  //    textureObjmtl:
-  //  "ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/ChurchBookClosedV2.mtl",
-info :'',
-fade: new Animated.Value(0),
-mirrorClue: false,
-mirrorClueSrc: 'Clues/mirrorClue.jpg'
+      'ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/ChurchBookClosedV2.obj',
+    //    textureObjmtl:
+    //  "ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/ChurchBookClosedV2.mtl",
+    info: '',
+    fade: new Animated.Value(0),
+    mirrorClue: false,
+    mirrorClueSrc: 'Clues/mirrorClue.jpg',
   };
   openOrclose = () => {
     if (this.state.close === true) {
@@ -70,8 +70,8 @@ mirrorClueSrc: 'Clues/mirrorClue.jpg'
       source: asset('magic.wav'),
     });
     this.setState({
-      mirrorClue: true
-    })
+      mirrorClue: true,
+    });
   };
 
   render() {
@@ -109,23 +109,19 @@ mirrorClueSrc: 'Clues/mirrorClue.jpg'
             texture={asset('3d_book/texture/front_side.jpg')}
           />
         </VrButton>
-        {this.state.mirrorClue ?
-        <Animated.Image
-        style={{
-          position:'absolute',
-          layoutOrigin: [0.5, 0.5, 0],
-          width: 2,
-          height: 2,
-          transform: [
-
-            {translateZ: -3},
-
-            {translateX:-1.0}
-          ],
-          opacity: 1,
-        }}
-        source={ asset(this.state.mirrorClueSrc)}
-      />: null}
+        {this.state.mirrorClue ? (
+          <Animated.Image
+            style={{
+              position: 'absolute',
+              layoutOrigin: [0.5, 0.5, 0],
+              width: 2,
+              height: 2,
+              transform: [{ translateZ: -3 }, { translateX: -1.0 }],
+              opacity: 1,
+            }}
+            source={asset(this.state.mirrorClueSrc)}
+          />
+        ) : null}
       </View>
     );
   }
