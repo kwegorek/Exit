@@ -13,8 +13,8 @@ class FallingPicture extends React.Component {
     state = {
         //starting value/initial value for y
         yPosition: new Animated.Value(1),
-        textureObj:'painting1/objPainting.obj',
-        textureMtl:'painting1/objPainting.mtl'
+        textureObj:'grandfatherclock/10412_Grandfather_Clock_v1_L3.obj',
+        textureMtl: 'grandfatherclock/10412_Grandfather_Clock_v1_L3.mtl'
     };
     componentDidMount(){
         console.log('falling pic monuted')
@@ -45,8 +45,8 @@ class FallingPicture extends React.Component {
             //easing.quad - realtion is quadratic not linear -> velocity relation to time
 
           ).start(()=> { this.setState({
-            textureObj:'3d_mario/mario-sculpture.obj',
-            textureMtl: '3d_mario/mario-sculpture.mtl'
+            textureObj:'clock/Watch01.obj',
+            textureMtl: 'clock/Watch01.mtl'
         })})
 
 
@@ -79,12 +79,13 @@ class FallingPicture extends React.Component {
                 lit={true}
                 style={{
                 transform: [
-                    { translate: [-600, -100, 500] },
+                    { translate: [-650, -700, 200] },
                     { translateY: yPosition },
-                    { rotateY: 150 },
-                    { scaleX: 5 },
-                    { scaleY: 5 },
-                    { scaleZ: 5 },
+                    { rotateY: 490},
+                    { rotateX: 260},
+                    { scaleX: 8.0 },
+                    { scaleY: 6.0 },
+                    { scaleZ: 6.0 },
                 ],
 
 
