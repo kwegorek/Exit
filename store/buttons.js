@@ -8,8 +8,11 @@ const DISABLE_BUTTONS = 'DISABLE_BUTTONS';
  */
 const INITIAL_STATE = {
   bookButton: true,
+  faceButton : false,
   tableButton: false,
+  chestButton: false,
   hatButton: false,
+  exitButton: false
 };
 
 /**
