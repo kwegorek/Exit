@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  asset,
-  Animated,
-  View,
-  VrButton,NativeModules
-} from 'react-360';
+import { asset, Animated, View, VrButton, NativeModules } from 'react-360';
 import Entity from 'Entity';
 const { AudioModule } = NativeModules;
 import { connect } from 'react-redux';
@@ -45,7 +40,6 @@ let arrOfTextures = [
   glassTextureObjBrown,
 ];
 
-
 let AnimatedEntity = Animated.createAnimatedComponent(Entity);
 
 class MagicPiano extends React.Component {
@@ -85,7 +79,7 @@ class MagicPiano extends React.Component {
     clicked: 0,
     yPosition: new Animated.Value(1),
     tableAsset: '3d_piano/O&C_COFFEE TABLE_1200x600x450.obj',
-    tableTextureAsset:'3d_glass_piano/Null.1Surface_Color.jpg',
+    tableTextureAsset: '3d_glass_piano/Null.1Surface_Color.jpg',
     glassObj: '3d_glass_piano/szklanka+2.obj',
     glassTextureObj: '3d_glass_piano/glass-v2.jpg',
     // patternSequence:[8,6,4,2,1,3,5,7],
@@ -103,8 +97,8 @@ class MagicPiano extends React.Component {
     glassesTexture: Array(arrOfTextures.length).fill(glassTextureObjRegular),
     currentlyDiplayedHint: '3d_hintboard/flippedHint.png',
     userPattern: [],
-    gameStarted:false,
-    gameFinished:false,
+    gameStarted: false,
+    gameFinished: false,
     clickedBtn: 0,
   };
 
@@ -129,7 +123,6 @@ class MagicPiano extends React.Component {
           });
         } else {
           this.setState({
-
             gameStarted: false,
             currentlyDiplayedHint: '3d_hintboard/paper_try_again.png',
             glassesTexture: Array(arrOfTextures.length).fill(
@@ -253,7 +246,6 @@ class MagicPiano extends React.Component {
     }
   };
 
-
   tableClicked = () => {
     this.setState({
       gameStarted: true,
@@ -294,16 +286,16 @@ class MagicPiano extends React.Component {
             style={{
               transform: [
                 {
-                  translate: [90, -220, 190],
+                  translate: [100, -650, 370],
                 },
                 {
-                  scaleX: 3.0,
+                  scaleX: 9.0,
                 },
                 {
-                  scaleY: 3.0,
+                  scaleY: 9.0,
                 },
                 {
-                  scaleZ: 3.0,
+                  scaleZ: 9.0,
                 },
               ],
             }}
@@ -325,16 +317,16 @@ class MagicPiano extends React.Component {
               style={{
                 transform: [
                   {
-                    translate: [60 + index * 14, -130, 190],
+                    translate: [(index * 50)-90, -370, 370],
                   },
                   {
-                    scaleX: 1.0,
+                    scaleX: 3.5,
                   },
                   {
-                    scaleY: 1.0,
+                    scaleY: 3.5,
                   },
                   {
-                    scaleZ: 1.0,
+                    scaleZ: 3.5,
                   },
                 ],
               }}
@@ -353,7 +345,6 @@ class MagicPiano extends React.Component {
           }}
           source={asset(this.state.currentlyDiplayedHint)}
         />
-
       </View>
     );
   }
@@ -373,6 +364,5 @@ const mapDispatchToProps = dispatch => {
       dispatch(disableAllExcept(buttonToEnable, buttonToDisable)),
   };
 };
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(MagicPiano);
