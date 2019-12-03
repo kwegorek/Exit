@@ -42,7 +42,7 @@ export default styles = StyleSheet.create({
   },
   skeleton: {
     transform: [
-      { translate: [300, -550, -170] },
+      { translate: [200, -550, -300] },
       { rotateY: -50 },
       { scaleX: 250.0 },
       { scaleY: 250.0 },
