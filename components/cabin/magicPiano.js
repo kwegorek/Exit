@@ -1,5 +1,3 @@
-/* eslint-disable complexity */
-/* eslint-disable no-loop-func */
 import React from 'react';
 import {
   asset,
@@ -241,6 +239,14 @@ class MagicPiano extends React.Component {
             })
 
             this.props.addTaskCompleted(true)
+
+
+            // // enable next btn 
+            // this.props.disableButtons('tableButton', 'xxxxxxxxxx');
+
+
+
+
           }else {
             this.setState({
               gameStarted:false,
@@ -285,7 +291,7 @@ class MagicPiano extends React.Component {
 
     })
 
-    this.props.disableButtons('chestButton', 'tableButton');
+
 
   }
 
