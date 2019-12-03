@@ -42,10 +42,10 @@ class Cabin extends React.Component {
     return (
       <View>
         <Skeleton />
-        {/* <Hat handleClickEscapeKey={this.handleClickEscapeKey}/> */}
+        {/* <Hat /> */}
         <Bookshelf />
         <MagicSphere />
-        <FallingCurtain />
+        <FallingCurtain handleClickEscapeKey={this.handleClickEscapeKey} />
         <Book />
         <Table />
         <Face/>

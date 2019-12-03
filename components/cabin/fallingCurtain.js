@@ -28,13 +28,12 @@ class FallingCurtain extends React.Component {
         delay: 100,
         easing: Easing.quad
       }).start(() => {
-        this.setState({
-          showEcape: true,
-          //change to escape object
-          textureObj: "3d_mario/mario-sculpture.obj",
-          textureMtl: "3d_mario/mario-sculpture.mtl"
-        });
-      });
+        // this.setState({
+        //   showEcape: true,
+
+        // });
+        this.props.handleClickEscapeKey()
+      })
     }
   };
 
