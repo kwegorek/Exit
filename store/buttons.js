@@ -9,9 +9,12 @@ const UPDATEL_COMPLETED = 'UPDATEL_COMPLETED';
  */
 const INITIAL_STATE = {
   bookButton: true,
-  tableButton: false,
+  faceButton : false,
+  tableButton: true,
+  chestButton: false,
   hatButton: false,
-  allCompleted: true //set to true temporarily 
+  allCompleted: true, //set to true temporarily ,
+  exitButton: false
 };
 
 /**

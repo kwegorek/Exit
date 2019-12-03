@@ -24,12 +24,10 @@ export default class EscapedSurface extends React.Component {
     return (
       <View style={styles.panel}>
         <View style={styles.greetingBox}>
-          <Text style={styles.greeting}>
-            Congrats! You escaped the cabin in ___ minutes.
-          </Text>
+          <Text style={styles.greeting}>Congrats! You escaped the cabin!</Text>
         </View>
         <VrButton style={styles.rootButton} onClick={this.handlePlayAgain}>
-          <Text>Play Again</Text>
+          <Text style={styles.text}>Play Again</Text>
         </VrButton>
       </View>
     );

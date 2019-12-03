@@ -1,7 +1,11 @@
 import React from 'react';
-import {  asset, Animated, View,  VrButton, Text ,NativeModules} from 'react-360';
+import {  asset, Animated, View,  VrButton ,NativeModules} from 'react-360';
 import Entity from 'Entity';
+import { disableAllExcept } from '../../store/buttons';
+import { connect } from 'react-redux';
+
 const { AudioModule } = NativeModules;
+
 class Face extends React.Component {
 
     state = {
@@ -9,7 +13,7 @@ class Face extends React.Component {
         isFading: true,
         textFade: new Animated.Value(0),
         tableClue: false,
-        src:"Clues/tableClue.jpg"
+        tableSrc:"Clues/tableClue.jpg"
 
     };
 
@@ -26,43 +30,25 @@ class Face extends React.Component {
             });
         }, 200);
     }
-    // componentDidUpdate() {
-    //     Animated.timing(
-    //       this.state.textFade,
-    //       {
-    //         toValue: value,
-    //         duration: 3000,
-    //       }
-    //     ).start();
-    //   }
+
     handleClick=()=>{
+        this.props.disableButtons('tableButton', 'faceButton');
         AudioModule.playOneShot({
             source: asset('Laugh.wav'),
           });
-        //  Animated.timing(
-        //     this.state.textFade,
-        //     {
-        //       toValue: 1,
-        //       duration: 3000,
-        //     }
-        //   ).start();
+
           this.setState({
             tableClue: true
           })
     }
     render() {
         const opacityValue = this.state.fade
+        const disableStatus = !this.props.buttons.faceButton
         return (
 
             <View>
-                 {/* <Animated.Text style={[{
-    color: 'black',
-    fontSize: 6,
-    fontWeight: 'bold',
-  },{ opacity: this.state.textFade }]}>
-          {this.state.newInfo}
-        </Animated.Text> */}
-                <VrButton onClick={this.handleClick}>
+
+                <VrButton onClick={this.handleClick} disabled={disableStatus}>
                 <Entity source={{
                 obj: asset('face/151out.obj'),
                 }} style={{
@@ -81,26 +67,39 @@ class Face extends React.Component {
 
                 </Entity>
                 </VrButton>
-                {this.state.mirrorClue ?
+                {this.state.tableClue ?
         <Animated.Image
         style={{
           position:'absolute',
           layoutOrigin: [0.5, 0.5, 0],
-          width: 2,
-          height: 2,
+          width: 6,
+          height: 6,
           transform: [
 
-            {translateZ: -3},
-
-            {translateX: -1.0}
+            {translateZ: 5},
+            {translateX: 10},
+            {rotateY: -100}
           ],
           opacity: 1,
         }}
-        source={ asset(this.state.src)}
+        source={ asset(this.state.tableSrc)}
       />: null}
             </View>
         )
     }
 }
+const mapStateToProps = state => {
+    return {
+      buttons: state.buttons,
+    };
+  };
 
-export default Face
+  const mapDispatchToProps = dispatch => {
+    return {
+      disableButtons: (buttonToEnable, buttonToDisable) =>
+        dispatch(disableAllExcept(buttonToEnable, buttonToDisable)),
+    };
+  };
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Face)

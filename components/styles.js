@@ -9,21 +9,28 @@ export default styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  text: {
+    textAlign: 'center',
+  },
   greetingBox: {
     padding: 20,
     backgroundColor: '#000000',
-    borderColor: '#639dda',
+    borderColor: '#ffff',
     borderWidth: 2,
   },
   greeting: {
     fontSize: 30,
   },
   rootButton: {
+    margin: 30,
     padding: 20,
     width: 100,
-    height: 100,
+    height: 70,
     borderWidth: 2,
+    borderColor: '#ffff',
     backgroundColor: 'green',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   root: {
     flexDirection: 'column',
@@ -52,9 +59,15 @@ export default styles = StyleSheet.create({
   },
   startButton: {
     transform: [
-      { translate: [0, 0, 50] },
-      // { rotateY: 50 },
-      // { rotateX: 80 },
+      { translate: [-60, 0, 800] },
+      { scaleX: 50.0 },
+      { scaleY: 50.0 },
+      { scaleZ: 50.0 },
+    ],
+  },
+  tutorialTable: {
+    transform: [
+      { translate: [60, -10, 400] },
       { scaleX: 10.0 },
       { scaleY: 10.0 },
       { scaleZ: 10.0 },

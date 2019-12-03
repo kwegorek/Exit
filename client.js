@@ -3,20 +3,20 @@
 import KeyboardCameraController from '@martinpham/react-360-keyboard-camera-controller';
 import { ReactInstance, Surface } from 'react-360-web';
 import SurfaceModule from './surfaceModule';
-import {Math as GLMath} from 'webgl-ui';
+import { Math as GLMath } from 'webgl-ui';
 
 function init(bundle, parent, options = {}) {
   //fixed surface
   let EscapedSurface = new Surface(1, 1, Surface.SurfaceShape.Flat);
-  
+
   const cameraDirection = [0, 0, -1];
-  
+
   //react360 instance
   const r360 = new ReactInstance(bundle, parent, {
     fullScreen: true,
     nativeModules: [new SurfaceModule()],
     frame: () => {
-      //Fixing surface to camera direction 
+      //Fixing surface to camera direction
       const cameraQuat = r360.getCameraQuaternion();
       cameraDirection[0] = 0;
       cameraDirection[1] = 0;
@@ -42,14 +42,15 @@ function init(bundle, parent, options = {}) {
 
   let TutorialSurface2 = new Surface(1, 1, Surface.SurfaceShape.Flat);
   TutorialSurface2.setAngle(-Math.PI, 0);
-  r360.renderToSurface(r360.createRoot('TutorialSurface2', {}), TutorialSurface2);
-  
-  //lost game surface
+  r360.renderToSurface(
+    r360.createRoot('TutorialSurface2', {}),
+    TutorialSurface2
+  );
 
   //make surfaces global
   window.reactIns = r360;
   window.TutorialSurface = TutorialSurface;
-  window.TutorialSurface2 = TutorialSurface2
+  window.TutorialSurface2 = TutorialSurface2;
   window.EscapedSurface = EscapedSurface;
 
   //room location
@@ -61,8 +62,3 @@ function init(bundle, parent, options = {}) {
 }
 
 window.React360 = { init };
-
-
-
-
-

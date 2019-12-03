@@ -4,8 +4,7 @@ import {
   Animated,
   View,
   VrButton,
-  NativeModules,
-  Text,
+  NativeModules
 } from 'react-360';
 import Entity from 'Entity';
 import { disableAllExcept } from '../../store/buttons';
@@ -25,8 +24,8 @@ class Book extends React.Component {
     close: true,
     textureObj:
       "ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/ChurchBookClosedV2.obj",
-  //    textureObjmtl:
-  //  "ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/ChurchBookClosedV2.mtl",
+     textureObjmtl:
+    "ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/ChurchBookClosedV2.mtl",
 info :'',
 fade: new Animated.Value(0),
 mirrorClue: false,
@@ -54,17 +53,17 @@ mirrorClueSrc: 'Clues/mirrorClue.jpg'
       });
     }
   };
-  componentDidUpdate() {
-    const { close } = this.state;
-    const value = close ? 0 : 1;
-    Animated.timing(this.state.fade, {
-      toValue: value,
-      duration: 3000,
-    }).start();
-  }
+  // componentDidUpdate() {
+  //   const { close } = this.state;
+  //   const value = close ? 0 : 1;
+  //   Animated.timing(this.state.fade, {
+  //     toValue: value,
+  //     duration: 3000,
+  //   }).start();
+  // }
 
   handleClick = () => {
-    this.props.disableButtons('tableButton', 'bookButton');
+    this.props.disableButtons('faceButton', 'bookButton');
     this.openOrclose();
     AudioModule.playOneShot({
       source: asset('magic.wav'),
@@ -75,11 +74,11 @@ mirrorClueSrc: 'Clues/mirrorClue.jpg'
   };
 
   render() {
-    const { fade } = this.state;
-    const disableStatus = !this.props.buttons.bookButton;
+    // const { fade } = this.state;
+    const disableStatus = !this.props.buttons.bookButton;//false
     return (
       <View>
-        <Animated.Text
+        {/* <Animated.Text
           style={[
             {
               color: 'black',
@@ -91,7 +90,7 @@ mirrorClueSrc: 'Clues/mirrorClue.jpg'
           ]}
         >
           {this.state.info}
-        </Animated.Text>
+        </Animated.Text> */}
         <VrButton onClick={this.handleClick} disabled={disableStatus}>
           <AnimatedEntity
             source={{
