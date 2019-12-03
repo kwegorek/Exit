@@ -232,6 +232,7 @@ class MagicPiano extends React.Component {
           });
 
           this.props.addTaskCompleted(true);
+          this.props.disableButtons('chestButton', 'tableButton');
         } else {
           this.setState({
             gameStarted: false,
@@ -266,7 +267,7 @@ class MagicPiano extends React.Component {
         this
       );
     });
-    this.props.disableButtons('chestButton', 'tableButton');
+
     this.setState({
       currentlyDiplayedHint: '3d_hintboard/flippedHint.png',
     });

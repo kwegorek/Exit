@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 let AnimatedEntity = Animated.createAnimatedComponent(Entity);
 class Compass extends React.Component {
   state = {
-    //starting value/initial value for y
     fade: 0.0,
     isFading: true,
     yPosition: new Animated.Value(1),
