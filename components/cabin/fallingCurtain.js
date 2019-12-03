@@ -7,7 +7,7 @@ import Entity from "Entity";
 
 const AnimatedEntity = Animated.createAnimatedComponent(Entity);
 
-class FallingPicture extends React.Component {
+class FallingCurtain extends React.Component {
   state = {
     //starting value/initial value for y
     yPosition: new Animated.Value(1),
@@ -89,4 +89,4 @@ const mapDisaptchToProps = () => {
 export default connect(
   mapStateToProps,
   mapDisaptchToProps
-)(FallingPicture);
+)(FallingCurtain);
