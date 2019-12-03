@@ -2,11 +2,13 @@ import React from "react";
 import { asset, Animated, View, VrButton, NativeModules } from "react-360";
 import Entity from "Entity";
 import { Easing } from 'react-native';
+import { disableAllExcept } from '../../store/buttons';
+import { connect } from 'react-redux';
+
 const AnimatedEntity = Animated.createAnimatedComponent(Entity);
 
 class Book extends React.Component {
   state = {
-    //starting value/initial value for y
     close: true,
     textureObj: "chest/chest1/treasure-chest-model.obj",
     textureObjmtl: "chest/chest1/treasure-chest-model.mtl",
@@ -64,15 +66,17 @@ class Book extends React.Component {
   };
 
   handleClick = () => {
+    this.props.disableButtons('skeletonButton', 'chestButton');
     this.openOrclose();
     this.state.clickedOnce = true;
     if (this.state.clickedOnce) this.moveToSkeleton();
   };
 
   render() {
+    const disableStatus = !this.props.buttons.chestButton
     return (
       <View>
-        <VrButton onClick={this.handleClick}>
+        <VrButton onClick={this.handleClick} disabled={disableStatus}>
           <AnimatedEntity
             source={{
               obj: asset(this.state.textureObj),
@@ -86,5 +90,17 @@ class Book extends React.Component {
     );
   }
 }
+const mapStateToProps = state => {
+  return {
+    buttons: state.buttons,
+  };
+};
 
-export default Book;
+const mapDispatchToProps = dispatch => {
+  return {
+    disableButtons: (buttonToEnable, buttonToDisable) =>
+      dispatch(disableAllExcept(buttonToEnable, buttonToDisable)),
+  };
+};
+
+export default  connect(mapStateToProps, mapDispatchToProps)(Book);
