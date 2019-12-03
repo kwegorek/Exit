@@ -8,15 +8,16 @@ class Painting extends React.Component {
         return (
             <View>
                 <Entity source={{
-                obj: asset('painting1/objPainting.obj'),
-               mtl: asset('painting1/objPainting.mtl'),
+                obj: asset('curtain-obj/curtain.obj'),
+               mtl: asset('curtain-obj/curtain.mtl'),
                 }} style={{
                 transform: [
-                    { translate: [-400, -350, -700] },
-                    { rotateY: 40 },
-                    { scaleX: 30 },
-                    { scaleY: 30 },
-                    { scaleZ: 30},
+                    { translate: [-485, -500, -700] },
+                    { rotateY: 0 },
+                    {rotateX: 0},
+                    { scaleX: 400 },
+                    { scaleY: 400 },
+                    { scaleZ: 400},
                 ],
                 color: 'white',
                 }}      lit={true}>
