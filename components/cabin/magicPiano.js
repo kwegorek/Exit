@@ -79,6 +79,10 @@ class MagicPiano extends React.Component {
   playNoteC = () => {
     this.playSound(noteC)
   }
+  arraysEqual = (array1, array2) => {
+    console.log(array1, array2)
+    return array1.length === array2.length && array1.every((value, index) => value === array2[index])
+  }
   state = {
     //starting value/initial value for y 
     clicked: 0,
@@ -87,15 +91,14 @@ class MagicPiano extends React.Component {
     tableTextureAsset:'3d_glass_piano/Null.1Surface_Color.jpg', 
     glassObj: '3d_glass_piano/szklanka+2.obj',
     glassTextureObj: '3d_glass_piano/glass-v2.jpg',
-    // patternSequence:[8,6,4,2,1,3,5,7],
     patternSequence:[0,1,2,3,4,5,6,7], // describes order in which glasses will change
     arrSounds: [this.playNoteMidC, this.playNoteD, this.playNoteE, this.playNoteF, this.playNoteG, this.playNoteA , this.playNoteB, this.playNoteC],
     glassesTexture: Array(arrOfTextures.length).fill(glassTextureObjRegular),
     currentlyDiplayedHint: '3d_hintboard/flippedHint.png', 
-    userPattern: [], 
     gameStarted:false,
     gameFinished:false, 
-    clickedBtn: 0, 
+    guessesCount: 0,
+    guesses: [] 
   };
 
   componentDidMount() {
@@ -103,169 +106,44 @@ class MagicPiano extends React.Component {
 
   }
 
-  startGame = (_evt, index) => {
+
+
+  makeGuess = (_evt, index) => {
 
     // this.props.disableButtons('tableButton', 'tableButton');
 
-    console.log('index clicked', index)
+    console.log('index clicked', index, "guesses count", this.state.guessesCount)
 
-    let indx = this.state.clickedBtn;
-
-
-    if(this.state.gameStarted === true){
-
-      if(this.state.clickedBtn === 0){
-
-        if(index === this.state.patternSequence[indx]){
-          console.log('this.state.patternSequence[indx]', this.state.patternSequence[indx])
-
-          this.setState({
-            clickedBtn: 1
-          })
-        }else {
-          this.setState({
-            gameStarted:false, 
-            currentlyDiplayedHint:'3d_hintboard/paper_try_again.png', 
-            glassesTexture: Array(arrOfTextures.length).fill(glassTextureObjRegular),
-            clickedBtn:0
-          })
-  
-        }
-      }else if(this.state.clickedBtn === 1){
-
-          if(index === this.state.patternSequence[indx]){
-  
-            this.setState({
-              clickedBtn: 2
-            })
-          }else {
-            this.setState({
-              gameStarted:false, 
-              currentlyDiplayedHint:'3d_hintboard/paper_try_again.png', 
-              glassesTexture: Array(arrOfTextures.length).fill(glassTextureObjRegular),
-              clickedBtn:0
-            })
-    
-          }
-
-        }else if(this.state.clickedBtn === 2){
-
-          if(index === this.state.patternSequence[indx]){
-  
-            this.setState({
-              clickedBtn: 3
-            })
-          }else {
-            this.setState({
-              gameStarted:false, 
-              currentlyDiplayedHint:'3d_hintboard/paper_try_again.png', 
-              glassesTexture: Array(arrOfTextures.length).fill(glassTextureObjRegular),
-              clickedBtn:0
-            })
-    
-          }
-
-        }else if(this.state.clickedBtn === 3){
-
-          if(index === this.state.patternSequence[indx]){
-  
-            this.setState({
-              clickedBtn: 4
-            })
-          }else {
-            this.setState({
-              gameStarted:false, 
-              currentlyDiplayedHint:'3d_hintboard/paper_try_again.png', 
-              glassesTexture: Array(arrOfTextures.length).fill(glassTextureObjRegular),
-              clickedBtn:0
-            })
-    
-          }
-
-        }else if(this.state.clickedBtn === 4){
-
-          if(index === this.state.patternSequence[indx]){
-  
-            this.setState({
-              clickedBtn: 5
-            })
-          }else {
-            this.setState({
-              gameStarted:false, 
-              currentlyDiplayedHint:'3d_hintboard/paper_try_again.png', 
-              glassesTexture: Array(arrOfTextures.length).fill(glassTextureObjRegular),
-              gameFinished:true, 
-              clickedBtn:0
-            })
-    
-          }
-
-        }else if(this.state.clickedBtn === 5){
-
-          if(index === this.state.patternSequence[indx]){
-  
-            this.setState({
-              clickedBtn: 6
-            })
-          }else {
-            this.setState({
-              gameStarted:false, 
-              currentlyDiplayedHint:'3d_hintboard/paper_try_again.png', 
-              glassesTexture: Array(arrOfTextures.length).fill(glassTextureObjRegular),
-              gameFinished:true, 
-              clickedBtn:0
-            })
-    
-          }
-
-        }else if(this.state.clickedBtn === 6){
-
-          if(index === this.state.patternSequence[indx]){
-  
-            this.setState({
-              clickedBtn: 7
-            })
-          }else {
-            this.setState({
-              gameStarted:false, 
-              currentlyDiplayedHint:'3d_hintboard/paper_try_again.png', 
-              glassesTexture: Array(arrOfTextures.length).fill(glassTextureObjRegular),
-              gameFinished:true, 
-              clickedBtn:0
-            })
-    
-          }
-
-        }else if(this.state.clickedBtn === 7){
-
-          if(index === this.state.patternSequence[indx]){
-  
-            this.setState({
-              clickedBtn: 8,
-              currentlyDiplayedHint:'3d_hintboard/task_completed.png', 
-            })
-
-            this.props.addTaskCompleted(true)
-          }else {
-            this.setState({
-              gameStarted:false, 
-              currentlyDiplayedHint:'3d_hintboard/paper_try_again.png', 
-              glassesTexture: Array(arrOfTextures.length).fill(glassTextureObjRegular),
-              clickedBtn:0
-            })
-    
-          }
-        }
-      }
-
-        
-
-
+    if(this.state.gameStarted === false){
+      return
+    }
+      
+    if(this.state.guessesCount + 1 < this.state.patternSequence.length) {
+      // user still making guesses
+      this.setState(prev => {
+        return {guessesCount : prev.guessesCount + 1,
+                guesses : prev.guesses.concat([index])}
+      })
+    } else if (this.arraysEqual(this.state.guesses.concat([index]), this.state.patternSequence)) { 
+      // user made 8 correct guesses
+      this.setState({
+        currentlyDiplayedHint:'3d_hintboard/task_completed.png', 
+      });
+      this.props.addTaskCompleted(true);
+    } else {
+      // not all guesses are correct
+      this.setState({
+        gameStarted:false, 
+        currentlyDiplayedHint:'3d_hintboard/paper_try_again.png', 
+        glassesTexture: Array(arrOfTextures.length).fill(glassTextureObjRegular),
+        guessesCount:0,
+        guesses: []
+      })
+    }
   }
 
 
   tableClicked = () => {
-
     this.setState({
       gameStarted:true
     })
@@ -283,15 +161,9 @@ class MagicPiano extends React.Component {
         that.state.arrSounds[index]()
       }, 500*this.state.patternSequence[index], this);
     })
-
     this.setState({
-
       currentlyDiplayedHint: '3d_hintboard/flippedHint.png'
- 
     })
-
-
-  
   }
 
   
@@ -338,7 +210,7 @@ class MagicPiano extends React.Component {
       </VrButton>
 
      { this.state.arrSounds.map((sound, index) =>
-      <VrButton onClick={sound, (evt) => this.startGame(evt, index)} key={index}>
+      <VrButton onClick={sound, (evt) => this.makeGuess(evt, index)} key={index}>
       <AnimatedEntity 
       
       source = {
