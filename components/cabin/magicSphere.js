@@ -47,7 +47,7 @@ class MagicSphere extends React.Component {
               toValue: 360,
               duration: 6000,
           }
-      ).start(this.startRotate)
+      ).start(this.startRotateCrystal)
   }
 
   startTimer = () => {
