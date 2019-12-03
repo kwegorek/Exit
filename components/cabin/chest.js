@@ -10,7 +10,15 @@ class Book extends React.Component {
     textureObj:
       "chest/chest1/treasure-chest-model.obj",
     textureObjmtl:
-      "chest/chest1/treasure-chest-model.mtl"
+      "chest/chest1/treasure-chest-model.mtl",
+      styles:{
+        transform: [
+          { translate: [200,-600, 700] },
+          { scaleX: 100.0},
+          { scaleY: 100.0 },
+          { scaleZ: 100.0 }
+        ]
+      }
   };
   openOrclose = () => {
     if (this.state.close === true) {
@@ -24,10 +32,19 @@ class Book extends React.Component {
     } else {
       this.setState({
         textureObj:
-          "chest/chest2/animated-chest.obj",
+        '3d_hat/witch_hat(POSER).obj',
         textureObjmtl:
-          "chest/chest2/animated-chest.mtl",
-        close: true
+        '3d_hat/witch_hat.mtl',
+        close: true,
+        styles:{
+          transform: [
+            { translate: [200,-700, 700] },
+            { rotateY: 200 },
+            { scaleX: 700.0},
+            { scaleY: 700.0 },
+            { scaleZ: 700.0 }
+          ]
+        }
       });
     }
   };
@@ -46,14 +63,7 @@ class Book extends React.Component {
               mtl: asset(this.state.textureObjmtl)
             }}
             lit={true}
-            style={{
-              transform: [
-                { translate: [200,-600, 700] },
-                { scaleX: 80.0},
-                { scaleY: 80.0 },
-                { scaleZ: 80.0 }
-              ]
-            }}
+            style={this.state.styles}
           />
         </VrButton>
       </View>
