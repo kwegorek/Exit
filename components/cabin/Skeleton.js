@@ -17,12 +17,6 @@ export default class Skeleton extends React.Component {
   render() {
     return (
       <View>
-        {/* <PointLight
-          style={{
-            color: 'purple',
-            transform: [{ translate: [-100, 0, -100] }],
-          }}
-        /> */}
         <VrButton onClick={() => this.handleClickZoom()}>
           <Entity
             source={{
