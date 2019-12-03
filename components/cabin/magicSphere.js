@@ -1,4 +1,4 @@
-/* eslint-disable no-loop-func */
+
 import React from 'react';
 import { Easing } from 'react-native';
 import { asset, Animated, View, VrButton } from 'react-360';
@@ -15,10 +15,8 @@ let AnimatedEntity = Animated.createAnimatedComponent(Entity);
 
 class MagicSphere extends React.Component {
   state = {
-    yPosition: new Animated.Value(1),
+    yPosition: new Animated.Value(0),
     timeOver: false,
-    textureObj: 'crystal/magic-sphere.obj',
-    textureObjmtl: 'crystal/magic-sphere.mtl',
     renderTimerHint: false,
     torchObj: [torchOffObj, torchOffObj, torchOffObj, torchOffObj, torchOffObj],
     torchmtl: [torchOffMtl, torchOffMtl, torchOffMtl, torchOffMtl, torchOffMtl],
@@ -27,34 +25,21 @@ class MagicSphere extends React.Component {
   };
 
   componentDidMount() {
-    this.startRotate();
-    console.log(this.state.props, 'props-box');
+
   }
-  startRotate = () => {
-    this.state.rotation.setValue(0);
-    Animated.timing(this.state.rotation, {
-      toValue: 360,
-      duration: 10000,
-    }).start(this.startRotate);
-  };
 
-  // startsMoving = () => {
 
-  //   //additional task is rendered
-  //   this.props.addAdditionalTask(true)
+  startRotate= () => {
 
-  //   this.state.yPosition.setValue(0)
+        this.state.rotation.setValue(0)
+        Animated.timing(this.state.rotation,
+            {
+                toValue: 360,
+                duration: 6000,
+            }
+        ).start(this.startRotate)
+    } 
 
-  //       Animated.timing(
-  //         this.state.yPosition,
-
-  //         {
-  //           toValue: 1,
-  //           duration: 1000,
-  //           easing:Easing.inOut(Easing.bounce)
-  //         }
-  //     ).start()
-  //   }
 
   startTimer = () => {
     if (!this.state.timeOver) {
@@ -121,26 +106,28 @@ class MagicSphere extends React.Component {
     const rotationValue = this.state.rotation;
     return (
       <View>
-        <VrButton onClick={() => this.startTimer()}>
-          <AnimatedEntity
-            onEnter={this.startRotate}
-            source={{
-              obj: asset(this.state.textureObj),
-              mtl: asset(this.state.textureObjmtl),
-            }}
-            lit={true}
-            style={{
-              // cardboardbox
-              transform: [
-                { translate: [-500, -600, 400] },
-                { scaleX: 0.0004 },
-                { scaleY: 0.0004 },
-                { scaleZ: 0.0004 },
-                { rotateY: rotationValue },
-              ],
-            }}
-          />
-        </VrButton>
+                <VrButton onClick={() => this.startRotate()}>
+                <AnimatedEntity 
+                 onExit={this.stopRotate}
+
+                source={{
+                obj: asset('spider/Only_Spider_with_Animations_Export.obj'),
+                mtl: asset('spider/Only_Spider_with_Animations_Export.mtl'),
+                }}
+                lit={true}
+                style={{
+                transform: [
+                    { translate: [0, -5, -3] },
+                    { scaleX: 0.008 },
+                    { scaleY: 0.008 },
+                    { scaleZ: 0.008 },
+                    { rotateY: rotationValue}
+                ],
+
+
+                }}
+                    />
+                </VrButton>
 
         <VrButton>
           <AnimatedEntity
