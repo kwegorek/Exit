@@ -76,7 +76,7 @@ class Skeleton extends React.Component {
                 {
                   translate: [-80, -200, 150]
                 },
-                {rotateX: 100},
+                
                 {
                   scaleX: 50.0
                 },
