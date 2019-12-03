@@ -78,16 +78,17 @@ class MagicGlass extends React.Component {
             style={{
               transform: [
                 {
-                  translate: [240, -190, 60],
+                  translate: [700, -630, 70],
+                },
+                {rotateY: -10},
+                {
+                  scaleX: 30.0,
                 },
                 {
-                  scaleX: 10.0,
+                  scaleY: 30.0,
                 },
                 {
-                  scaleY: 10.0,
-                },
-                {
-                  scaleZ: 10.0,
+                  scaleZ: 30.0,
                 },
               ],
             }}
