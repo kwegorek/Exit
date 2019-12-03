@@ -2,13 +2,10 @@
 /* eslint-disable no-loop-func */
 import React from 'react';
 import {
-  Easing
-} from 'react-native';
-import {
   asset,
   Animated,
   View,
-  VrButton,NativeModules 
+  VrButton,NativeModules
 } from 'react-360';
 import Entity from 'Entity';
 const { AudioModule } = NativeModules;
@@ -17,11 +14,11 @@ import {addCompletedTasks} from '../../store/tasksCompleted'
 import { disableAllExcept } from '../../store/buttons';
 
 
-//regular color 
+//regular color
 let glassObj = '3d_glass_piano/szklanka+2.obj'
 let glassTextureObjRegular = '3d_glass_piano/glass-v2.jpg'
 
-//glass color variabels 
+//glass color variabels
 let glassTextureObjDarkYellow = '3d_glass_piano/oie_3022417tXo7WH59.jpg'
 let glassTextureObjBlue = '3d_glass_piano/blue_glass.png'
 let glassTextureObjBlack = '3d_glass_piano/black_glass.png'
@@ -36,7 +33,7 @@ let noteMidC = '3d_glass_piano/do.wav'
 let noteD = '3d_glass_piano/re.wav'
 let noteE = '3d_glass_piano/mi.wav'
 let noteF = '3d_glass_piano/fa.wav'
-let noteG = '3d_glass_piano/si.wav' 
+let noteG = '3d_glass_piano/si.wav'
 let noteA = '3d_glass_piano/la.wav'
 let noteB= '3d_glass_piano/do2.wav'
 let noteC = '3d_glass_piano/mi.wav'
@@ -80,22 +77,22 @@ class MagicPiano extends React.Component {
     this.playSound(noteC)
   }
   state = {
-    //starting value/initial value for y 
+    //starting value/initial value for y
     clicked: 0,
     yPosition: new Animated.Value(1),
     tableAsset: '3d_piano/O&C_COFFEE TABLE_1200x600x450.obj',
-    tableTextureAsset:'3d_glass_piano/Null.1Surface_Color.jpg', 
+    tableTextureAsset:'3d_glass_piano/Null.1Surface_Color.jpg',
     glassObj: '3d_glass_piano/szklanka+2.obj',
     glassTextureObj: '3d_glass_piano/glass-v2.jpg',
     // patternSequence:[8,6,4,2,1,3,5,7],
     patternSequence:[0,1,2,3,4,5,6,7], // describes order in which glasses will change
     arrSounds: [this.playNoteMidC, this.playNoteD, this.playNoteE, this.playNoteF, this.playNoteG, this.playNoteA , this.playNoteB, this.playNoteC],
     glassesTexture: Array(arrOfTextures.length).fill(glassTextureObjRegular),
-    currentlyDiplayedHint: '3d_hintboard/flippedHint.png', 
-    userPattern: [], 
+    currentlyDiplayedHint: '3d_hintboard/flippedHint.png',
+    userPattern: [],
     gameStarted:false,
-    gameFinished:false, 
-    clickedBtn: 0, 
+    gameFinished:false,
+    clickedBtn: 0,
   };
 
   componentDidMount() {
@@ -106,8 +103,6 @@ class MagicPiano extends React.Component {
   startGame = (_evt, index) => {
 
     // this.props.disableButtons('tableButton', 'tableButton');
-
-    console.log('index clicked', index)
 
     let indx = this.state.clickedBtn;
 
@@ -124,141 +119,141 @@ class MagicPiano extends React.Component {
           })
         }else {
           this.setState({
-            gameStarted:false, 
-            currentlyDiplayedHint:'3d_hintboard/paper_try_again.png', 
+            gameStarted:false,
+            currentlyDiplayedHint:'3d_hintboard/paper_try_again.png',
             glassesTexture: Array(arrOfTextures.length).fill(glassTextureObjRegular),
             clickedBtn:0
           })
-  
+
         }
       }else if(this.state.clickedBtn === 1){
 
           if(index === this.state.patternSequence[indx]){
-  
+
             this.setState({
               clickedBtn: 2
             })
           }else {
             this.setState({
-              gameStarted:false, 
-              currentlyDiplayedHint:'3d_hintboard/paper_try_again.png', 
+              gameStarted:false,
+              currentlyDiplayedHint:'3d_hintboard/paper_try_again.png',
               glassesTexture: Array(arrOfTextures.length).fill(glassTextureObjRegular),
               clickedBtn:0
             })
-    
+
           }
 
         }else if(this.state.clickedBtn === 2){
 
           if(index === this.state.patternSequence[indx]){
-  
+
             this.setState({
               clickedBtn: 3
             })
           }else {
             this.setState({
-              gameStarted:false, 
-              currentlyDiplayedHint:'3d_hintboard/paper_try_again.png', 
+              gameStarted:false,
+              currentlyDiplayedHint:'3d_hintboard/paper_try_again.png',
               glassesTexture: Array(arrOfTextures.length).fill(glassTextureObjRegular),
               clickedBtn:0
             })
-    
+
           }
 
         }else if(this.state.clickedBtn === 3){
 
           if(index === this.state.patternSequence[indx]){
-  
+
             this.setState({
               clickedBtn: 4
             })
           }else {
             this.setState({
-              gameStarted:false, 
-              currentlyDiplayedHint:'3d_hintboard/paper_try_again.png', 
+              gameStarted:false,
+              currentlyDiplayedHint:'3d_hintboard/paper_try_again.png',
               glassesTexture: Array(arrOfTextures.length).fill(glassTextureObjRegular),
               clickedBtn:0
             })
-    
+
           }
 
         }else if(this.state.clickedBtn === 4){
 
           if(index === this.state.patternSequence[indx]){
-  
+
             this.setState({
               clickedBtn: 5
             })
           }else {
             this.setState({
-              gameStarted:false, 
-              currentlyDiplayedHint:'3d_hintboard/paper_try_again.png', 
+              gameStarted:false,
+              currentlyDiplayedHint:'3d_hintboard/paper_try_again.png',
               glassesTexture: Array(arrOfTextures.length).fill(glassTextureObjRegular),
-              gameFinished:true, 
+              gameFinished:true,
               clickedBtn:0
             })
-    
+
           }
 
         }else if(this.state.clickedBtn === 5){
 
           if(index === this.state.patternSequence[indx]){
-  
+
             this.setState({
               clickedBtn: 6
             })
           }else {
             this.setState({
-              gameStarted:false, 
-              currentlyDiplayedHint:'3d_hintboard/paper_try_again.png', 
+              gameStarted:false,
+              currentlyDiplayedHint:'3d_hintboard/paper_try_again.png',
               glassesTexture: Array(arrOfTextures.length).fill(glassTextureObjRegular),
-              gameFinished:true, 
+              gameFinished:true,
               clickedBtn:0
             })
-    
+
           }
 
         }else if(this.state.clickedBtn === 6){
 
           if(index === this.state.patternSequence[indx]){
-  
+
             this.setState({
               clickedBtn: 7
             })
           }else {
             this.setState({
-              gameStarted:false, 
-              currentlyDiplayedHint:'3d_hintboard/paper_try_again.png', 
+              gameStarted:false,
+              currentlyDiplayedHint:'3d_hintboard/paper_try_again.png',
               glassesTexture: Array(arrOfTextures.length).fill(glassTextureObjRegular),
-              gameFinished:true, 
+              gameFinished:true,
               clickedBtn:0
             })
-    
+
           }
 
         }else if(this.state.clickedBtn === 7){
 
           if(index === this.state.patternSequence[indx]){
-  
+
             this.setState({
               clickedBtn: 8,
-              currentlyDiplayedHint:'3d_hintboard/task_completed.png', 
+              currentlyDiplayedHint:'3d_hintboard/task_completed.png',
             })
 
             this.props.addTaskCompleted(true)
           }else {
             this.setState({
-              gameStarted:false, 
-              currentlyDiplayedHint:'3d_hintboard/paper_try_again.png', 
+              gameStarted:false,
+              currentlyDiplayedHint:'3d_hintboard/paper_try_again.png',
               glassesTexture: Array(arrOfTextures.length).fill(glassTextureObjRegular),
               clickedBtn:0
             })
-    
+
           }
         }
       }
 
-        
+
 
 
   }
@@ -270,7 +265,7 @@ class MagicPiano extends React.Component {
       gameStarted:true
     })
 
-    //display task png -> podmienic na stanie 
+    //display task png -> podmienic na stanie
     arrOfTextures.forEach((texture, index) => {
       setTimeout(function (that) {
 
@@ -278,7 +273,7 @@ class MagicPiano extends React.Component {
           let newGlassesTexture = that.state.glassesTexture.slice() // copy array
           newGlassesTexture[index] = texture
           return {...prevState, glassesTexture : newGlassesTexture}
-        
+
         })
         that.state.arrSounds[index]()
       }, 500*this.state.patternSequence[index], this);
@@ -287,20 +282,20 @@ class MagicPiano extends React.Component {
     this.setState({
 
       currentlyDiplayedHint: '3d_hintboard/flippedHint.png'
- 
+
     })
 
+    this.props.disableButtons('chestButton', 'tableButton');
 
-  
   }
 
-  
+
 
   render() {
-
+    const disableStatus = !this.props.buttons.tableButton
     return ( <View >
 
-      <VrButton onClick={this.tableClicked}>
+      <VrButton onClick={this.tableClicked} disabled={disableStatus}>
       <AnimatedEntity
 
       source = {
@@ -339,8 +334,8 @@ class MagicPiano extends React.Component {
 
      { this.state.arrSounds.map((sound, index) =>
       <VrButton onClick={sound, (evt) => this.startGame(evt, index)} key={index}>
-      <AnimatedEntity 
-      
+      <AnimatedEntity
+
       source = {
         {
           obj: asset(this.state.glassObj),
@@ -416,10 +411,10 @@ const mapDispatchToProps = (dispatch) => {
     addTaskCompleted: (val) => dispatch(addCompletedTasks(val)),
     disableButtons: (buttonToEnable, buttonToDisable) =>
     dispatch(disableAllExcept(buttonToEnable, buttonToDisable)),
-    
+
   }
 
-  
+
 }
 
 

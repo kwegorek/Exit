@@ -4,8 +4,7 @@ import {
   Animated,
   View,
   VrButton,
-  NativeModules,
-  Text,
+  NativeModules
 } from 'react-360';
 import Entity from 'Entity';
 import { disableAllExcept } from '../../store/buttons';
@@ -64,7 +63,7 @@ mirrorClueSrc: 'Clues/mirrorClue.jpg'
   // }
 
   handleClick = () => {
-    this.props.disableButtons('tableButton', 'bookButton');
+    this.props.disableButtons('faceButton', 'bookButton');
     this.openOrclose();
     AudioModule.playOneShot({
       source: asset('magic.wav'),
@@ -76,7 +75,7 @@ mirrorClueSrc: 'Clues/mirrorClue.jpg'
 
   render() {
     // const { fade } = this.state;
-    const disableStatus = !this.props.buttons.bookButton;
+    const disableStatus = !this.props.buttons.bookButton;//false
     return (
       <View>
         {/* <Animated.Text

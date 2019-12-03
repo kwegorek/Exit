@@ -1,7 +1,11 @@
 import React from 'react';
-import {  asset, Animated, View,  VrButton, Text ,NativeModules} from 'react-360';
+import {  asset, Animated, View,  VrButton ,NativeModules} from 'react-360';
 import Entity from 'Entity';
+import { disableAllExcept } from '../../store/buttons';
+import { connect } from 'react-redux';
+
 const { AudioModule } = NativeModules;
+
 class Face extends React.Component {
 
     state = {
@@ -28,6 +32,7 @@ class Face extends React.Component {
     }
 
     handleClick=()=>{
+        this.props.disableButtons('tableButton', 'faceButton');
         AudioModule.playOneShot({
             source: asset('Laugh.wav'),
           });
@@ -38,11 +43,12 @@ class Face extends React.Component {
     }
     render() {
         const opacityValue = this.state.fade
+        const disableStatus = !this.props.buttons.faceButton
         return (
 
             <View>
 
-                <VrButton onClick={this.handleClick}>
+                <VrButton onClick={this.handleClick} disabled={disableStatus}>
                 <Entity source={{
                 obj: asset('face/151out.obj'),
                 }} style={{
@@ -82,5 +88,18 @@ class Face extends React.Component {
         )
     }
 }
+const mapStateToProps = state => {
+    return {
+      buttons: state.buttons,
+    };
+  };
 
-export default Face
+  const mapDispatchToProps = dispatch => {
+    return {
+      disableButtons: (buttonToEnable, buttonToDisable) =>
+        dispatch(disableAllExcept(buttonToEnable, buttonToDisable)),
+    };
+  };
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Face)
