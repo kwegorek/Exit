@@ -13,8 +13,8 @@ class FallingPicture extends React.Component {
     state = {
         //starting value/initial value for y
         yPosition: new Animated.Value(1),
-        textureObj:'painting1/objPainting.obj',
-        textureMtl:'painting1/objPainting.mtl', 
+        textureObj:'curtain-obj/curtain.obj',
+        textureMtl:'curtain-obj/curtain.mtl', 
         showEcape:false
 
     };
@@ -39,7 +39,7 @@ class FallingPicture extends React.Component {
                     ).start(()=> { this.setState({
 
                     showEcape:true,
-                    //change to escape object 
+                    //change to escape object
                     textureObj:'3d_mario/mario-sculpture.obj',
                     textureMtl: '3d_mario/mario-sculpture.mtl'
                 })})
@@ -66,7 +66,7 @@ class FallingPicture extends React.Component {
 
             <View>
                 <VrButton onClick ={()=> this.showEscape, () => this.startFalling()} >
-                    <AnimatedEntity 
+                    <AnimatedEntity
 
                         source={{
                         obj: asset(this.state.textureObj),
@@ -75,12 +75,13 @@ class FallingPicture extends React.Component {
                         lit={true}
                         style={{
                         transform: [
-                            { translate: [-600, -100, 500] },
+                            { translate: [-700, -450, 200] },
                             { translateY: yPosition },
-                            { rotateY: 150 },
-                            { scaleX: 5 },
-                            { scaleY: 5 },
-                            { scaleZ: 5 },
+                            { rotateY: 126},
+                            { rotateX: 0},
+                            { scaleX: 440 },
+                            { scaleY: 500 },
+                            { scaleZ: 440 },
                         ],
 
                         }}
@@ -97,9 +98,9 @@ const mapStateToProps = (state) => {
     return {
 
         allTasksCompleted: state.buttons
-      
+
     }
-  
+
   }
 
 const mapDisaptchToProps = () => {
@@ -109,8 +110,8 @@ const mapDisaptchToProps = () => {
         updatedCompleted: () => dispatch(updateCompleted())
     }
 }
-  
-  
-  
-  
+
+
+
+
 export default connect(mapStateToProps, mapDisaptchToProps)(FallingPicture);

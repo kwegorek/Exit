@@ -21,11 +21,12 @@ class MagicSphere extends React.Component {
     torchObj: [torchOffObj, torchOffObj, torchOffObj, torchOffObj, torchOffObj],
     torchmtl: [torchOffMtl, torchOffMtl, torchOffMtl, torchOffMtl, torchOffMtl],
     rotation: new Animated.Value(0),
+    rotationSphere: new Animated.Value(0),
     isRotating: true,
   };
 
   componentDidMount() {
-
+    this.startRotateCrystal()
   }
 
 
@@ -38,8 +39,17 @@ class MagicSphere extends React.Component {
                 duration: 6000,
             }
         ).start(this.startRotate)
-    } 
+    }
+    startRotateCrystal= () => {
 
+      this.state.rotationSphere.setValue(0)
+      Animated.timing(this.state.rotationSphere,
+          {
+              toValue: 360,
+              duration: 6000,
+          }
+      ).start(this.startRotateCrystal)
+  }
 
   startTimer = () => {
     if (!this.state.timeOver) {
@@ -104,10 +114,31 @@ class MagicSphere extends React.Component {
 
   render() {
     const rotationValue = this.state.rotation;
+    const sphereRotation = this.state.rotationSphere
     return (
       <View>
+
+                <AnimatedEntity
+                source={{
+                obj: asset('crystal/magic-sphere.obj'),
+                mtl: asset('crystal/magic-sphere.mtl'),
+                }}
+                lit={true}
+                style={{
+                transform: [
+                    { translate:  [-500, -600 ,400] },
+                    { scaleX: 0.0004 },
+                    { scaleY: 0.0004},
+                    { scaleZ: 0.0004 },
+                    { rotateY: sphereRotation}
+                ],
+
+
+                }}
+                    />
+
                 <VrButton onClick={() => this.startRotate()}>
-                <AnimatedEntity 
+                <AnimatedEntity
                  onExit={this.stopRotate}
 
                 source={{
@@ -128,7 +159,6 @@ class MagicSphere extends React.Component {
                 }}
                     />
                 </VrButton>
-
         <VrButton>
           <AnimatedEntity
             source={{

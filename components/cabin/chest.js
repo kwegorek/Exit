@@ -2,11 +2,13 @@ import React from "react";
 import { asset, Animated, View, VrButton, NativeModules } from "react-360";
 import Entity from "Entity";
 import { Easing } from 'react-native';
+import { disableAllExcept } from '../../store/buttons';
+import { connect } from 'react-redux';
+
 const AnimatedEntity = Animated.createAnimatedComponent(Entity);
 
-class Book extends React.Component {
+class Chest extends React.Component {
   state = {
-    //starting value/initial value for y
     close: true,
     textureObj: "chest/chest1/treasure-chest-model.obj",
     textureObjmtl: "chest/chest1/treasure-chest-model.mtl",
@@ -26,8 +28,8 @@ class Book extends React.Component {
     Animated.timing(
                   this.state.zPosition,
                   {
-                    toValue: -900,
-                    duration: 5000,
+                    toValue: -800,
+                    duration: 3000,
                     delay: 100,
                     easing: Easing.quad
                   }).start(()=> { this.setState({
@@ -53,6 +55,7 @@ class Book extends React.Component {
         styles: {
           transform: [
             { translate: [200, -500, 700] },
+            { translateZ: this.state.zPosition },
             { rotateY: 200 },
             { scaleX: 700.0 },
             { scaleY: 700.0 },
@@ -64,15 +67,21 @@ class Book extends React.Component {
   };
 
   handleClick = () => {
+ if(!this.state.clickedOnce){
     this.openOrclose();
     this.state.clickedOnce = true;
-    if (this.state.clickedOnce) this.moveToSkeleton();
+ }
+    else{
+      this.moveToSkeleton();
+      this.props.disableButtons('skeletonButton', 'chestButton');}
+
   };
 
   render() {
+    const disableStatus = !this.props.buttons.chestButton
     return (
       <View>
-        <VrButton onClick={this.handleClick}>
+        <VrButton onClick={this.handleClick} disabled={disableStatus} >
           <AnimatedEntity
             source={{
               obj: asset(this.state.textureObj),
@@ -86,5 +95,17 @@ class Book extends React.Component {
     );
   }
 }
+const mapStateToProps = state => {
+  return {
+    buttons: state.buttons,
+  };
+};
 
-export default Book;
+const mapDispatchToProps = dispatch => {
+  return {
+    disableButtons: (buttonToEnable, buttonToDisable) =>
+      dispatch(disableAllExcept(buttonToEnable, buttonToDisable)),
+  };
+};
+
+export default  connect(mapStateToProps, mapDispatchToProps)(Chest);
