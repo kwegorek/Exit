@@ -1,14 +1,24 @@
 <html>
   <head>
     <title>Exit</title>
-    <style>body { margin: 0; }</style>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <style>
+      body {
+        margin: 0;
+      }
+    </style>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
   </head>
   <body>
+      <div id='user-interaction-container'>Hello World</div>
     <!-- Attachment point for your app -->
     <div id="container"></div>
 
-    <div id="navBar" style="z-index: 999;position: absolute;top:0px;right:0px;">HELLO WORLD</div>
+    <div id="navBar" style="z-index: 999;position: absolute;top:0px;right:0px;">
+      HELLO WORLD
+    </div>
     <script src="./client.bundle?platform=vr"></script>
     <script>
       // Initialize the React 360 application
@@ -19,7 +29,8 @@
           assetRoot: 'static_assets/',
         }
       );
+
+
     </script>
   </body>
 </html>
-

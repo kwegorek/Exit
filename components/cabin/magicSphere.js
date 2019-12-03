@@ -9,22 +9,25 @@ class MagicSphere extends React.Component {
 
     state = {
         rotation: new Animated.Value(0),
-        isRotating: true
+        inMotion: false
     };
-    
-    componentDidMount(){
-       this.startRotate()
-    }
-    startRotate = () => {
-        this.state.rotation.setValue(0)
-        Animated.timing(this.state.rotation,
-            {
-                toValue: 360,
-                duration: 10000,
-            }
-        ).start(this.startRotate)
-    }
-    
+
+    // componentDidMount(){
+    //    this.startRotate()
+    // }
+    startRotateOrStop = () => {
+        if(this.state.inMotion === false ) {
+            console.log("start rotate")
+            this.state.rotation.setValue(0)
+            Animated.timing(this.state.rotation,
+                {
+                    toValue: 360,
+                    duration: 6000,
+                }
+            ).start(this.startRotateOrStop)
+        } 
+    } 
+
     stopRotate = () => {
         console.log("stop rotate")
         // this.setState({
@@ -41,7 +44,7 @@ class MagicSphere extends React.Component {
     // }
     // rotate = (forceRotate = false) => {
     //     console.log(JSON.stringify(forceRotate))
-    //     if (forceRotate === true || this.state.isRotating) { 
+    //     if (forceRotate === true || this.state.isRotating) {
     //         const newValue = this.state.rotation.getValue() === 360 ? 0 : 360;
     //         console.log("->rotate", newValue)
     //         Animated.timing(this.state.rotation,
@@ -54,22 +57,23 @@ class MagicSphere extends React.Component {
     //         console.log("stopping")
     //     }
     // }
-    // stopRotate = () => {
-    //     console.log("stop rotate")
-    //     this.setState({
-    //             rotation: new Animated.Value(0),
-    //             isRotating: false
-    //         })
-    // }
+    stopRotate = () => {
+        console.log("stop rotate")
+        this.setState({
+                rotation: new Animated.Value(0),
+                isRotating: false
+            })
+    }
 
     render() {
         const rotationValue = this.state.rotation
         return (
 
             <View>
-                <AnimatedEntity onEnter={this.startRotate} 
+                <VrButton onClick={() => this.startRotateOrStop()}>
+                <AnimatedEntity 
                  onExit={this.stopRotate}
-               
+
                 source={{
                 obj: asset('spider/Only_Spider_with_Animations_Export.obj'),
                 mtl: asset('spider/Only_Spider_with_Animations_Export.mtl'),
@@ -83,10 +87,11 @@ class MagicSphere extends React.Component {
                     { scaleZ: 0.008 },
                     { rotateY: rotationValue}
                 ],
-            
-                
+
+
                 }}
                     />
+                </VrButton>
             </View>
         )
     }

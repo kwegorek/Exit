@@ -19,10 +19,10 @@ export default styles = StyleSheet.create({
     fontSize: 30,
   },
   rootButton: {
+    padding: 20,
     width: 100,
     height: 100,
-    borderRadius: 100 / 2,
-    borderWidth: 0,
+    borderWidth: 2,
     backgroundColor: 'green',
   },
   root: {
@@ -32,12 +32,32 @@ export default styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-around',
   },
-  mario: {
+  skeleton: {
     transform: [
-      { translate: [100, 0, -100] },
-      { scaleX: 1.00 },
-      { scaleY: 1.00 },
-      { scaleZ: 1.00 },
+      { translate: [300, -550, -170] },
+      { rotateY: -50 },
+      { scaleX: 250.0 },
+      { scaleY: 250.0 },
+      { scaleZ: 250.0 },
+    ],
+  },
+  hat: {
+    transform: [
+      { translate: [100, -230, 300] },
+      { rotateY: 200 },
+      { scaleX: 350.0 },
+      { scaleY: 350.0 },
+      { scaleZ: 350.0 },
+    ],
+  },
+  startButton: {
+    transform: [
+      { translate: [0, 0, 50] },
+      // { rotateY: 50 },
+      // { rotateX: 80 },
+      { scaleX: 10.0 },
+      { scaleY: 10.0 },
+      { scaleZ: 10.0 },
     ],
   },
 });

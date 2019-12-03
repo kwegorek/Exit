@@ -2,10 +2,10 @@ import React from 'react';
 import { AppRegistry, View, PointLight } from 'react-360';
 import store from './store';
 import { Provider } from 'react-redux';
-import NavBar from './components/navBar';
 import Location from './components/location';
-import TutorialOne from './components/tutorial/tutorialOne';
-import TutorialTwo from './components/tutorial/tutorialTwo';
+import TutorialSurface from './components/tutorial/tutorialSurface';
+import TutorialSurface2 from './components/tutorial/tutorialSurface2';
+import EscapedSurface from './components/exitPage/escapedSurface'
 
 export default class Exit extends React.Component {
   render() {
@@ -32,11 +32,8 @@ class ConnectedExit extends React.Component {
   }
 }
 
-
-
 AppRegistry.registerComponent('Exit', () => ConnectedExit);
-AppRegistry.registerComponent('Intro', () => Intro);
-AppRegistry.registerComponent('NavBar', () => NavBar);
-AppRegistry.registerComponent('TutorialOne', () => TutorialOne);
-AppRegistry.registerComponent('TutorialTwo', () => TutorialTwo);
-AppRegistry.registerComponent('TutorialThree', () => TutorialThree);
+AppRegistry.registerComponent('TutorialSurface', () => TutorialSurface);
+AppRegistry.registerComponent('TutorialSurface2', () => TutorialSurface2);
+AppRegistry.registerComponent('EscapedSurface', () => EscapedSurface);
+
