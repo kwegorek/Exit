@@ -200,7 +200,7 @@ class MagicSphere extends React.Component {
             style={{
               transform: [
                 {
-                  translate: [-720, -500, -500],
+                  translate: [-830, -550, -370],
                 },
                 {
                   scaleX: 8.0,
