@@ -21,21 +21,30 @@ class Chest extends React.Component {
       ]
     },
     clickedOnce: false,
-    zPosition: new Animated.Value(700),
+    zPosition: new Animated.Value(1),
   };
   moveToSkeleton = () => {
     console.log("trying to move to skeleton")
-
-    console.log(
     Animated.timing(
                   this.state.zPosition,
                   {
-                    toValue: -900,
-                    duration: 5000,
+                    toValue: -800,
+                    duration: 3000,
                     delay: 100,
                     easing: Easing.quad
-                  }).start())
-
+                  }).start(()=> { this.setState({
+                    textureObj: "3d_hat/witch_hat(POSER).obj",
+                    textureObjmtl: "3d_hat/witch_hat.mtl",
+                    styles: {
+                      transform: [
+                        { translate: [200, -500, 700] },
+                        { translateZ: this.state.zPosition },
+                        { scaleX: 700.0 },
+                        { scaleY: 700.0 },
+                        { scaleZ: 700.0 }
+                      ]
+                    }
+                })})
 
   };
   openOrclose = () => {
@@ -46,6 +55,7 @@ class Chest extends React.Component {
         styles: {
           transform: [
             { translate: [200, -500, 700] },
+            { translateZ: this.state.zPosition },
             { rotateY: 200 },
             { scaleX: 700.0 },
             { scaleY: 700.0 },
@@ -53,7 +63,7 @@ class Chest extends React.Component {
           ]
         }
       });
-this.moveToSkeleton()
+
   };
 
   handleClick = () => {
@@ -62,7 +72,7 @@ this.moveToSkeleton()
     this.state.clickedOnce = true;
  }
     else{
-      // this.moveToSkeleton();
+      this.moveToSkeleton();
       this.props.disableButtons('skeletonButton', 'chestButton');}
 
   };
