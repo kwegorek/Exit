@@ -96,7 +96,7 @@ class MagicPiano extends React.Component {
       this.playNoteC
     ],
     glassesTexture: Array(arrOfTextures.length).fill(glassTextureObjRegular),
-    currentlyDiplayedHint: "static_assets/clues/compassClue.jpg",
+    currentlyDiplayedHint: "clues/compassClue.jpg",
     userPattern: [],
     gameStarted: false,
     gameFinished: false,

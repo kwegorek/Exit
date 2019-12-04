@@ -1,8 +1,8 @@
 import React from "react";
-import { Easing } from "react-native";
 import { asset, Animated, View, VrButton } from "react-360";
 import Entity from "Entity";
 import { connect } from "react-redux";
+import { disableAllClues } from "../../store/clues";
 let AnimatedEntity = Animated.createAnimatedComponent(Entity);
 class Compass extends React.Component {
   state = {
@@ -16,29 +16,20 @@ class Compass extends React.Component {
     textureAsset: [
       "3d_direction/irregular_stone_wall.png",
       "3d_compass/metal_compass.jpeg"
-    ]
+    ],
+    currentlyDisplayedHint: "clues/chestClue.jpg"
   };
   componentDidMount() {}
-  showEscape = () => {
-    setInterval(() => {
-      this.setState(prev => {
-        const isMaxOrMinValue = prev.fade >= 1.0 || prev.fade <= 0.0;
-        const newIsFading = isMaxOrMinValue ? !prev.isFading : prev.isFading;
-        const newFade = prev.fade + (newIsFading ? -0.04 : 0.04);
-        return {
-          fade: newFade,
-          isFading: newIsFading
-        };
-      });
-    }, 400);
+  handleClicked = () => {
+    this.props.disableClues("chestClue", "compassClue");
   };
   render() {
-    const opacityValue = this.state.fade;
     const finalTaskStatus = this.props.musiscTask.musisctable;
+    const chestClue = this.props.clues.chestClue;
     if (finalTaskStatus) {
       return (
         <View>
-          <VrButton onClick={() => this.showEscape()}>
+          <VrButton onClick={this.handleClicked}>
             {/* //compasss object  */}
             <AnimatedEntity
               source={{
@@ -64,6 +55,19 @@ class Compass extends React.Component {
               }}
             />
           </VrButton>
+          {chestClue ? (
+            <Animated.Image
+              style={{
+                position: "absolute",
+                layoutOrigin: [0.5, 0.5, 0],
+                width: 90,
+                height: 60,
+                transform: [{ translateZ: 170 }, { translateX: 60 }],
+                opacity: 1
+              }}
+              source={asset(this.state.currentlyDisplayedHint)}
+            />
+          ) : null}
         </View>
       );
     } else {
@@ -73,10 +77,18 @@ class Compass extends React.Component {
 }
 const mapStateToProps = state => {
   return {
-    musiscTask: state.tasksCompleted
+    musiscTask: state.tasksCompleted,
+    clues: state.clues
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    disableClues: (cluesToEnable, cluesToDisable) =>
+      dispatch(disableAllClues(cluesToEnable, cluesToDisable))
   };
 };
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(Compass);
