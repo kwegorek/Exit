@@ -126,10 +126,10 @@ class MagicSphere extends React.Component {
                 lit={true}
                 style={{
                 transform: [
-                    { translate:  [-500, -600 ,400] },
-                    { scaleX: 0.0004 },
-                    { scaleY: 0.0004},
-                    { scaleZ: 0.0004 },
+                    { translate:  [-450, -400 , -180] },
+                    { scaleX: 0.0003 },
+                    { scaleY: 0.0003},
+                    { scaleZ: 0.0003 },
                     { rotateY: sphereRotation}
                 ],
 
