@@ -4,7 +4,7 @@ import Entity from 'Entity';
 import { disableAllExcept } from '../../store/buttons';
 import { disableAllClues } from '../../store/clues';
 import { connect } from 'react-redux';
-const { AudioModule } = NativeModules;
+const { AudioModule, SurfaceModule } = NativeModules;
 const AnimatedEntity = Animated.createAnimatedComponent(Entity);
 
 let openedBookTexture =
@@ -14,17 +14,21 @@ let closedBooktexture =
   'ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/Textures/ChurchBookClosedV2-Diffuse.png';
 
 class Book extends React.Component {
-  state = {
-    close: true,
-    textureObj:
-      'ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/ChurchBookClosedV2.obj',
-    textureObjmtl:
-      'ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/ChurchBookClosedV2.mtl',
-    info: '',
-    fade: new Animated.Value(0),
-    mirrorClueSrc: 'clues/faceClue.jpg',
-    currentlyDisplayedHint: 'clues/bookHintFlipped.png',
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      close: true,
+      textureObj:
+        'ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/ChurchBookClosedV2.obj',
+      textureObjmtl:
+        'ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/ChurchBookClosedV2.mtl',
+      info: '',
+      fade: new Animated.Value(0),
+      mirrorClueSrc: 'clues/faceClue.jpg',
+      currentlyDisplayedHint: 'clues/bookHintFlipped.png',
+    };
+  }
+
   openOrclose = () => {
     if (this.state.close === true) {
       this.setState({
@@ -71,7 +75,7 @@ class Book extends React.Component {
             lit={true}
             style={{
               transform: [
-                { translate: [-500, -400, -300] },
+                { translate: [-500, -430, -300] },
                 { rotateY: 10 },
                 { scaleX: 80.0 },
                 { scaleY: 80.0 },
@@ -84,21 +88,27 @@ class Book extends React.Component {
           />
         </VrButton>
         {faceClue ? (
-          <Animated.Image
-            style={{
-              position: 'absolute',
-              layoutOrigin: [0.5, 0.5, 0],
-              width: 400,
-              height: 300,
-              transform: [
-                { translateZ: -600 },
-                { translateX: -500.0 },
-                { rotateY: 40 },
-              ],
-              opacity: 1,
+          <VrButton
+            onClick={() => {
+              SurfaceModule.zoomCamera([0, 0, -270]);
             }}
-            source={asset(this.state.mirrorClueSrc)}
-          />
+          >
+            <Animated.Image
+              style={{
+                position: 'absolute',
+                layoutOrigin: [0.5, 0.5, 0],
+                width: 400,
+                height: 300,
+                transform: [
+                  { translateZ: -600 },
+                  { translateX: -500.0 },
+                  { rotateY: 40 },
+                ],
+                opacity: 1,
+              }}
+              source={asset(this.state.mirrorClueSrc)}
+            />
+          </VrButton>
         ) : null}
         {bookClue ? (
           <Animated.Image
