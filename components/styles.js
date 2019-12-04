@@ -12,7 +12,7 @@ export default styles = StyleSheet.create({
   },
   text: {
     textAlign: 'center',
-    fontSize: 40
+    fontSize: 40,
   },
   greetingBox: {
     padding: 10,
@@ -73,7 +73,7 @@ export default styles = StyleSheet.create({
   },
   startButton: {
     transform: [
-      { translate: [-60, 0, 800] },
+      { translate: [-80, -50, 800] },
       { scaleX: 50.0 },
       { scaleY: 50.0 },
       { scaleZ: 50.0 },
@@ -81,10 +81,10 @@ export default styles = StyleSheet.create({
   },
   tutorialTable: {
     transform: [
-      { translate: [60, -10, 400] },
-      { scaleX: 10.0 },
-      { scaleY: 10.0 },
-      { scaleZ: 10.0 },
+      { translate: [60, -50, 400] },
+      { scaleX: 20.0 },
+      { scaleY: 20.0 },
+      { scaleZ: 20.0 },
     ],
   },
 });
