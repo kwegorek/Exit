@@ -8,30 +8,43 @@ export default styles = StyleSheet.create({
     backgroundColor: 'rgba(255, 255, 255, 0.4)',
     justifyContent: 'center',
     alignItems: 'center',
+    transform: [{ translate: [0, -200, 0] }],
   },
   text: {
     textAlign: 'center',
+    fontSize: 40
   },
   greetingBox: {
-    padding: 20,
+    padding: 10,
     backgroundColor: '#000000',
     borderColor: '#ffff',
     borderWidth: 2,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  tutorialPic1: {
+    width: 800,
+    height: 300,
+  },
+  tutorialPic2: {
+    width: 180,
+    height: 150,
   },
   greeting: {
-    fontSize: 30,
+    fontSize: 40,
+    textAlign: 'center',
   },
   rootButton: {
     margin: 30,
     padding: 20,
-    width: 100,
+    width: 200,
     height: 70,
-    borderWidth: 2,
+    borderWidth: 1,
     borderColor: '#ffff',
     backgroundColor: 'green',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 10
+    borderRadius: 10,
   },
   root: {
     flexDirection: 'column',
