@@ -88,9 +88,13 @@ class Book extends React.Component {
             style={{
               position: 'absolute',
               layoutOrigin: [0.5, 0.5, 0],
-              width: 90,
-              height: 60,
-              transform: [{ translateZ: -30 }, { translateX: -10.0 }],
+              width: 400,
+              height: 300,
+              transform: [
+                { translateZ: -600 },
+                { translateX: -500.0 },
+                { rotateY: 40 },
+              ],
               opacity: 1,
             }}
             source={asset(this.state.mirrorClueSrc)}
