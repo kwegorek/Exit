@@ -1,5 +1,5 @@
 import React from 'react';
-import { asset, Animated, View, VrButton, NativeModules } from 'react-360';
+import { asset, Animated, View, VrButton, NativeModules, Text} from 'react-360';
 import Entity from 'Entity';
 import { disableAllExcept } from '../../store/buttons';
 import { disableAllClues } from '../../store/clues';
@@ -23,6 +23,7 @@ class Book extends React.Component {
     info: '',
     fade: new Animated.Value(0),
     mirrorClueSrc: 'clues/faceClue.jpg',
+    //intro page 
     currentlyDisplayedHint: 'clues/bookHintFlipped.png',
   };
   openOrclose = () => {
@@ -47,6 +48,8 @@ class Book extends React.Component {
       });
     }
   };
+
+
 
   handleClick = () => {
     this.props.disableButtons('faceButton', 'bookButton');
@@ -96,18 +99,33 @@ class Book extends React.Component {
             source={asset(this.state.mirrorClueSrc)}
           />
         ) : null}
+        {/* //inteo page  */}
         {bookClue ? (
-          <Animated.Image
-            style={{
-              position: 'absolute',
-              layoutOrigin: [0.5, 0.5, 0],
-              width: 90,
-              height: 60,
-              transform: [{ translateZ: 170 }, { translateX: 60 }],
-              opacity: 1,
-            }}
-            source={asset(this.state.currentlyDisplayedHint)}
-          />
+    
+            <Animated.Image
+              style={{
+                position: 'absolute',
+                layoutOrigin: [0.5, 0.5, 0],
+                width: 250,
+                height: 120,
+                transform: [{rotateY: 40},{ translateZ: 170 }, { translateX: 30 }],
+
+                opacity: 1,
+                marginTop: 0, 
+                marginLeft: 0, 
+                marginRight: 0,
+                borderWidth: 3,
+                borderColor: '#d6d7da88',
+
+              
+
+              }}
+              source={asset(this.state.currentlyDisplayedHint)}
+            />
+
+   
+
+
         ) : null}
       </View>
     );
