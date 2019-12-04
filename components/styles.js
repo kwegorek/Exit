@@ -55,7 +55,7 @@ export default styles = StyleSheet.create({
   },
   skeleton: {
     transform: [
-      { translate: [200, -550, -300] },
+      { translate: [200, -520, -100] },
       { rotateY: -50 },
       { scaleX: 250.0 },
       { scaleY: 250.0 },
