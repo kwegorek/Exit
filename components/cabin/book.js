@@ -22,10 +22,8 @@ class Book extends React.Component {
       "ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/ChurchBookClosedV2.mtl",
     info: "",
     fade: new Animated.Value(0),
-    // mirrorClue: false,
     mirrorClueSrc: "Clues/mirrorClue.jpg",
     currentlyDisplayedHint: '2d_intro/intro_page.jpg',
-    // introClueState: true
   };
   openOrclose = () => {
     if (this.state.close === true) {
@@ -57,16 +55,9 @@ class Book extends React.Component {
     AudioModule.playOneShot({
       source: asset("magic.wav")
     });
-    // this.setState({
-    //   mirrorClue: true,
-    //   introClueState: false
-    // });
-
   };
 
   render() {
-    console.log('buttons==>', this.props.buttons)
-    console.log('Clue==>',this.props.clues)
     const disableStatus = !this.props.buttons.bookButton;
      const bookClue = this.props.clues.bookClue
      const faceClue = this.props.clues.faceClue
