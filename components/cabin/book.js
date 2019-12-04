@@ -1,5 +1,5 @@
 import React from 'react';
-import { asset, Animated, View, VrButton, NativeModules, Text} from 'react-360';
+import { asset, Animated, View, VrButton, NativeModules} from 'react-360';
 import Entity from 'Entity';
 import { disableAllExcept } from '../../store/buttons';
 import { disableAllClues } from '../../store/clues';
@@ -114,7 +114,7 @@ class Book extends React.Component {
         ) : null}
         {/* //inteo page  */}
         {bookClue ? (
-    
+
             <Animated.Image
               style={{
                 position: 'absolute',
@@ -124,19 +124,19 @@ class Book extends React.Component {
                 transform: [{rotateY: 40},{ translateZ: 170 }, { translateX: 30 }],
 
                 opacity: 1,
-                marginTop: 0, 
-                marginLeft: 0, 
+                marginTop: 0,
+                marginLeft: 0,
                 marginRight: 0,
                 borderWidth: 3,
                 borderColor: '#d6d7da88',
 
-              
+
 
               }}
               source={asset(this.state.currentlyDisplayedHint)}
             />
 
-   
+
 
 
         ) : null}

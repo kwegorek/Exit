@@ -4,6 +4,7 @@ import { changeLocation } from '../../store/location';
 import { connect } from 'react-redux';
 import StartGameButton from './startGameButton';
 import Table from './table';
+import Click from './click'
 const { SurfaceModule } = NativeModules;
 
 class Tutorial extends React.Component {
@@ -24,7 +25,7 @@ class Tutorial extends React.Component {
 
     //bring user back to center of room 0,0,0
     SurfaceModule.zoomCamera([0,0,0])
-    
+
     //change to chosen game room
     this.props.changeLocation('cabin');
   }
@@ -32,6 +33,7 @@ class Tutorial extends React.Component {
     return (
       <View>
         <Table />
+        <Click/>
         <StartGameButton handleClickPlayGame={this.handleClickPlayGame} />
       </View>
     );
