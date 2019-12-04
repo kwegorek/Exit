@@ -7,7 +7,6 @@ import FallingCurtain from './fallingCurtain'
 import Book from './book'
 import Table from './Table'
 import Skull from './skull'
-import AncientPaper from './ancientPaper'
 import Curtain from './curtain'
 import Face from './face'
 import Chest from './chest'
@@ -16,11 +15,9 @@ import { changeLocation } from '../../store/location';
 import { connect } from 'react-redux';
 import Compass from './compass';
 import MagicPiano from './magicPiano'
-// import Hat from './hat'
-const { SurfaceModule } = NativeModules;
 import MagicGlass from './magicGlass'
 
-
+const { SurfaceModule } = NativeModules;
 class Cabin extends React.Component {
   constructor(props) {
     super(props);
@@ -42,7 +39,6 @@ class Cabin extends React.Component {
     return (
       <View>
         <Skeleton />
-        {/* <Hat /> */}
         <Bookshelf />
         <MagicSphere />
         <FallingCurtain handleClickEscapeKey={this.handleClickEscapeKey} />
@@ -55,7 +51,6 @@ class Cabin extends React.Component {
         <Curtain/>
         <Compass/>
         <MagicPiano/>
-        {/* <AncientPaper/> */}
         <MagicGlass/>
       </View>
     );
