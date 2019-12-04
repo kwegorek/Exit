@@ -7,7 +7,7 @@ import { addCompletedTasks } from '../../store/tasksCompleted';
 import { disableAllExcept } from '../../store/buttons';
 
 //regular color
-let glassObj = '3d_glass_piano/szklanka+2.obj';
+// let glassObj = '3d_glass_piano/szklanka+2.obj';
 let glassTextureObjRegular = '3d_glass_piano/glass-v2.jpg';
 
 //glass color variabels
@@ -107,7 +107,6 @@ class MagicPiano extends React.Component {
   }
 
   startGame = (_evt, index) => {
-    // this.props.disableButtons('tableButton', 'tableButton');
     let indx = this.state.clickedBtn;
 
     if (this.state.gameStarted === true) {

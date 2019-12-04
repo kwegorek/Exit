@@ -2,6 +2,7 @@ import React from "react";
 import { asset, Animated, View, VrButton, NativeModules } from "react-360";
 import Entity from "Entity";
 import { disableAllExcept } from "../../store/buttons";
+import {disableAllClues} from '../../store/clues'
 import { connect } from "react-redux";
 
 const { AudioModule } = NativeModules;
@@ -11,7 +12,6 @@ class Face extends React.Component {
     fade: 0.0,
     isFading: true,
     textFade: new Animated.Value(0),
-    tableClue: false,
     tableSrc: "Clues/tableClue.jpg"
   };
 
@@ -31,17 +31,15 @@ class Face extends React.Component {
 
   handleClick = () => {
     this.props.disableButtons("tableButton", "faceButton");
+    this.props.disableClues("tableClue","faceClue")
     AudioModule.playOneShot({
       source: asset("Laugh.wav")
-    });
-
-    this.setState({
-      tableClue: true
     });
   };
   render() {
     const opacityValue = this.state.fade;
     const disableStatus = !this.props.buttons.faceButton;
+    const tableClue = this.props.clues.tableClue
     return (
       <View>
         <VrButton onClick={this.handleClick} disabled={disableStatus}>
@@ -64,7 +62,7 @@ class Face extends React.Component {
             lit={true}
           ></Entity>
         </VrButton>
-        {this.state.tableClue ? (
+        {tableClue ? (
           <Animated.Image
             style={{
               position: "absolute",
@@ -87,14 +85,16 @@ class Face extends React.Component {
 }
 const mapStateToProps = state => {
   return {
-    buttons: state.buttons
+    buttons: state.buttons,
+    clues : state.clues
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     disableButtons: (buttonToEnable, buttonToDisable) =>
-      dispatch(disableAllExcept(buttonToEnable, buttonToDisable))
+      dispatch(disableAllExcept(buttonToEnable, buttonToDisable)),
+      disableClues :(cluesToEnable, cluesToDisable)=> dispatch(disableAllClues(cluesToEnable, cluesToDisable))
   };
 };
 
