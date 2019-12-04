@@ -26,7 +26,7 @@ class Skeleton extends React.Component {
       this.setState(prev => {
         const isMaxOrMinValue = prev.fade >= 1.0 || prev.fade <= 0.0;
         const newIsFading = isMaxOrMinValue ? !prev.isFading : prev.isFading;
-        const newFade = prev.fade + (newIsFading ? -0.04 : 0.04);
+        const newFade = prev.fade + (newIsFading ? -2.0 : 2.0);
 
         return {
           fade: newFade,
@@ -76,7 +76,7 @@ class Skeleton extends React.Component {
                 {
                   translate: [-80, -200, 150]
                 },
-                
+
                 {
                   scaleX: 50.0
                 },
