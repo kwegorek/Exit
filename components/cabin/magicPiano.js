@@ -96,7 +96,7 @@ class MagicPiano extends React.Component {
       this.playNoteC
     ],
     glassesTexture: Array(arrOfTextures.length).fill(glassTextureObjRegular),
-    currentlyDiplayedHint: "3d_hintboard/flippedHint2.png",
+    currentlyDiplayedHint: "static_assets/clues/compassClue.jpg",
     userPattern: [],
     gameStarted: false,
     gameFinished: false,
@@ -124,7 +124,7 @@ class MagicPiano extends React.Component {
         } else {
           this.setState({
             gameStarted: false,
-            currentlyDiplayedHint: "3d_hintboard/paper_try_again.png",
+            currentlyDiplayedHint: "clues/tryAgain.jpg",
             glassesTexture: Array(arrOfTextures.length).fill(
               glassTextureObjRegular
             ),
@@ -139,7 +139,7 @@ class MagicPiano extends React.Component {
         } else {
           this.setState({
             gameStarted: false,
-            currentlyDiplayedHint: "3d_hintboard/paper_try_again.png",
+            currentlyDiplayedHint: "clues/tryAgain.jpg",
             glassesTexture: Array(arrOfTextures.length).fill(
               glassTextureObjRegular
             ),
@@ -154,7 +154,7 @@ class MagicPiano extends React.Component {
         } else {
           this.setState({
             gameStarted: false,
-            currentlyDiplayedHint: "3d_hintboard/paper_try_again.png",
+            currentlyDiplayedHint: "clues/tryAgain.jpg",
             glassesTexture: Array(arrOfTextures.length).fill(
               glassTextureObjRegular
             ),
@@ -169,7 +169,7 @@ class MagicPiano extends React.Component {
         } else {
           this.setState({
             gameStarted: false,
-            currentlyDiplayedHint: "3d_hintboard/paper_try_again.png",
+            currentlyDiplayedHint: "clues/tryAgain.jpg",
             glassesTexture: Array(arrOfTextures.length).fill(
               glassTextureObjRegular
             ),
@@ -184,7 +184,7 @@ class MagicPiano extends React.Component {
         } else {
           this.setState({
             gameStarted: false,
-            currentlyDiplayedHint: "3d_hintboard/paper_try_again.png",
+            currentlyDiplayedHint: "clues/tryAgain.jpg",
             glassesTexture: Array(arrOfTextures.length).fill(
               glassTextureObjRegular
             ),
@@ -200,7 +200,7 @@ class MagicPiano extends React.Component {
         } else {
           this.setState({
             gameStarted: false,
-            currentlyDiplayedHint: "3d_hintboard/paper_try_again.png",
+            currentlyDiplayedHint:"clues/tryAgain.jpg",
             glassesTexture: Array(arrOfTextures.length).fill(
               glassTextureObjRegular
             ),
@@ -216,7 +216,7 @@ class MagicPiano extends React.Component {
         } else {
           this.setState({
             gameStarted: false,
-            currentlyDiplayedHint: "3d_hintboard/paper_try_again.png",
+            currentlyDiplayedHint: "clues/tryAgain.jpg",
             glassesTexture: Array(arrOfTextures.length).fill(
               glassTextureObjRegular
             ),
@@ -228,7 +228,7 @@ class MagicPiano extends React.Component {
         if (index === this.state.patternSequence[indx]) {
           this.setState({
             clickedBtn: 8,
-            currentlyDiplayedHint: "3d_hintboard/task_completed.png"
+            currentlyDiplayedHint: "clues/compass2Clue.jpg"
           });
 
           this.props.addTaskCompleted(true);
@@ -236,7 +236,7 @@ class MagicPiano extends React.Component {
         } else {
           this.setState({
             gameStarted: false,
-            currentlyDiplayedHint: "3d_hintboard/paper_try_again.png",
+            currentlyDiplayedHint: "clues/tryAgain.jpg",
             glassesTexture: Array(arrOfTextures.length).fill(
               glassTextureObjRegular
             ),
@@ -251,7 +251,7 @@ class MagicPiano extends React.Component {
     this.setState({
       gameStarted: true
     });
-    this.props.disableClues("chestClue", "tableClue");
+    this.props.disableClues("compassClue", "tableClue");
     //display task png -> podmienic na stanie
     arrOfTextures.forEach((texture, index) => {
       setTimeout(
@@ -271,7 +271,7 @@ class MagicPiano extends React.Component {
 
   render() {
     const disableStatus = !this.props.buttons.tableButton;
-    const chestClue = this.props.clues.chestClue;
+    const compassClue = this.props.clues.compassClue;
     return (
       <View>
         <VrButton onClick={this.tableClicked} disabled={disableStatus}>
@@ -332,7 +332,7 @@ class MagicPiano extends React.Component {
             />
           </VrButton>
         ))}
-        {chestClue ? (
+        {compassClue ? (
           <Animated.Image
             style={{
               position: "absolute",

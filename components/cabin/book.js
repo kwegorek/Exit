@@ -22,8 +22,8 @@ class Book extends React.Component {
       "ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/ChurchBookClosedV2.mtl",
     info: "",
     fade: new Animated.Value(0),
-    mirrorClueSrc: "Clues/mirrorClue.jpg",
-    currentlyDisplayedHint: "2d_intro/intro_page.jpg"
+    mirrorClueSrc: "clues/faceClue.jpg",
+    currentlyDisplayedHint: "clues/bookHintFlipped.png"
   };
   openOrclose = () => {
     if (this.state.close === true) {

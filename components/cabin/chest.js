@@ -67,11 +67,11 @@ class Chest extends React.Component {
   handleClick = () => {
     if (!this.state.clickedOnce) {
       this.openOrclose();
-      this.props.disableClues("skeletonClue", "chestClue");
       this.state.clickedOnce = true;
     } else {
       this.moveToSkeleton();
       this.props.disableButtons("skeletonButton", "chestButton");
+      this.props.disableClues("skeletonClue", "chestClue");
     }
   };
 

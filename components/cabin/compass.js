@@ -1,8 +1,8 @@
-import React from 'react';
-import { Easing } from 'react-native';
-import { asset, Animated, View, VrButton } from 'react-360';
-import Entity from 'Entity';
-import { connect } from 'react-redux';
+import React from "react";
+import { Easing } from "react-native";
+import { asset, Animated, View, VrButton } from "react-360";
+import Entity from "Entity";
+import { connect } from "react-redux";
 let AnimatedEntity = Animated.createAnimatedComponent(Entity);
 class Compass extends React.Component {
   state = {
@@ -10,13 +10,13 @@ class Compass extends React.Component {
     isFading: true,
     yPosition: new Animated.Value(1),
     objAsset: [
-      '3d_direction/directional-generic-marker.obj',
-      '3d_compass/3d-model.obj',
+      "3d_direction/directional-generic-marker.obj",
+      "3d_compass/3d-model.obj"
     ],
     textureAsset: [
-      '3d_direction/irregular_stone_wall.png',
-      '3d_compass/metal_compass.jpeg',
-    ],
+      "3d_direction/irregular_stone_wall.png",
+      "3d_compass/metal_compass.jpeg"
+    ]
   };
   componentDidMount() {}
   showEscape = () => {
@@ -27,7 +27,7 @@ class Compass extends React.Component {
         const newFade = prev.fade + (newIsFading ? -0.04 : 0.04);
         return {
           fade: newFade,
-          isFading: newIsFading,
+          isFading: newIsFading
         };
       });
     }, 400);
@@ -42,25 +42,25 @@ class Compass extends React.Component {
             {/* //compasss object  */}
             <AnimatedEntity
               source={{
-                obj: asset(this.state.objAsset[1]),
+                obj: asset(this.state.objAsset[1])
               }}
               lit={true}
               texture={asset(this.state.textureAsset[1])}
               style={{
                 transform: [
                   {
-                    translate: [-50, -360, 305],
+                    translate: [-50, -360, 305]
                   },
                   {
-                    scaleX: 40.0,
+                    scaleX: 40.0
                   },
                   {
-                    scaleY: 40.0,
+                    scaleY: 40.0
                   },
                   {
-                    scaleZ: 40.0,
-                  },
-                ],
+                    scaleZ: 40.0
+                  }
+                ]
               }}
             />
           </VrButton>
@@ -73,7 +73,10 @@ class Compass extends React.Component {
 }
 const mapStateToProps = state => {
   return {
-    musiscTask: state.tasksCompleted,
+    musiscTask: state.tasksCompleted
   };
 };
-export default connect(mapStateToProps, null)(Compass);
+export default connect(
+  mapStateToProps,
+  null
+)(Compass);
