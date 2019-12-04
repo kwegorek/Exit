@@ -21,6 +21,10 @@ class Tutorial extends React.Component {
     //unmount surfaces if not already unmounted
     SurfaceModule.changeSurfaceSize('TutorialSurface', 1, 1);
     SurfaceModule.changeSurfaceSize('TutorialSurface2', 1, 1);
+
+    //bring user back to center of room 0,0,0
+    SurfaceModule.zoomCamera([0,0,0])
+    
     //change to chosen game room
     this.props.changeLocation('cabin');
   }
