@@ -6,6 +6,7 @@ export default class SurfaceModule extends Module {
     this.canClick = false;
   }
   zoomCamera(newLocation) {
+    //newLocation example: [0, 0, 0]
     const r360 = window.reactIns;
     let cameraPosition = r360.getCameraPosition();
     cameraPosition[0] = newLocation[0];
