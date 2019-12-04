@@ -1,5 +1,5 @@
 import React from "react";
-import { asset, Animated, View, VrButton} from "react-360";
+import { asset, Animated, View, VrButton } from "react-360";
 import Entity from "Entity";
 import { Easing } from "react-native";
 import { disableAllExcept } from "../../store/buttons";
@@ -67,7 +67,7 @@ class Chest extends React.Component {
   handleClick = () => {
     if (!this.state.clickedOnce) {
       this.openOrclose();
-      this.props.disableClues("skeletonClue","chestClue")
+      this.props.disableClues("skeletonClue", "chestClue");
       this.state.clickedOnce = true;
     } else {
       this.moveToSkeleton();
@@ -77,7 +77,6 @@ class Chest extends React.Component {
 
   render() {
     const disableStatus = !this.props.buttons.chestButton;
-    // const chestClue = this.props.clues.chestClue
     return (
       <View>
         <VrButton onClick={this.handleClick} disabled={disableStatus}>
@@ -90,18 +89,6 @@ class Chest extends React.Component {
             style={this.state.styles}
           />
         </VrButton>
-        {/* {chestClue?
-        <Animated.Image
-          style={{
-            position: 'absolute',
-            layoutOrigin: [0.5, 0.5, 0],
-            width: 90,
-            height: 60,
-            transform: [{ translateZ: 170 }, { translateX: 60 }],
-            opacity: 1,
-          }}
-          source={asset("3d_hintboard/task_completed.png")}
-        />:null} */}
       </View>
     );
   }
@@ -109,7 +96,7 @@ class Chest extends React.Component {
 const mapStateToProps = state => {
   return {
     buttons: state.buttons,
-    clues : state.clues
+    clues: state.clues
   };
 };
 
@@ -117,7 +104,7 @@ const mapDispatchToProps = dispatch => {
   return {
     disableButtons: (buttonToEnable, buttonToDisable) =>
       dispatch(disableAllExcept(buttonToEnable, buttonToDisable)),
-      disableClues: (cluesToEnable, cluesToDisable) =>
+    disableClues: (cluesToEnable, cluesToDisable) =>
       dispatch(disableAllClues(cluesToEnable, cluesToDisable))
   };
 };
