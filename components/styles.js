@@ -73,7 +73,7 @@ export default styles = StyleSheet.create({
   },
   startButton: {
     transform: [
-      { translate: [-80, -50, 800] },
+      { translate: [-80, -70, 800] },
       { scaleX: 50.0 },
       { scaleY: 50.0 },
       { scaleZ: 50.0 },
@@ -81,7 +81,7 @@ export default styles = StyleSheet.create({
   },
   tutorialTable: {
     transform: [
-      { translate: [60, -50, 400] },
+      { translate: [60, -70, 400] },
       { scaleX: 20.0 },
       { scaleY: 20.0 },
       { scaleZ: 20.0 },
