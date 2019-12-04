@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, VrButton } from 'react-360';
+import { Text, View, VrButton, Image, asset } from 'react-360';
 import styles from '../styles';
 import { NativeModules } from 'react-360';
 const { SurfaceModule } = NativeModules;
@@ -18,9 +18,11 @@ export default class TutorialSurface extends React.Component {
     return (
       <View style={styles.panel}>
         <View style={styles.greetingBox}>
+          <Text style={styles.greeting}>Welcome to Exit: Escape the room!</Text>
           <Text style={styles.greeting}>
-            Welcome to Exit. Use your mouse or trackpad to look around.
+            Use your mouse or trackpad to look around.
           </Text>
+          <Image source={asset('arrow.png')} style={styles.tutorialPic1} />
         </View>
         <VrButton style={styles.rootButton} onClick={this.handleClick}>
           <Text style={styles.text}>Got it!</Text>
