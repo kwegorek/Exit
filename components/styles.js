@@ -12,7 +12,7 @@ export default styles = StyleSheet.create({
   },
   text: {
     textAlign: 'center',
-    fontSize: 40,
+    fontSize: 35,
   },
   greetingBox: {
     padding: 10,
