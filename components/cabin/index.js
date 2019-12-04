@@ -23,17 +23,9 @@ class Cabin extends React.Component {
     super(props);
     this.handleClickEscapeKey = this.handleClickEscapeKey.bind(this);
   }
-  async componentDidMount() {
-    await SurfaceModule.renderNavBar();
-    console.log('DO', window.document);
-    console.log('cabin mounted!');
-  }
   //pass this function to whiever 3d object leads to escape/winning
   handleClickEscapeKey() {
     this.props.changeLocation('cabinEscaped');
-  }
-  handleLostGame() {
-    //mount loser surface
   }
   render() {
     return (

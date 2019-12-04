@@ -6,7 +6,6 @@ export default class SurfaceModule extends Module {
     this.canClick = false;
   }
   zoomCamera(newLocation) {
-    console.log('....zooming camera');
     const r360 = window.reactIns;
     let cameraPosition = r360.getCameraPosition();
     cameraPosition[0] = newLocation[0];
@@ -22,10 +21,6 @@ export default class SurfaceModule extends Module {
     // if (zIndex <= objDistance + 100 && zIndex >= objDistance - 100) {
     //   this.canClick = true
     // }
-  }
-  renderNavBar() {
-    const document = window.document.getElementById('navBar');
-    console.log('In render', document);
   }
   changeSurfaceAngle(surfaceName, horizontalAngle, verticleAngle) {
     window[surfaceName].setAngle(horizontalAngle, verticleAngle);

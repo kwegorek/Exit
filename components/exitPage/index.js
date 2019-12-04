@@ -12,7 +12,6 @@ export default class ExitPage extends React.Component {
     SurfaceModule.zoomCamera([0, 0, 0]);
     //mount winner surface
     SurfaceModule.changeSurfaceSize('EscapedSurface', 1000, 1000);
-    console.log('escaped room component mounted');
   }
   render() {
     return null;
