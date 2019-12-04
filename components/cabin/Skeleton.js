@@ -74,9 +74,9 @@ class Skeleton extends React.Component {
             style={{
               transform: [
                 {
-                  translate: [-80, -200, 150]
+                  translate: [-80, -200, 100]
                 },
-
+                {rotateZ: -200},
                 {
                   scaleX: 50.0
                 },
@@ -102,6 +102,7 @@ class Skeleton extends React.Component {
                 {
                   translate: [-150, -200, 100]
                 },
+                {rotateZ: -200},
                 {
                   scaleX: 50.0
                 },
@@ -127,6 +128,7 @@ class Skeleton extends React.Component {
                 {
                   translate: [-240, -200, 100]
                 },
+                {rotateZ: -200},
                 {
                   scaleX: 50.0
                 },
