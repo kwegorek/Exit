@@ -267,10 +267,6 @@ class MagicPiano extends React.Component {
         this
       );
     });
-
-    // this.setState({
-    //   currentlyDiplayedHint: "3d_hintboard/flippedHint.png"
-    // });
   };
 
   render() {
