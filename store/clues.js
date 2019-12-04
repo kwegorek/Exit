@@ -10,6 +10,7 @@ const STATE = {
   bookClue: true,
   faceClue: false,
   tableClue: false,
+  compassClue: false,
   chestClue: false,
   skeletonClue: false
 };

@@ -1,8 +1,9 @@
 import React from "react";
-import { asset, Animated, View, VrButton, NativeModules } from "react-360";
+import { asset, Animated, View, VrButton } from "react-360";
 import Entity from "Entity";
 import { Easing } from "react-native";
 import { disableAllExcept } from "../../store/buttons";
+import { disableAllClues } from "../../store/clues";
 import { connect } from "react-redux";
 
 const AnimatedEntity = Animated.createAnimatedComponent(Entity);
@@ -70,6 +71,7 @@ class Chest extends React.Component {
     } else {
       this.moveToSkeleton();
       this.props.disableButtons("skeletonButton", "chestButton");
+      this.props.disableClues("skeletonClue", "chestClue");
     }
   };
 
@@ -93,14 +95,17 @@ class Chest extends React.Component {
 }
 const mapStateToProps = state => {
   return {
-    buttons: state.buttons
+    buttons: state.buttons,
+    clues: state.clues
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     disableButtons: (buttonToEnable, buttonToDisable) =>
-      dispatch(disableAllExcept(buttonToEnable, buttonToDisable))
+      dispatch(disableAllExcept(buttonToEnable, buttonToDisable)),
+    disableClues: (cluesToEnable, cluesToDisable) =>
+      dispatch(disableAllClues(cluesToEnable, cluesToDisable))
   };
 };
 

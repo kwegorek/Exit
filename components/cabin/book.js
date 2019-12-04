@@ -2,7 +2,7 @@ import React from "react";
 import { asset, Animated, View, VrButton, NativeModules } from "react-360";
 import Entity from "Entity";
 import { disableAllExcept } from "../../store/buttons";
-import {disableAllClues} from '../../store/clues'
+import { disableAllClues } from "../../store/clues";
 import { connect } from "react-redux";
 const { AudioModule } = NativeModules;
 const AnimatedEntity = Animated.createAnimatedComponent(Entity);
@@ -22,8 +22,8 @@ class Book extends React.Component {
       "ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/ChurchBookClosedV2.mtl",
     info: "",
     fade: new Animated.Value(0),
-    mirrorClueSrc: "Clues/mirrorClue.jpg",
-    currentlyDisplayedHint: '2d_intro/intro_page.jpg',
+    mirrorClueSrc: "clues/faceClue.jpg",
+    currentlyDisplayedHint: "clues/bookHintFlipped.png"
   };
   openOrclose = () => {
     if (this.state.close === true) {
@@ -50,7 +50,7 @@ class Book extends React.Component {
 
   handleClick = () => {
     this.props.disableButtons("faceButton", "bookButton");
-    this.props.disableClues("faceClue","bookClue")
+    this.props.disableClues("faceClue", "bookClue");
     this.openOrclose();
     AudioModule.playOneShot({
       source: asset("magic.wav")
@@ -59,8 +59,8 @@ class Book extends React.Component {
 
   render() {
     const disableStatus = !this.props.buttons.bookButton;
-     const bookClue = this.props.clues.bookClue
-     const faceClue = this.props.clues.faceClue
+    const bookClue = this.props.clues.bookClue;
+    const faceClue = this.props.clues.faceClue;
     return (
       <View>
         <VrButton onClick={this.handleClick} disabled={disableStatus}>
@@ -96,18 +96,19 @@ class Book extends React.Component {
             source={asset(this.state.mirrorClueSrc)}
           />
         ) : null}
-       {bookClue ?
-       <Animated.Image
-          style={{
-            position: 'absolute',
-            layoutOrigin: [0.5, 0.5, 0],
-            width: 90,
-            height: 60,
-            transform: [{ translateZ: 170 }, { translateX: 60 }],
-            opacity: 1,
-          }}
-          source={asset(this.state.currentlyDisplayedHint)}
-        />:null}
+        {bookClue ? (
+          <Animated.Image
+            style={{
+              position: "absolute",
+              layoutOrigin: [0.5, 0.5, 0],
+              width: 90,
+              height: 60,
+              transform: [{ translateZ: 170 }, { translateX: 60 }],
+              opacity: 1
+            }}
+            source={asset(this.state.currentlyDisplayedHint)}
+          />
+        ) : null}
       </View>
     );
   }
@@ -117,7 +118,7 @@ const mapStateToProps = state => {
   console.log("mapping state to book", state);
   return {
     buttons: state.buttons,
-    clues : state.clues
+    clues: state.clues
   };
 };
 
@@ -125,8 +126,8 @@ const mapDispatchToProps = dispatch => {
   return {
     disableButtons: (buttonToEnable, buttonToDisable) =>
       dispatch(disableAllExcept(buttonToEnable, buttonToDisable)),
-    disableClues :(cluesToEnable, cluesToDisable)=> dispatch(disableAllClues(cluesToEnable, cluesToDisable))
-
+    disableClues: (cluesToEnable, cluesToDisable) =>
+      dispatch(disableAllClues(cluesToEnable, cluesToDisable))
   };
 };
 
