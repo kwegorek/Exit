@@ -17,7 +17,7 @@ class Compass extends React.Component {
     ],
     textureAsset: [
       "3d_direction/irregular_stone_wall.png",
-      "3d_compass/metal_compass.jpeg"
+      '3d_book/texture/watercolor-paper-texture.jpg_specular.png'
     ],
     currentlyDisplayedHint: "clues/chestClue.jpg"
   };
@@ -66,19 +66,9 @@ class Compass extends React.Component {
                 width: 450,
                 height: 300,
                 transform: [
-      
                   {translateZ: 800},
                   {translateX: 300},
                   {rotateY: 0} ],
-
-
-
-
-
-                // layoutOrigin: [0.5, 0.5, 0],
-                // width: 90,
-                // height: 60,
-                // transform: [{ translateZ: 170 }, { translateX: 60 }],
                 opacity: 1
               }}
               source={asset(this.state.currentlyDisplayedHint)}
