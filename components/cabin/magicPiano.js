@@ -251,7 +251,7 @@ class MagicPiano extends React.Component {
     this.setState({
       gameStarted: true
     });
-    this.props.disableClues("chestClue","tableClue")
+    this.props.disableClues("chestClue", "tableClue");
     //display task png -> podmienic na stanie
     arrOfTextures.forEach((texture, index) => {
       setTimeout(
@@ -271,7 +271,7 @@ class MagicPiano extends React.Component {
 
   render() {
     const disableStatus = !this.props.buttons.tableButton;
-    const chestClue = this.props.clues.chestClue
+    const chestClue = this.props.clues.chestClue;
     return (
       <View>
         <VrButton onClick={this.tableClicked} disabled={disableStatus}>
@@ -332,18 +332,19 @@ class MagicPiano extends React.Component {
             />
           </VrButton>
         ))}
-  { chestClue?
-        <Animated.Image
-          style={{
-            position: 'absolute',
-            layoutOrigin: [0.5, 0.5, 0],
-            width: 90,
-            height: 60,
-            transform: [{ translateZ: 170 }, { translateX: 60 }],
-            opacity: 1,
-          }}
-          source={asset(this.state.currentlyDiplayedHint)}
-        />:null}
+        {chestClue ? (
+          <Animated.Image
+            style={{
+              position: "absolute",
+              layoutOrigin: [0.5, 0.5, 0],
+              width: 90,
+              height: 60,
+              transform: [{ translateZ: 170 }, { translateX: 60 }],
+              opacity: 1
+            }}
+            source={asset(this.state.currentlyDiplayedHint)}
+          />
+        ) : null}
       </View>
     );
   }
@@ -353,7 +354,7 @@ const mapStateToProps = state => {
   return {
     musiscTask: state.tasksCompleted,
     buttons: state.buttons,
-    clues : state.clues
+    clues: state.clues
   };
 };
 
