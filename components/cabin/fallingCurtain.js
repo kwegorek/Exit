@@ -15,9 +15,6 @@ class FallingCurtain extends React.Component {
     textureMtl: "curtain-obj/curtain.mtl",
     showEcape: false
   };
-  componentDidMount() {
-    console.log("falling pic monuted");
-  }
   startFalling = () => {
     const ifGameFinished = this.props.allTasksCompleted.allCompleted;
     //picture falls only when all Tasks are completed

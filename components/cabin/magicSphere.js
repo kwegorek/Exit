@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Easing } from 'react-native';
 import { asset, Animated, View, VrButton } from 'react-360';
@@ -26,30 +25,23 @@ class MagicSphere extends React.Component {
   };
 
   componentDidMount() {
-    this.startRotateCrystal()
+    this.startRotateCrystal();
   }
 
-
-  startRotate= () => {
-
-        this.state.rotation.setValue(0)
-        Animated.timing(this.state.rotation,
-            {
-                toValue: 360,
-                duration: 6000,
-            }
-        ).start(this.startRotate)
-    }
-    startRotateCrystal= () => {
-
-      this.state.rotationSphere.setValue(0)
-      Animated.timing(this.state.rotationSphere,
-          {
-              toValue: 360,
-              duration: 6000,
-          }
-      ).start(this.startRotateCrystal)
-  }
+  startRotate = () => {
+    this.state.rotation.setValue(0);
+    Animated.timing(this.state.rotation, {
+      toValue: 360,
+      duration: 6000,
+    }).start(this.startRotate);
+  };
+  startRotateCrystal = () => {
+    this.state.rotationSphere.setValue(0);
+    Animated.timing(this.state.rotationSphere, {
+      toValue: 360,
+      duration: 6000,
+    }).start(this.startRotateCrystal);
+  };
 
   startTimer = () => {
     if (!this.state.timeOver) {
@@ -114,51 +106,45 @@ class MagicSphere extends React.Component {
 
   render() {
     const rotationValue = this.state.rotation;
-    const sphereRotation = this.state.rotationSphere
+    const sphereRotation = this.state.rotationSphere;
     return (
       <View>
+        <AnimatedEntity
+          source={{
+            obj: asset('crystal/magic-sphere.obj'),
+            mtl: asset('crystal/magic-sphere.mtl'),
+          }}
+          lit={true}
+          style={{
+            transform: [
+              { translate: [-500, -400, -130] },
+              { scaleX: 0.0003 },
+              { scaleY: 0.0003 },
+              { scaleZ: 0.0003 },
+              { rotateY: sphereRotation },
+            ],
+          }}
+        />
 
-                <AnimatedEntity
-                source={{
-                obj: asset('crystal/magic-sphere.obj'),
-                mtl: asset('crystal/magic-sphere.mtl'),
-                }}
-                lit={true}
-                style={{
-                transform: [
-                    { translate:  [-450, -400 , -180] },
-                    { scaleX: 0.0003 },
-                    { scaleY: 0.0003},
-                    { scaleZ: 0.0003 },
-                    { rotateY: sphereRotation}
-                ],
-
-
-                }}
-                    />
-
-                <VrButton onClick={() => this.startRotate()}>
-                <AnimatedEntity
-                 onExit={this.stopRotate}
-
-                source={{
-                obj: asset('spider/Only_Spider_with_Animations_Export.obj'),
-                mtl: asset('spider/Only_Spider_with_Animations_Export.mtl'),
-                }}
-                lit={true}
-                style={{
-                transform: [
-                    { translate: [0, -5, -3] },
-                    { scaleX: 0.008 },
-                    { scaleY: 0.008 },
-                    { scaleZ: 0.008 },
-                    { rotateY: rotationValue}
-                ],
-
-
-                }}
-                    />
-                </VrButton>
+        <VrButton onClick={() => this.startRotate()}>
+          <AnimatedEntity
+            onExit={this.stopRotate}
+            source={{
+              obj: asset('spider/Only_Spider_with_Animations_Export.obj'),
+              mtl: asset('spider/Only_Spider_with_Animations_Export.mtl'),
+            }}
+            lit={true}
+            style={{
+              transform: [
+                { translate: [-100, -460, -270] },
+                { scaleX: 1 },
+                { scaleY: 1 },
+                { scaleZ: 1 },
+                { rotateY: rotationValue },
+              ],
+            }}
+          />
+        </VrButton>
         <VrButton>
           <AnimatedEntity
             source={{
@@ -272,15 +258,12 @@ class MagicSphere extends React.Component {
       </View>
     );
   }
-
 }
 
 mapDispatchToProps = dispatch => {
   return {
-
     addAdditionalTask: val => dispatch(addAdditionalTask(val)),
   };
 };
-
 
 export default connect(null, mapDispatchToProps)(MagicSphere);
