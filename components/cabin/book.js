@@ -2,6 +2,7 @@ import React from "react";
 import { asset, Animated, View, VrButton, NativeModules } from "react-360";
 import Entity from "Entity";
 import { disableAllExcept } from "../../store/buttons";
+import {disableAllClues} from '../../store/clues'
 import { connect } from "react-redux";
 const { AudioModule } = NativeModules;
 const AnimatedEntity = Animated.createAnimatedComponent(Entity);
@@ -21,10 +22,10 @@ class Book extends React.Component {
       "ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/ChurchBookClosedV2.mtl",
     info: "",
     fade: new Animated.Value(0),
-    mirrorClue: false,
+    // mirrorClue: false,
     mirrorClueSrc: "Clues/mirrorClue.jpg",
     currentlyDisplayedHint: '2d_intro/intro_page.jpg',
-    introClueState: true
+    // introClueState: true
   };
   openOrclose = () => {
     if (this.state.close === true) {
@@ -51,19 +52,24 @@ class Book extends React.Component {
 
   handleClick = () => {
     this.props.disableButtons("faceButton", "bookButton");
+    this.props.disableClues("faceClue","bookClue")
     this.openOrclose();
     AudioModule.playOneShot({
       source: asset("magic.wav")
     });
-    this.setState({
-      mirrorClue: true,
-      introClueState: false
-    });
+    // this.setState({
+    //   mirrorClue: true,
+    //   introClueState: false
+    // });
 
   };
 
   render() {
-    const disableStatus = !this.props.buttons.bookButton; //false
+    console.log('buttons==>', this.props.buttons)
+    console.log('Clue==>',this.props.clues)
+    const disableStatus = !this.props.buttons.bookButton;
+     const bookClue = this.props.clues.bookClue
+     const faceClue = this.props.clues.faceClue
     return (
       <View>
         <VrButton onClick={this.handleClick} disabled={disableStatus}>
@@ -86,7 +92,7 @@ class Book extends React.Component {
             )}
           />
         </VrButton>
-        {this.state.mirrorClue ? (
+        {faceClue ? (
           <Animated.Image
             style={{
               position: "absolute",
@@ -99,7 +105,7 @@ class Book extends React.Component {
             source={asset(this.state.mirrorClueSrc)}
           />
         ) : null}
-       {this.state.introClueState ?
+       {bookClue ?
        <Animated.Image
           style={{
             position: 'absolute',
@@ -119,14 +125,17 @@ class Book extends React.Component {
 const mapStateToProps = state => {
   console.log("mapping state to book", state);
   return {
-    buttons: state.buttons
+    buttons: state.buttons,
+    clues : state.clues
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     disableButtons: (buttonToEnable, buttonToDisable) =>
-      dispatch(disableAllExcept(buttonToEnable, buttonToDisable))
+      dispatch(disableAllExcept(buttonToEnable, buttonToDisable)),
+    disableClues :(cluesToEnable, cluesToDisable)=> dispatch(disableAllClues(cluesToEnable, cluesToDisable))
+
   };
 };
 
