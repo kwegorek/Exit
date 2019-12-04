@@ -1,8 +1,10 @@
 import React from "react";
-import { asset, Animated, View, VrButton } from "react-360";
+import { asset, Animated, View, VrButton, NativeModules } from "react-360";
 import Entity from "Entity";
 import { connect } from "react-redux";
 import { disableAllClues } from "../../store/clues";
+const { AudioModule, SurfaceModule } = NativeModules;
+
 let AnimatedEntity = Animated.createAnimatedComponent(Entity);
 class Compass extends React.Component {
   state = {
@@ -56,17 +58,32 @@ class Compass extends React.Component {
             />
           </VrButton>
           {chestClue ? (
+          <VrButton onClick={() => {SurfaceModule.zoomCamera([0,0,650])}}>
             <Animated.Image
               style={{
                 position: "absolute",
                 layoutOrigin: [0.5, 0.5, 0],
-                width: 90,
-                height: 60,
-                transform: [{ translateZ: 170 }, { translateX: 60 }],
+                width: 450,
+                height: 300,
+                transform: [
+      
+                  {translateZ: 800},
+                  {translateX: 300},
+                  {rotateY: 0} ],
+
+
+
+
+
+                // layoutOrigin: [0.5, 0.5, 0],
+                // width: 90,
+                // height: 60,
+                // transform: [{ translateZ: 170 }, { translateX: 60 }],
                 opacity: 1
               }}
               source={asset(this.state.currentlyDisplayedHint)}
             />
+          </VrButton>
           ) : null}
         </View>
       );
