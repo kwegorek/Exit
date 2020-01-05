@@ -10,13 +10,16 @@ To use this application, you'll need to take the following steps:
 * Run the following commands:
 
 ```
-git remote add exit-vr-game https://github.com/kwegorek/ExitVR.git
+git remote add exit-vr-game https://github.com/kwegorek/Exit.git
 git fetch exit-vr-game
 git merge exit-vr-game/master
 ```
 
 ## Start
 Running `npm run start` will make great things happen!
+
+## Play
+Try it here: stormlooper.github.io/Exit/ 
 
 
 ![](trimmed_demo.gif)
