@@ -1,6 +1,6 @@
 # Exit
 
-Exit a VR game. 
+VR game - Escape Room. 
 
 ## Setup
 To use this application, you'll need to take the following steps:
@@ -19,4 +19,4 @@ git merge exit-vr-game/master
 Running `npm run start` will make great things happen!
 
 
-![](exit-final-shorten.gif)
+![](trimmed-demo.gif)
