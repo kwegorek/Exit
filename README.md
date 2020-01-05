@@ -19,3 +19,4 @@ git merge exit-vr-game/master
 Running `npm run start` will make great things happen!
 
 
+![](exit-final-shorten.gif)
